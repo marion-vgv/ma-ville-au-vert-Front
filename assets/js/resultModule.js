@@ -12,6 +12,17 @@ const resultModule = {
         // CACHER LE FORM DE RECHERCHE
 
         // AFFICHER LE NOMBRE DE RESULTATS DISPONIBLES
+        const resultSentence = document.getElementById('searchResultsNumber');
+        if (results.length == 0){
+            resultSentence.textContent= `Il n'existe pas de ville correspondant à votre recherche`;
+        };
+        if (results.length == 1){
+            resultSentence.textContent= `Il existe ${results.length} ville correspondant à votre recherche`;
+        };
+        if (results.length > 1){
+            resultSentence.textContent= `Il existe ${results.length} villes correspondant à votre recherche`;
+        };
+
 
         // GENERER 1 FICHE VILLE / RESULTAT
         for (const result of results) {
@@ -31,7 +42,7 @@ const resultModule = {
 
         // NOM DE REGION
         const townRegion = node.querySelector('.townCardRegion');
-        townRegion.textContent = data.id_region;
+        townRegion.textContent = data.region.name_region;
 
         // NOM DE DEPARTEMENT
         const townDepartment = node.querySelector('.townCardDepartment');
@@ -55,16 +66,32 @@ const resultModule = {
 
         // ECOLES
         const townSchool = node.querySelector('.townCardSchool');
-        // TODO : A CONTINUER
-        // townSchool.textContent = data.department.name_dpt;
-
         
         const dataKeys = Object.keys(data);
 
         if (dataKeys.includes('school')==true){
-            console.log(`Il y a des ecoles !`)
+            const schools = data.school;
+
+            if (schools.length==1){
+            townSchool.textContent = `Il y a ${data.school.length} école correspondant à votre recherche :`;};
+
+            if (schools.length>1){
+            townSchool.textContent = `Il y a ${data.school.length} écoles correspondant à votre recherche :`;};
+
+            const schoolList = document.createElement('ul');
+            schoolList.setAttribute('class', 'schoolList');
+            townSchool.appendChild(schoolList);
+
+            for (const school of schools) {
+                const schoolElement = document.createElement('li');
+                schoolElement.setAttribute('class', 'schoolElement');
+                schoolElement.textContent = `${school.name_place} (${school.secteur})`;
+                schoolList.appendChild(schoolElement);
+            };
+
+        
         } else {
-            console.log(`Il n'y a PAS d'ecoles !`)
+            townSchool.setAttribute('hidden', '');
         }
 
 
