@@ -1,92 +1,81 @@
 const formModule = {
+  base_url: null,
 
-    base_url: null,
+  setBaseUrl: (url) => {
+    formModule.base_url = url;
+  },
 
-    setBaseUrl: url => {
-        formModule.base_url = url;
-    },
+  // Récupération des options pour générer le formulaire
+  getFormOptionsFromAPI: async () => {
+    try {
+      const result = await fetch(`${formModule.base_url}/`);
 
-    // Récupération des options pour générer le formulaire
-    getFormOptionsFromAPI : async ()=>{
-        
-        try {
-            const result = await fetch(`${formModule.base_url}/`);
+      const json = await result.json();
 
-            const json = await result.json()
+      formModule.setFormOptions(json);
+    } catch (error) {
+      console.error(`Impossible de charger les options depuis l'API`, error);
+    }
+  },
 
-            formModule.setFormOptions(json);
+  // Injection des options dans le HTML
+  setFormOptions: (options) => {
+    console.log("setFormOptions");
 
-        }
+    // -- OPTIONS DE REGIONS
+    const locationRegion = document.getElementById("locationRegion");
 
-        catch (error) {
-            console.error(`Impossible de charger les options depuis l'API`, error);
-        }
-
-    },
-
-    // Injection des options dans le HTML
-    setFormOptions : (options)=>{
-        console.log('setFormOptions');
-
-        // -- OPTIONS DE REGIONS
-        const locationRegion = document.getElementById('locationRegion');
-
-        for (const region of options.regions){
-            if (region.id>5)
-            {
-            const regionOption = document.createElement('option');
-            regionOption.setAttribute('value', region.id);
-            const regionOptionText = document.createTextNode(region.name_region);
-            regionOption.appendChild(regionOptionText);
-            locationRegion.appendChild(regionOption);
-            }
-        }
-
-        // -- OPTIONS DE DEPARTEMENTS
-        const locationDepartment = document.getElementById('locationDepartment');
-
-        for (const department of options.departments){
-
-            if (department.id<500)
-            {
-            const departmentOption = document.createElement('option');
-            departmentOption.setAttribute('value', department.id);
-            const departmentOptionText = document.createTextNode(department.name_dpt);
-            departmentOption.appendChild(departmentOptionText);
-            locationDepartment.appendChild(departmentOption);
-            }
-        }
-    },
-
-    handleSearchForm : async event => {
-        event.preventDefault();
-
-        const formData = new FormData(event.target);
-
-        try{
-            const result = await fetch(`${formModule.base_url}/`, {
-                method: 'POST',
-                body: formData
-            });
-
-            if (result.ok) {
-                const json = await result.json();
-                console.log(`On a reçu un résultat !`)
-                console.log(json);
-                console.log(json.length);
-                resultModule.showSearchResults(json);
-
-            } else {
-                console.error('On a eu un pépin sur le serveur');
-            }
-
-        }
-
-        catch (error) {
-            console.error(`Impossible de charger les résultats de la recherche depuis l'API`, error);
-        }
-
+    for (const region of options.regions) {
+      if (region.id > 5) {
+        const regionOption = document.createElement("option");
+        regionOption.setAttribute("value", region.id);
+        const regionOptionText = document.createTextNode(region.name_region);
+        regionOption.appendChild(regionOptionText);
+        locationRegion.appendChild(regionOption);
+      }
     }
 
+    // -- OPTIONS DE DEPARTEMENTS
+    const locationDepartment = document.getElementById("locationDepartment");
 
-}
+    for (const department of options.departments) {
+      if (department.id < 500) {
+        const departmentOption = document.createElement("option");
+        departmentOption.setAttribute("value", department.id);
+        const departmentOptionText = document.createTextNode(
+          department.name_dpt
+        );
+        departmentOption.appendChild(departmentOptionText);
+        locationDepartment.appendChild(departmentOption);
+      }
+    }
+  },
+
+  handleSearchForm: async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    try {
+      const result = await fetch(`${formModule.base_url}/`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (result.ok) {
+        const json = await result.json();
+        console.log(`On a reçu un résultat !`);
+        console.log(json);
+        console.log(json.length);
+        resultModule.showSearchResults(json);
+      } else {
+        console.error("On a eu un pépin sur le serveur");
+      }
+    } catch (error) {
+      console.error(
+        `Impossible de charger les résultats de la recherche depuis l'API`,
+        error
+      );
+    }
+  },
+};
