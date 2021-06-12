@@ -56,6 +56,7 @@ table {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #070c06;
 }
 .body .header {
   width: 100%;
@@ -85,7 +86,7 @@ table {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 700px;
 }
 .body .mainContainer .mainContainerTitle {
   text-align: center;
@@ -94,15 +95,149 @@ table {
   letter-spacing: 0.5rem;
   padding-bottom: 2rem;
 }
+.body .mainContainer .mainContainerForm {
+  width: 100%;
+}
 .body .mainContainer .mainContainerForm .formBlock {
   padding-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .body .mainContainer .mainContainerForm .formBlock .formBlockTitle {
   font-family: "Libre Baskerville", serif;
   font-size: 1.2rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-  border-bottom: 2px solid #F2BD1D;
+  padding: 1rem;
+  background-color: rgba(235, 237, 230, 0.7);
+  border-radius: 0 1rem 1rem 1rem;
+  width: 27%;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 67%;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio * {
+  box-sizing: border-box;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper {
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 4px;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper * {
+  cursor: pointer;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButton {
+  display: none;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 5px #cfd1c9;
+  border-radius: 0 1rem 1rem 1rem;
+  transition: box-shadow 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption:hover {
+  box-shadow: inset 0 0 5px #cfd1c9;
+  border: 0;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption:focus {
+  border: 1px solid #b8d193;
+  outline: 2px solid #B8D193;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .radioButtonLabel {
+  padding-left: 0.5rem;
+  font-size: 1rem;
+  width: 80%;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .radioDot {
+  height: 20px;
+  width: 20px;
+  background: #B8D193;
+  border-radius: 50%;
+  position: relative;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .radioDot::before {
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: #B8D193;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .optionsMenu {
+  margin-top: 1rem;
+  width: 100%;
+  align-self: stretch;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .optionsMenu .formBlockSelect {
+  width: 100%;
+  margin: auto;
+  font-size: 0.9rem;
+  font-family: "Open Sans", sans-serif;
+  border: transparent;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  box-shadow: 0 0 5px rgba(184, 209, 147, 0.8);
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .optionsMenu .formBlockSelect:focus {
+  border-radius: 1rem;
+  outline: 2px solid #B8D193;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #uuOptions {
+  display: none;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeRurale:checked ~ .typeRurale,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine {
+  background-color: rgba(184, 209, 147, 0.3);
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 5px rgba(184, 209, 147, 0.8);
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeRurale:checked ~ .typeRurale .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine .radioDot {
+  background: white;
+  box-shadow: 0 0 10px #b8d193;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeRurale:checked ~ .typeRurale .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine .radioDot::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeRurale:checked ~ .typeRurale #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeRurale:checked ~ .typeRurale #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #departmentOptions {
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -19,97 +19,112 @@
     <header class="header">
       <h1 class="headerTitle headerLine1">Ma ville au</h1>
       <h1 class="headerTitle headerLine2">vert</h1>
-      <!-- <h2 class="headerSubtitle">Trouvez la ville de vos rêves à la campagne</h2> -->
+      <!-- <h2 class="headerSubtitle">Trouvez la ville ou le village où vous mettre au vert parmi les villes de moins de 200 ooo habitants</h2> -->
     </header>
 
     <main class="mainContainer">
       <!-- FORM -->
       <h3 class="mainContainerTitle">Votre recherche</h3>
       <form action="" method="POST" id="searchForm" class="mainContainerForm">
-        <!-- LIEU DE RECHERCHE -->
+        <!-- -- LIEU DE RECHERCHE -->
         <div class="formBlock" id="searchLocation">
           <h4 class="formBlockTitle">Lieu de recherche</h4>
-          <div class="formBlockRadioOption">
-            <div class="formBlockRadioSubOption">
+          <div class="formBlockRadio">
+            <!-- Dans toute la France -->
+            <div class="radioButtonWrapper">
               <input
-                class="formBlockRadioButton"
+                class="radioButton"
                 type="radio"
                 name="location"
                 id="locationTouteFrance"
                 value="france"
                 checked
               />
-              <label class="formBlockRadioLabel" for="locationTouteFrance">
-                Toute la France
+              <label
+                class="radioButtonOption locationTouteFrance"
+                for="locationTouteFrance"
+              >
+                <div class="radioDot"></div>
+                <span class="radioButtonLabel">Toute la France</span>
               </label>
             </div>
 
-            <div class="formBlockRadioSubOption">
+            <!-- Par région -->
+            <div class="radioButtonWrapper">
               <input
-                class="formBlockRadioButton"
+                class="radioButton"
                 type="radio"
                 name="location"
                 id="locationByRegion"
                 value="region"
               />
-              <label class="formBlockRadioLabel" for="locationByRegion">
-                Par région
-              </label>
+              <label
+                class="radioButtonOption locationByRegion"
+                for="locationByRegion"
+              >
+                <div class="radioDot"></div>
+                <span class="radioButtonLabel">Par région</span>
 
-              <div id="regionOptions" class="invisible">
-                <label class="formBlockSelectLabel" for="locationRegion"
-                  >Sélectionnez votre lieu de recherche</label
-                >
-                <select
-                  class="formBlockSelect"
-                  name="locationRegion"
-                  id="locationRegion"
-                >
-                  <option
-                    class="formBlockSelectOption"
-                    value=""
-                    disabled
-                    selected
-                    hidden
+                <div id="regionOptions" class="optionsMenu">
+                  <label class="formBlockSelectLabel" for="locationRegion">
+                  </label>
+                  <select
+                    class="formBlockSelect"
+                    name="locationRegion"
+                    id="locationRegion"
                   >
-                    ...
-                  </option>
-                </select>
-              </div>
+                    <option
+                      class="formBlockSelectOption"
+                      value=""
+                      disabled
+                      selected
+                      hidden
+                    >
+                      Sélectionnez la région
+                    </option>
+                  </select>
+                </div>
+              </label>
             </div>
 
-            <div class="formBlockRadioSubOption">
+            <!-- Par département -->
+            <div class="radioButtonWrapper">
               <input
-                class="formBlockRadioButton"
+                class="radioButton"
                 type="radio"
                 name="location"
                 id="locationByDepartment"
                 value="department"
               />
-              <label class="formBlockRadioLabel" for="locationByDepartment">
-                Par département
-              </label>
+              <label
+                class="radioButtonOption locationByDepartment"
+                for="locationByDepartment"
+              >
+                <div class="radioDot"></div>
+                <span class="radioButtonLabel">Par département</span>
 
-              <div id="departmentOptions" class="invisible">
-                <label class="formBlockSelectLabel" for="locationDepartment"
-                  >Sélectionnez votre lieu de recherche</label
-                >
-                <select
-                  class="formBlockSelect"
-                  name="locationDepartment"
-                  id="locationDepartment"
-                >
-                  <option
-                    class="formBlockSelectOption"
-                    value=""
-                    disabled
-                    selected
-                    hidden
+                <div id="departmentOptions" class="optionsMenu">
+                  <label
+                    class="formBlockSelectLabel"
+                    for="locationDepartment"
+                  ></label>
+                  <select
+                    class="formBlockSelect"
+                    name="locationDepartment"
+                    id="locationDepartment"
                   >
-                    ...
-                  </option>
-                </select>
-              </div>
+                    <option
+                      class="formBlockSelectOption"
+                      value=""
+                      disabled
+                      selected
+                      hidden
+                    >
+                      Sélectionnez le département
+                    </option>
+                  </select>
+                </div>
+              </label>
             </div>
           </div>
         </div>
@@ -117,66 +132,77 @@
         <!-- TYPE DE VILLE -->
         <div class="formBlock" id="searchTownType">
           <h4 class="formBlockTitle">Type de ville</h4>
-          <div class="formBlockRadioOption">
-            <label class="formBlockRadioLabel" for="typeRurale">
-              <span class="radioCheckmark"></span>
-              Ville rurale
+          <div class="formBlockRadio">
+            <!-- Ville rurale -->
+            <div class="radioButtonWrapper">
               <input
-                class="formBlockRadioButton"
+                class="radioButton"
                 type="radio"
                 name="type"
                 id="typeRurale"
                 value="rurale"
               />
-            </label>
-            <label class="formBlockRadioLabel" for="typeUrbaine">
-              <span class="radioCheckmark"></span>
-              Ville appartenant à une zone urbaine de taille moyenne
-              <input
-                class="formBlockRadioButton"
+              <label class="radioButtonOption typeRurale" for="typeRurale">
+                <div class="radioDot"></div>
+                <span class="radioButtonLabel">Ville rurale</span>
+
+              </label>
+            </div>
+
+            <!-- Ville urbaine -->
+            <div class="radioButtonWrapper">
+                <input
+                class="radioButton"
                 type="radio"
                 name="type"
                 id="typeUrbaine"
                 value="urbaine"
               />
+              <label class="radioButtonOption typeUrbaine" for="typeUrbaine">
+                <div class="radioDot"></div>
+                <span class="radioButtonLabel">Ville appartenant à une zone urbaine de taille moyenne
+                </span>
+            
+
+                <div id="uuOptions" class="optionsMenu">
+                <label class="formBlockSelectLabel" for="uu"
+                    >Je veux une ville située dans une zone urbaine de :</label
+                >
+                <select class="formBlockSelect" name="uu" id="uu">
+                    <option
+                    class="formBlockSelectOption"
+                    value=""
+                    disabled
+                    selected
+                    hidden
+                    >
+                    ...
+                    </option>
+                    <option class="formBlockSelectOption" value="1">
+                    moins de 5 000 habitants
+                    </option>
+                    <option class="formBlockSelectOption" value="2">
+                    de 5 000 à 10 000 habitants
+                    </option>
+                    <option class="formBlockSelectOption" value="3">
+                    de 10 000 à 20 000 habitants
+                    </option>
+                    <option class="formBlockSelectOption" value="4">
+                    de 20 000 à 50 000 habitants
+                    </option>
+                    <option class="formBlockSelectOption" value="5">
+                    de 50 000 à 100 000 habitants
+                    </option>
+                    <option class="formBlockSelectOption" value="6">
+                    de 100 000 à 200 000 habitants
+                    </option>
+                </select>
+                </div>
             </label>
           </div>
-
-          <div id="uuOptions" class="invisible">
-            <label class="formBlockSelectLabel" for="uu"
-              >Je veux une ville située dans une zone urbaine de :</label
-            >
-            <select class="formBlockSelect" name="uu" id="uu">
-              <option
-                class="formBlockSelectOption"
-                value=""
-                disabled
-                selected
-                hidden
-              >
-                ...
-              </option>
-              <option class="formBlockSelectOption" value="1">
-                moins de 5 000 habitants
-              </option>
-              <option class="formBlockSelectOption" value="2">
-                de 5 000 à 10 000 habitants
-              </option>
-              <option class="formBlockSelectOption" value="3">
-                de 10 000 à 20 000 habitants
-              </option>
-              <option class="formBlockSelectOption" value="4">
-                de 20 000 à 50 000 habitants
-              </option>
-              <option class="formBlockSelectOption" value="5">
-                de 50 000 à 100 000 habitants
-              </option>
-              <option class="formBlockSelectOption" value="6">
-                de 100 000 à 200 000 habitants
-              </option>
-            </select>
           </div>
         </div>
+
 
         <!-- TAILLE DE VILLE -->
         <div class="formBlock" id="searchTownSize">
@@ -244,23 +270,23 @@
             Souhaitez-vous une ville ayant une ou des écoles ?
           </p>
 
-          <div class="formBlockRadioOption">
-            <label class="formBlockRadioLabel" for="noSchool">
+          <div class="formBlockRadio">
+            <label class="radioButtonLabel" for="noSchool">
               <span class="radioCheckmark"></span>
               Pas d'école nécessaire
               <input
-                class="formBlockRadioButton"
+                class="radioButton"
                 type="radio"
                 name="school"
                 id="noSchool"
                 value="false"
               />
             </label>
-            <label class="formBlockRadioLabel" for="withSchool">
+            <label class="radioButtonLabel" for="withSchool">
               <span class="radioCheckmark"></span>
               Au moins une école est nécessaire
               <input
-                class="formBlockRadioButton"
+                class="radioButton"
                 type="radio"
                 name="school"
                 id="withSchool"
