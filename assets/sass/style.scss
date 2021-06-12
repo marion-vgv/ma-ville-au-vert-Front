@@ -56,10 +56,15 @@
       padding-bottom: 2rem;
     }
 
+    //
+    // SEARCH FORM
+    //
     .mainContainerForm {
       width: 100%;
 
+      // FORM SECTION
       .formBlock {
+        padding-top: 1rem;
         padding-bottom: 1rem;
         display: flex;
         flex-direction: row;
@@ -72,137 +77,275 @@
           background-color: rgb(vars.$lighterGrey, 0.7);
           border-radius: 0 1rem 1rem 1rem;
           width: 27%;
-
-          // border-bottom: 2px solid vars.$highlightLight;
         }
 
+        // FORM SECTION WITH RADIO BUTTONS
         .formBlockRadio {
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
-          width: 67%;
+        }
 
+        // FORM SECTION WITH SELECT INPUT
+        .formBlockText {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+
+          .formBlockSelect {
+            cursor: pointer;
+            background-color: rgb(vars.$mainColorLight, 0.3);
+            border: 1px solid transparent;
+            box-shadow: inset 0 0 5px rgb(vars.$mainColorLight, 0.8);
+            margin: 0.5rem;
+          }
+        }
+
+        //
+        // RADIO INPUTS
+        //
+        .radioButtonWrapper {
+          width: 100%;
+          margin-top: 4px;
           * {
-            box-sizing: border-box;
+            cursor: pointer;
           }
 
-          .radioButtonWrapper {
-            width: 100%;
-            font-family: vars.$contentFont;
-            margin-top: 4px;
-            * {
-              cursor: pointer;
+          .radioButton {
+            display: none;
+          }
+
+          .radioButtonOption {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            &:hover {
+              box-shadow: inset 0 0 5px vars.$mediumGrey;
+              border: 0;
             }
 
-            .radioButton {
+            &:focus {
+              border: 1px solid rgb(vars.$mainColorLight, 1);
+              outline: 2px solid vars.$mainColorLight;
+            }
+
+            .radioButtonLabel {
+              padding-left: 0.5rem;
+              font-size: 1rem;
+              width: 80%;
+            }
+
+            .radioDot {
+              height: 20px;
+              width: 20px;
+              background: vars.$mainColorLight;
+              border-radius: 50%;
+              position: relative;
+
+              &::before {
+                position: absolute;
+                content: "";
+                top: 4px;
+                left: 4px;
+                width: 12px;
+                height: 12px;
+                background: vars.$mainColorLight;
+                border-radius: 50%;
+                opacity: 0;
+                transform: scale(1.5);
+                transition: all 0.3s ease;
+              }
+            }
+
+            .optionsMenu {
+              margin-top: 1rem;
+              width: 100%;
+              align-self: stretch;
+
+              .formBlockSelect {
+                width: 100%;
+                margin: auto;
+                box-shadow: 0 0 5px rgb(vars.$mainColorLight, 0.8);
+              }
+            }
+          }
+
+          // HANDLING DISPLAY DEPENDING ON CHECK STATUS
+          #regionOptions,
+          #departmentOptions,
+          #uuOptions,
+          #schoolOptions {
+            display: none;
+          }
+
+          #locationTouteFrance:checked ~ .locationTouteFrance,
+          #locationByRegion:checked ~ .locationByRegion,
+          #locationByDepartment:checked ~ .locationByDepartment,
+          #typeRurale:checked ~ .typeRurale,
+          #typeUrbaine:checked ~ .typeUrbaine,
+          #withSchool:checked ~ .withSchool,
+          #noSchool:checked ~ .noSchool {
+            background-color: rgb(vars.$highlightLight, 0.2);
+            border: 1px solid transparent;
+            box-shadow: inset 0 0 5px rgb(vars.$highlightColor, 0.4);
+
+            .radioDot {
+              background: vars.$white;
+              box-shadow: 0 0 10px rgb(vars.$mainColorLight, 1);
+
+              &::before {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
+
+            #regionOptions,
+            #departmentOptions,
+            #uuOptions,
+            #schoolOptions {
+              display: block;
+            }
+          }
+        }
+
+        .radioButtonOption,
+        .selectOption {
+          padding: 1rem;
+          box-shadow: 0 0 5px vars.$mediumGrey;
+          border-radius: 0 1rem 1rem 1rem;
+          line-height: 1.6;
+          transition: box-shadow 0.3s ease;
+          transition: background-color 0.3s ease;
+
+          .formBlockSelect {
+            font-size: 0.9rem;
+            color: vars.$blackish;
+            font-family: vars.$contentFont;
+            border: transparent;
+            border-radius: 1rem;
+            padding: 0.5rem;
+
+            &:focus {
+              border-radius: 1rem;
+              outline: 2px solid vars.$mainColorLight;
+            }
+          }
+        }
+
+        //
+        // CHECKBOX INPUTS
+        //
+        .optionsMenuCheckbox {
+          padding-left: 1.5rem;
+          display: flex;
+          flex-direction: column;
+
+          .checkboxWrapper {
+            padding-bottom: 0.3rem;
+            cursor: pointer;
+
+            .checkboxInput {
               display: none;
             }
 
-            .radioButtonOption {
+            .checkboxOption {
               display: flex;
               flex-direction: row;
-              justify-content: flex-start;
-              flex-wrap: wrap;
               align-items: center;
-              margin-bottom: 1rem;
-              padding: 1rem;
-              box-shadow: 0 0 5px vars.$mediumGrey;
-              border-radius: 0 1rem 1rem 1rem;
-              transition: box-shadow 0.3s ease;
-              transition: background-color 0.3s ease;
 
               &:hover {
-                box-shadow: inset 0 0 5px vars.$mediumGrey;
-                border: 0;
+                .checkboxLabel {
+                  text-decoration: underline vars.$mainColorLight 3px;
+                  transition: all 0.3s ease-in-out;
+                }
               }
-
+  
               &:focus {
                 border: 1px solid rgb(vars.$mainColorLight, 1);
                 outline: 2px solid vars.$mainColorLight;
               }
 
-              .radioButtonLabel {
-                padding-left: 0.5rem;
-                font-size: 1rem;
-                width: 80%;
-              }
-
-              .radioDot {
+              .checkBox {
                 height: 20px;
                 width: 20px;
-                background: vars.$mainColorLight;
-                border-radius: 50%;
+                background: vars.$white;
+                border-radius: 0.3rem;
                 position: relative;
 
                 &::before {
                   position: absolute;
-                  content: "";
-                  top: 4px;
-                  left: 4px;
-                  width: 12px;
-                  height: 12px;
-                  background: vars.$mainColorLight;
-                  border-radius: 50%;
+                  content: "✓";
+                  height: 22px;
+                  width: 22px;
+                  bottom: 2px;
+                  left: 2px;
+                  color: vars.$blackish;
                   opacity: 0;
                   transform: scale(1.5);
                   transition: all 0.3s ease;
                 }
               }
 
-              .optionsMenu {
-                margin-top: 1rem;
-                width: 100%;
-                align-self: stretch;
-
-                .formBlockSelect {
-                  width: 100%;
-                  margin: auto;
-                  font-size: 0.9rem;
-                  font-family: vars.$contentFont;
-                  border: transparent;
-                  border-radius: 1rem;
-                  padding: 0.5rem;
-                  box-shadow: 0 0 5px rgb(vars.$mainColorLight, 0.8);
-
-                  &:focus {
-                    border-radius: 1rem;
-                    outline: 2px solid vars.$mainColorLight;
-                  }
-                }
+              .checkboxLabel {
+                padding-left: 0.5rem;
               }
+
             }
 
-            #regionOptions,
-            #departmentOptions,
-            #uuOptions {
-              display: none;
-            }
-
-            #locationTouteFrance:checked ~ .locationTouteFrance,
-            #locationByRegion:checked ~ .locationByRegion,
-            #locationByDepartment:checked ~ .locationByDepartment,
-            #typeRurale:checked ~ .typeRurale,
-            #typeUrbaine:checked ~ .typeUrbaine {
-              background-color: rgb(vars.$mainColorLight, 0.3);
-              border: 1px solid transparent;
-              box-shadow: inset 0 0 5px rgb(vars.$mainColorLight, 0.8);
-
-              .radioDot {
+            #materSchool:checked ~ .materSchool,
+            #primSchool:checked ~ .primSchool,
+            #collSchool:checked ~ .collSchool,
+            #lyceeSchool:checked ~ .lyceeSchool,
+            #segpaSchool:checked ~ .segpaSchool {
+              
+              .checkBox {
                 background: vars.$white;
-                box-shadow: 0 0 10px rgb(vars.$mainColorLight, 1);
+                box-shadow:  0 0 5px rgb(vars.$mainColorLight, 0.8);
 
                 &::before {
                   opacity: 1;
                   transform: scale(1);
                 }
               }
-
-              #regionOptions,
-              #departmentOptions {
-                display: block;
-              }
             }
+        }
+        }
+
+        //
+        // ALL INPUTS
+        //
+        .formBlockRadio,
+        .formBlockText {
+          font-family: vars.$contentFont;
+          width: 67%;
+
+          * {
+            box-sizing: border-box;
           }
+        }
+      }
+
+      .formBlockSubmitButton {
+        width : 100%;
+        font-size: 1.2rem;
+        font-family: vars.$headerFont;
+        color:vars.$mainColorLight;
+        background-color: vars.$white;
+        box-shadow: 0 0 5px vars.$mediumGrey;
+        padding: 1rem;
+        border: 0;
+        border-radius: 2rem;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+          color: vars.$white;
+          background-color: rgb(vars.$mainColorLight, 0.7);
+          box-shadow: inner 0 0 5px vars.$mainColorLight;
         }
       }
     }

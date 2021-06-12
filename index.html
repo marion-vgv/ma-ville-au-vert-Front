@@ -141,17 +141,17 @@
                 name="type"
                 id="typeRurale"
                 value="rurale"
+                checked
               />
               <label class="radioButtonOption typeRurale" for="typeRurale">
                 <div class="radioDot"></div>
                 <span class="radioButtonLabel">Ville rurale</span>
-
               </label>
             </div>
 
             <!-- Ville urbaine -->
             <div class="radioButtonWrapper">
-                <input
+              <input
                 class="radioButton"
                 type="radio"
                 name="type"
@@ -160,194 +160,237 @@
               />
               <label class="radioButtonOption typeUrbaine" for="typeUrbaine">
                 <div class="radioDot"></div>
-                <span class="radioButtonLabel">Ville appartenant à une zone urbaine de taille moyenne
+                <span class="radioButtonLabel"
+                  >Ville appartenant à une zone urbaine de taille moyenne
                 </span>
-            
 
                 <div id="uuOptions" class="optionsMenu">
-                <label class="formBlockSelectLabel" for="uu"
-                    >Je veux une ville située dans une zone urbaine de :</label
-                >
-                <select class="formBlockSelect" name="uu" id="uu">
+                  <label class="formBlockSelectLabel" for="uu"></label>
+                  <select class="formBlockSelect" name="uu" id="uu">
                     <option
-                    class="formBlockSelectOption"
-                    value=""
-                    disabled
-                    selected
-                    hidden
+                      class="formBlockSelectOption"
+                      value=""
+                      disabled
+                      selected
+                      hidden
                     >
-                    ...
+                      Je veux une ville située dans une zone urbaine de...
                     </option>
                     <option class="formBlockSelectOption" value="1">
-                    moins de 5 000 habitants
+                      moins de 5 000 habitants
                     </option>
                     <option class="formBlockSelectOption" value="2">
-                    de 5 000 à 10 000 habitants
+                      de 5 000 à 10 000 habitants
                     </option>
                     <option class="formBlockSelectOption" value="3">
-                    de 10 000 à 20 000 habitants
+                      de 10 000 à 20 000 habitants
                     </option>
                     <option class="formBlockSelectOption" value="4">
-                    de 20 000 à 50 000 habitants
+                      de 20 000 à 50 000 habitants
                     </option>
                     <option class="formBlockSelectOption" value="5">
-                    de 50 000 à 100 000 habitants
+                      de 50 000 à 100 000 habitants
                     </option>
                     <option class="formBlockSelectOption" value="6">
-                    de 100 000 à 200 000 habitants
+                      de 100 000 à 200 000 habitants
                     </option>
-                </select>
+                  </select>
                 </div>
-            </label>
-          </div>
+              </label>
+            </div>
           </div>
         </div>
-
 
         <!-- TAILLE DE VILLE -->
         <div class="formBlock" id="searchTownSize">
           <h4 class="formBlockTitle">Taille de ville</h4>
-          <p class="formBlockText">
-            Je veux une ville dont la population est comprise entre
-            <select class="formBlockSelect" name="townMin" id="townMin">
-              <option class="formBlockSelectOption" value="0">0</option>
-              <option class="formBlockSelectOption" value="500">500</option>
-              <option class="formBlockSelectOption" value="1000">1 000</option>
-              <option class="formBlockSelectOption" value="2500">2 500</option>
-              <option class="formBlockSelectOption" value="5000">5 000</option>
-              <option class="formBlockSelectOption" value="10000">
-                10 000
-              </option>
-              <option class="formBlockSelectOption" value="20000">
-                20 000
-              </option>
-              <option class="formBlockSelectOption" value="50000">
-                50 000
-              </option>
-              <option class="formBlockSelectOption" value="100000">
-                100 000
-              </option>
-              <option class="formBlockSelectOption" value="150000">
-                150 000
-              </option>
-              <option class="formBlockSelectOption" value="200000">
-                200 000
-              </option>
-            </select>
-            et
-            <select class="formBlockSelect" name="townMax" id="townMax">
-              <option class="formBlockSelectOption" value="500">500</option>
-              <option class="formBlockSelectOption" value="1000">1 000</option>
-              <option class="formBlockSelectOption" value="2500">2 500</option>
-              <option class="formBlockSelectOption" value="5000">5 000</option>
-              <option class="formBlockSelectOption" value="10000">
-                10 000
-              </option>
-              <option class="formBlockSelectOption" value="20000">
-                20 000
-              </option>
-              <option class="formBlockSelectOption" value="50000">
-                50 000
-              </option>
-              <option class="formBlockSelectOption" value="100000">
-                100 000
-              </option>
-              <option class="formBlockSelectOption" value="150000">
-                150 000
-              </option>
-              <option class="formBlockSelectOption" value="200000">
-                200 000
-              </option>
-            </select>
-            habitants
-          </p>
+          <div class="formBlockText">
+            <p class="selectOption">
+              Je veux une ville dont la population est comprise entre
+              <select class="formBlockSelect" name="townMin" id="townMin">
+                <option class="formBlockSelectOption" value="0">0</option>
+                <option class="formBlockSelectOption" value="500">500</option>
+                <option class="formBlockSelectOption" value="1000">
+                  1 000
+                </option>
+                <option class="formBlockSelectOption" value="2500">
+                  2 500
+                </option>
+                <option class="formBlockSelectOption" value="5000">
+                  5 000
+                </option>
+                <option class="formBlockSelectOption" value="10000">
+                  10 000
+                </option>
+                <option class="formBlockSelectOption" value="20000">
+                  20 000
+                </option>
+                <option class="formBlockSelectOption" value="50000">
+                  50 000
+                </option>
+                <option class="formBlockSelectOption" value="100000">
+                  100 000
+                </option>
+                <option class="formBlockSelectOption" value="150000">
+                  150 000
+                </option>
+                <option class="formBlockSelectOption" value="200000">
+                  200 000
+                </option>
+              </select>
+              et
+              <select class="formBlockSelect" name="townMax" id="townMax">
+                <option class="formBlockSelectOption" value="500">500</option>
+                <option class="formBlockSelectOption" value="1000">
+                  1 000
+                </option>
+                <option class="formBlockSelectOption" value="2500">
+                  2 500
+                </option>
+                <option class="formBlockSelectOption" value="5000">
+                  5 000
+                </option>
+                <option class="formBlockSelectOption" value="10000">
+                  10 000
+                </option>
+                <option class="formBlockSelectOption" value="20000">
+                  20 000
+                </option>
+                <option class="formBlockSelectOption" value="50000">
+                  50 000
+                </option>
+                <option class="formBlockSelectOption" value="100000">
+                  100 000
+                </option>
+                <option class="formBlockSelectOption" value="150000">
+                  150 000
+                </option>
+                <option class="formBlockSelectOption" value="200000">
+                  200 000
+                </option>
+              </select>
+              habitants
+            </p>
+          </div>
         </div>
 
         <!-- EDUCATION -->
         <div class="formBlock" id="searchEducation">
-          <h4 class="formBlockTitle">Éducation</h4>
-          <p class="formBlockText">
-            Souhaitez-vous une ville ayant une ou des écoles ?
-          </p>
+          <div class="formBlockTitle">
+            <h4>Éducation</h4>
+            <p class="formBlockText">
+              Souhaitez-vous une ville ayant une ou des écoles ?
+            </p>
+          </div>
 
+          <!-- noSchool -->
           <div class="formBlockRadio">
-            <label class="radioButtonLabel" for="noSchool">
-              <span class="radioCheckmark"></span>
-              Pas d'école nécessaire
-              <input
+            <div class="radioButtonWrapper">
+                <input
                 class="radioButton"
                 type="radio"
                 name="school"
                 id="noSchool"
                 value="false"
+                checked
               />
+            <label class="radioButtonOption noSchool" for="noSchool">
+                <div class="radioDot"></div>
+              <span class="radioButtonLabel">Pas d'école nécessaire</span>
             </label>
-            <label class="radioButtonLabel" for="withSchool">
-              <span class="radioCheckmark"></span>
-              Au moins une école est nécessaire
-              <input
+            </div>
+
+            <!-- withSchool -->
+            <div class="radioButtonWrapper">
+                <input
                 class="radioButton"
                 type="radio"
                 name="school"
                 id="withSchool"
                 value="true"
               />
-            </label>
-          </div>
+                <label class="radioButtonOption withSchool" for="withSchool">
+                    <div class="radioDot"></div>
+                    <span class="radioButtonLabel">Au moins une école est nécessaire
+                </span>
 
-          <div class="formBlockCheckbox invisible" id="schoolOptions">
-            <input
-              class="formBlockCheckboxButton"
-              type="checkbox"
-              name="schoolOptions"
-              id="materSchool"
-              value="mater"
-            />
-            <label class="formBlockCheckboxLabel" for="materSchool"
-              >École maternelle</label
-            >
-            <input
-              class="formBlockCheckboxButton"
-              type="checkbox"
-              name="schoolOptions"
-              id="primSchool"
-              value="prim"
-            />
-            <label class="formBlockCheckboxLabel" for="primSchool"
-              >École primaire</label
-            >
-            <input
-              class="formBlockCheckboxButton"
-              type="checkbox"
-              name="schoolOptions"
-              id="collSchool"
-              value="coll"
-            />
-            <label class="formBlockCheckboxLabel" for="collSchool"
-              >Collège</label
-            >
-            <input
-              class="formBlockCheckboxButton"
-              type="checkbox"
-              name="schoolOptions"
-              id="lyceeSchool"
-              value="lycee"
-            />
-            <label class="formBlockCheckboxLabel" for="lyceeSchool"
-              >Lycée</label
-            >
-            <input
-              class="formBlockCheckboxButton"
-              type="checkbox"
-              name="schoolOptions"
-              id="segpaSchool"
-              value="segpa"
-            />
-            <label class="formBlockCheckboxLabel" for="segpaSchool"
-              >SEGPA</label
-            >
-            <input value="" name="schoolOptions" disabled hidden />
-          </div>
+
+          
+
+                <div id="schoolOptions" class="optionsMenu">
+                    <div class="optionsMenuCheckbox">
+                        <div class="checkboxWrapper">
+                            <input
+                            class="checkboxInput"
+                            type="checkbox"
+                            name="schoolOptions"
+                            id="materSchool"
+                            value="mater"/>
+                            <label class="checkboxOption materSchool" for="materSchool">
+                                <div class="checkBox"></div>
+                                <span class="checkboxLabel">École maternelle</span>
+                            </label>
+                        </div>
+
+                        <div class="checkboxWrapper">
+                            <input
+                            class="checkboxInput"
+                            type="checkbox"
+                            name="schoolOptions"
+                            id="primSchool"
+                            value="prim"/>
+                            <label class="checkboxOption primSchool" for="primSchool">
+                                <div class="checkBox"></div>
+                                <span class="checkboxLabel">École primaire</span>
+                            </label>
+                        </div>
+
+                        <div class="checkboxWrapper">
+                            <input
+                            class="checkboxInput"
+                            type="checkbox"
+                            name="schoolOptions"
+                            id="collSchool"
+                            value="coll"/>
+                            <label class="checkboxOption collSchool" for="collSchool">
+                                <div class="checkBox"></div>
+                                <span class="checkboxLabel">Collège</span>
+                            </label>
+                        </div>
+
+                        <div class="checkboxWrapper">
+                            <input
+                            class="checkboxInput"
+                            type="checkbox"
+                            name="schoolOptions"
+                            id="lyceeSchool"
+                            value="lycee"/>
+                            <label class="checkboxOption lyceeSchool" for="lyceeSchool">
+                                <div class="checkBox"></div>
+                                <span class="checkboxLabel">Lycée</span>
+                            </label>
+                        </div>
+
+                        <div class="checkboxWrapper">
+                            <input
+                            class="checkboxInput"
+                            type="checkbox"
+                            name="schoolOptions"
+                            id="segpaSchool"
+                            value="segpa"/>
+                            <label class="checkboxOption segpaSchool" for="segpaSchool">
+                                <div class="checkBox"></div>
+                                <span class="checkboxLabel">SEGPA</span>
+                            </label>
+                        </div>
+
+                    <input value="" name="schoolOptions" disabled hidden />
+                </div>
+            </div>
+              
+            </div>
+        </label>
+        </div>
         </div>
 
         <button class="formBlockSubmitButton" type="submit" value="Ok !">

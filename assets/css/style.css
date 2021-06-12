@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -99,6 +100,7 @@ table {
   width: 100%;
 }
 .body .mainContainer .mainContainerForm .formBlock {
+  padding-top: 1rem;
   padding-bottom: 1rem;
   display: flex;
   flex-direction: row;
@@ -116,56 +118,59 @@ table {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 67%;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio * {
-  box-sizing: border-box;
+.body .mainContainer .mainContainerForm .formBlock .formBlockText {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper {
+.body .mainContainer .mainContainerForm .formBlock .formBlockText .formBlockSelect {
+  cursor: pointer;
+  background-color: rgba(184, 209, 147, 0.3);
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 5px rgba(184, 209, 147, 0.8);
+  margin: 0.5rem;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper {
   width: 100%;
-  font-family: "Open Sans", sans-serif;
   margin-top: 4px;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper * {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper * {
   cursor: pointer;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButton {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButton {
   display: none;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: 1rem;
-  padding: 1rem;
-  box-shadow: 0 0 5px #cfd1c9;
-  border-radius: 0 1rem 1rem 1rem;
-  transition: box-shadow 0.3s ease;
-  transition: background-color 0.3s ease;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption:hover {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption:hover {
   box-shadow: inset 0 0 5px #cfd1c9;
   border: 0;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption:focus {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption:focus {
   border: 1px solid #b8d193;
   outline: 2px solid #B8D193;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .radioButtonLabel {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption .radioButtonLabel {
   padding-left: 0.5rem;
   font-size: 1rem;
   width: 80%;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .radioDot {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption .radioDot {
   height: 20px;
   width: 20px;
   background: #B8D193;
   border-radius: 50%;
   position: relative;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .radioDot::before {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption .radioDot::before {
   position: absolute;
   content: "";
   top: 4px;
@@ -178,66 +183,194 @@ table {
   transform: scale(1.5);
   transition: all 0.3s ease;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .optionsMenu {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption .optionsMenu {
   margin-top: 1rem;
   width: 100%;
   align-self: stretch;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .optionsMenu .formBlockSelect {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption .optionsMenu .formBlockSelect {
   width: 100%;
   margin: auto;
+  box-shadow: 0 0 5px rgba(184, 209, 147, 0.8);
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #schoolOptions {
+  display: none;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool {
+  background-color: rgba(242, 189, 29, 0.2);
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 5px rgba(191, 144, 4, 0.4);
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool .radioDot {
+  background: white;
+  box-shadow: 0 0 10px #b8d193;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool .radioDot::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool #schoolOptions {
+  display: block;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption,
+.body .mainContainer .mainContainerForm .formBlock .selectOption {
+  padding: 1rem;
+  box-shadow: 0 0 5px #cfd1c9;
+  border-radius: 0 1rem 1rem 1rem;
+  line-height: 1.6;
+  transition: box-shadow 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .formBlockSelect,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .formBlockSelect {
   font-size: 0.9rem;
+  color: #4d4f4b;
   font-family: "Open Sans", sans-serif;
   border: transparent;
   border-radius: 1rem;
   padding: 0.5rem;
-  box-shadow: 0 0 5px rgba(184, 209, 147, 0.8);
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper .radioButtonOption .optionsMenu .formBlockSelect:focus {
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .formBlockSelect:focus,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .formBlockSelect:focus {
   border-radius: 1rem;
   outline: 2px solid #B8D193;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #regionOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #departmentOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #uuOptions {
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox {
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper {
+  padding-bottom: 0.3rem;
+  cursor: pointer;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxInput {
   display: none;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeRurale:checked ~ .typeRurale,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine {
-  background-color: rgba(184, 209, 147, 0.3);
-  border: 1px solid transparent;
-  box-shadow: inset 0 0 5px rgba(184, 209, 147, 0.8);
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance .radioDot,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion .radioDot,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment .radioDot,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeRurale:checked ~ .typeRurale .radioDot,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine .radioDot {
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption:hover .checkboxLabel {
+  text-decoration: underline #B8D193 3px;
+  transition: all 0.3s ease-in-out;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption:focus {
+  border: 1px solid #b8d193;
+  outline: 2px solid #B8D193;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption .checkBox {
+  height: 20px;
+  width: 20px;
   background: white;
-  box-shadow: 0 0 10px #b8d193;
+  border-radius: 0.3rem;
+  position: relative;
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance .radioDot::before,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion .radioDot::before,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment .radioDot::before,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeRurale:checked ~ .typeRurale .radioDot::before,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine .radioDot::before {
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption .checkBox::before {
+  position: absolute;
+  content: "✓";
+  height: 22px;
+  width: 22px;
+  bottom: 2px;
+  left: 2px;
+  color: #4d4f4b;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption .checkboxLabel {
+  padding-left: 0.5rem;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #materSchool:checked ~ .materSchool .checkBox,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #primSchool:checked ~ .primSchool .checkBox,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #collSchool:checked ~ .collSchool .checkBox,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #lyceeSchool:checked ~ .lyceeSchool .checkBox,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #segpaSchool:checked ~ .segpaSchool .checkBox {
+  background: white;
+  box-shadow: 0 0 5px rgba(184, 209, 147, 0.8);
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #materSchool:checked ~ .materSchool .checkBox::before,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #primSchool:checked ~ .primSchool .checkBox::before,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #collSchool:checked ~ .collSchool .checkBox::before,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #lyceeSchool:checked ~ .lyceeSchool .checkBox::before,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #segpaSchool:checked ~ .segpaSchool .checkBox::before {
   opacity: 1;
   transform: scale(1);
 }
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #regionOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #departmentOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #regionOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #departmentOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #regionOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #departmentOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeRurale:checked ~ .typeRurale #regionOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeRurale:checked ~ .typeRurale #departmentOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #regionOptions,
-.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #departmentOptions {
-  display: block;
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio,
+.body .mainContainer .mainContainerForm .formBlock .formBlockText {
+  font-family: "Open Sans", sans-serif;
+  width: 67%;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio *,
+.body .mainContainer .mainContainerForm .formBlock .formBlockText * {
+  box-sizing: border-box;
+}
+.body .mainContainer .mainContainerForm .formBlockSubmitButton {
+  width: 100%;
+  font-size: 1.2rem;
+  font-family: "Libre Baskerville", serif;
+  color: #B8D193;
+  background-color: white;
+  box-shadow: 0 0 5px #cfd1c9;
+  padding: 1rem;
+  border: 0;
+  border-radius: 2rem;
+  transition: box-shadow 0.3s ease;
+}
+.body .mainContainer .mainContainerForm .formBlockSubmitButton:hover {
+  color: white;
+  background-color: rgba(184, 209, 147, 0.7);
+  box-shadow: inner 0 0 5px #B8D193;
 }
 
 /*# sourceMappingURL=style.css.map */
