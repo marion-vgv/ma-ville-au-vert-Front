@@ -6,6 +6,41 @@
   flex-direction: column;
   align-items: center;
   color: vars.$black;
+  position: relative;
+  background-color: transparent;
+
+  &:before {
+    content: "";
+    background-image: url("../photos/background-paper.jpg");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.4;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -3;
+  }
+
+  &:after {
+    content: "";
+    background-image: url("../photos/shadowBle.png");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.5;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 200px;
+    position: absolute;
+    z-index: -1;
+  }
+
+
+
 
   .header {
     width: 100%;
@@ -46,7 +81,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 700px;
+    width: 100%;
+    position: relative;
+
+    &:after {
+      content: "";
+      background-image: linear-gradient(vars.$white, transparent);
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      position: absolute;
+      z-index: -2;
+
+    }
+
+
 
     .mainContainerTitle {
       text-align: center;
@@ -60,7 +110,7 @@
     // SEARCH FORM
     //
     .mainContainerForm {
-      width: 100%;
+      width: 700px;
 
       // FORM SECTION
       .formBlock {
@@ -70,13 +120,23 @@
         flex-direction: row;
         justify-content: space-between;
 
-        .formBlockTitle {
+        .formBlockHeader {
           font-family: vars.$headerFont;
           font-size: 1.2rem;
           padding: 1rem;
-          background-color: rgb(vars.$lighterGrey, 0.7);
+          background-color: rgb(vars.$mainColor, 0.6);
+          color: vars.$white;
           border-radius: 0 1rem 1rem 1rem;
           width: 27%;
+
+          .formBlockText {
+            font-size: 0.8rem;
+            padding-top: 1rem;
+            color: vars.$white;
+            line-height: 1.2;
+            width: 100%;
+
+          }
         }
 
         // FORM SECTION WITH RADIO BUTTONS
@@ -87,20 +147,26 @@
         }
 
         // FORM SECTION WITH SELECT INPUT
-        .formBlockText {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
-          flex-wrap: wrap;
+        .formBlockSelect {
+          cursor: pointer;
+          border: 1px solid transparent;
+          margin: 0.5rem;
+        }
 
+        .formBlockText {
           .formBlockSelect {
-            cursor: pointer;
             background-color: rgb(vars.$mainColorLight, 0.3);
-            border: 1px solid transparent;
             box-shadow: inset 0 0 5px rgb(vars.$mainColorLight, 0.8);
-            margin: 0.5rem;
           }
         }
+
+        .formBlockRadio{
+          .formBlockSelect {
+            background-color: vars.$white;
+            box-shadow: inset 0 0 5px rgb(vars.$mediumGrey, 0.5);
+          }
+        }
+
 
         //
         // RADIO INPUTS
@@ -190,9 +256,9 @@
           #typeUrbaine:checked ~ .typeUrbaine,
           #withSchool:checked ~ .withSchool,
           #noSchool:checked ~ .noSchool {
-            background-color: rgb(vars.$highlightLight, 0.2);
+            background-color: rgb(vars.$mainColorLight, 0.3);
             border: 1px solid transparent;
-            box-shadow: inset 0 0 5px rgb(vars.$highlightColor, 0.4);
+            box-shadow: inset 0 0 5px rgb(vars.$mainColorLight, 0.6);
 
             .radioDot {
               background: vars.$white;
@@ -264,7 +330,7 @@
                   transition: all 0.3s ease-in-out;
                 }
               }
-  
+
               &:focus {
                 border: 1px solid rgb(vars.$mainColorLight, 1);
                 outline: 2px solid vars.$mainColorLight;
@@ -294,7 +360,6 @@
               .checkboxLabel {
                 padding-left: 0.5rem;
               }
-
             }
 
             #materSchool:checked ~ .materSchool,
@@ -302,10 +367,9 @@
             #collSchool:checked ~ .collSchool,
             #lyceeSchool:checked ~ .lyceeSchool,
             #segpaSchool:checked ~ .segpaSchool {
-              
               .checkBox {
                 background: vars.$white;
-                box-shadow:  0 0 5px rgb(vars.$mainColorLight, 0.8);
+                box-shadow: 0 0 5px rgb(vars.$mainColorLight, 0.8);
 
                 &::before {
                   opacity: 1;
@@ -313,7 +377,7 @@
                 }
               }
             }
-        }
+          }
         }
 
         //
@@ -331,23 +395,150 @@
       }
 
       .formBlockSubmitButton {
-        width : 100%;
+        width: 100%;
         font-size: 1.2rem;
         font-family: vars.$headerFont;
-        color:vars.$mainColorLight;
-        background-color: vars.$white;
-        box-shadow: 0 0 5px vars.$mediumGrey;
+        color: vars.$black;
+        background-color: rgb(vars.$mainColorLight, 0.7);
         padding: 1rem;
-        border: 0;
-        border-radius: 2rem;
-        transition: box-shadow 0.3s ease;
+        border:0;
+        border-radius: 0 1rem 1rem 1rem;
+        margin: 2rem auto;
 
         &:hover {
-          color: vars.$white;
-          background-color: rgb(vars.$mainColorLight, 0.7);
-          box-shadow: inner 0 0 5px vars.$mainColorLight;
+          box-shadow: inset 0 0 5px rgb(vars.$mainColor, 0.4);
+          transition: all 0.3s ease;
+
         }
       }
     }
+
+  }
+  // 
+  // LOADER
+  // 
+  // Credit : https://codepen.io/mrsahar
+  //
+  #loader {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    width: 100px;
+    margin: -25px 0 0 -25px;
+  }
+  
+  #loader span {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    -webkit-animation: loader 1s infinite ease-in-out;
+            animation: loader 1s infinite ease-in-out;
+  }
+  
+  #loader span:nth-child(1) {
+    left: 0px;
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+  }
+  
+  #loader span:nth-child(2) {
+    left: 15px;
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+  }
+  
+  #loader span:nth-child(3) {
+    left: 30px;
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+  }
+  
+  #loader span:nth-child(4) {
+    left: 45px;
+    -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+  }
+  
+  @keyframes loader {
+    0% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      background: rgb(vars.$mainColorLight, 0.7);
+    }
+    25% {
+      -webkit-transform: translateY(10px);
+              transform: translateY(10px);
+      -webkit-transform: translateY(10px);
+              transform: translateY(10px);
+      background: rgb(vars.$mainColor, 0.4);
+    }
+    50% {
+      -webkit-transform: translateY(10px);
+              transform: translateY(10px);
+      -webkit-transform: translateY(10px);
+              transform: translateY(10px);
+      background: rgb(vars.$mainColorLight, 0.7);
+    }
+    100% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      background: rgb(vars.$mainColor, 0.4);
+    }
+  }
+  @-webkit-keyframes loader {
+    0% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      background: rgb(vars.$mainColorLight, 0.7);
+    }
+    25% {
+      -webkit-transform: translateY(10px);
+              transform: translateY(10px);
+      background: rgb(vars.$mainColor, 0.4);
+    }
+    50% {
+      -webkit-transform: translateY(10px);
+              transform: translateY(10px);
+      background: rgb(vars.$mainColorLight, 0.7);
+    }
+    100% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      background: rgb(vars.$mainColor, 0.4);
+    }
+  }
+
+  .searchInProgress {
+    height: 50vh;
+    position: relative;
+    width: 100%;
+
+
+    .searchText {
+      font-family: vars.$headerFont;
+      font-size: 1rem;
+      text-align: center;
+      margin: auto;
+      position: absolute;
+      top: 60%;
+      left:50%;
+      transform: translate(-50%, -50%);
+      letter-spacing: 0.1rem;
+      line-height: 1.4;
+
+    }
+  }
+  
+  .isInvisible {
+    display:none;
+
   }
 }

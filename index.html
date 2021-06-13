@@ -24,11 +24,13 @@
 
     <main class="mainContainer">
       <!-- FORM -->
-      <h3 class="mainContainerTitle">Votre recherche</h3>
       <form action="" method="POST" id="searchForm" class="mainContainerForm">
+        <h3 class="mainContainerTitle">Votre recherche</h3>
         <!-- -- LIEU DE RECHERCHE -->
         <div class="formBlock" id="searchLocation">
+            <div class="formBlockHeader">
           <h4 class="formBlockTitle">Lieu de recherche</h4>
+        </div>
           <div class="formBlockRadio">
             <!-- Dans toute la France -->
             <div class="radioButtonWrapper">
@@ -131,7 +133,10 @@
 
         <!-- TYPE DE VILLE -->
         <div class="formBlock" id="searchTownType">
-          <h4 class="formBlockTitle">Type de ville</h4>
+            <div class="formBlockHeader">
+            <h4 class="formBlockTitle">Type de ville</h4>
+            <p class="formBlockText">Une aire urbaine est un ensemble de villes ou villages géographiquement proches et dont l'activité est liée grâce notamment à la mobilité de ses habitants</p>
+            </div>
           <div class="formBlockRadio">
             <!-- Ville rurale -->
             <div class="radioButtonWrapper">
@@ -161,7 +166,7 @@
               <label class="radioButtonOption typeUrbaine" for="typeUrbaine">
                 <div class="radioDot"></div>
                 <span class="radioButtonLabel"
-                  >Ville appartenant à une zone urbaine de taille moyenne
+                  >Ville appartenant à une aire urbaine
                 </span>
 
                 <div id="uuOptions" class="optionsMenu">
@@ -203,7 +208,10 @@
 
         <!-- TAILLE DE VILLE -->
         <div class="formBlock" id="searchTownSize">
-          <h4 class="formBlockTitle">Taille de ville</h4>
+        <div class="formBlockHeader">
+          <h4 class="formBlockTitle">Population</h4>
+          <p class="formBlockText"></p>
+        </div>
           <div class="formBlockText">
             <p class="selectOption">
               Je veux une ville dont la population est comprise entre
@@ -276,10 +284,10 @@
 
         <!-- EDUCATION -->
         <div class="formBlock" id="searchEducation">
-          <div class="formBlockTitle">
-            <h4>Éducation</h4>
+          <div class="formBlockHeader">
+            <h4 class="formBlockTitle">Éducation</h4>
             <p class="formBlockText">
-              Souhaitez-vous une ville ayant une ou des écoles ?
+              Recherchez-vous une ville ayant une ou des écoles ?
             </p>
           </div>
 
@@ -398,8 +406,18 @@
         </button>
       </form>
 
+      <div class="searchInProgress isInvisible" id="searchInProgress">
+        <div id="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <h5 class="searchText">Votre recherche est en cours...</h5>
+      </div>
+
       <!-- RESULTATS DE RECHERCHE -->
-      <div class="invisible" id="searchResults">
+      <div class="isInvisible" id="searchResults">
         <h3 class="mainContainerTitle">Résultats de la recherche</h3>
         <p id="searchResultsNumber" class="mainContainerText"></p>
         <ul id="searchResultsContainer">

@@ -7,8 +7,13 @@ const resultModule = {
 
   showSearchResults: (results) => {
     console.log("Search results !");
+    // CACHER LE LOADER
+    const loader = document.getElementById("searchInProgress");
+    loader.classList.add("isInvisible");
 
-    // CACHER LE FORM DE RECHERCHE
+    // AFFICHER LA SECTION D'AFFICHAGE DES RESULTATS
+    const searchResults = document.getElementById("searchResults");
+    searchResults.classList.remove("isInvisible");
 
     // AFFICHER LE NOMBRE DE RESULTATS DISPONIBLES
     const resultSentence = document.getElementById("searchResultsNumber");

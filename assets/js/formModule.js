@@ -54,6 +54,15 @@ const formModule = {
   handleSearchForm: async (event) => {
     event.preventDefault();
 
+    // CACHER LE FORM DE RECHERCHE
+    const form = document.getElementById("searchForm");
+    form.classList.add("isInvisible");
+
+    // AFFICHER LE LOADER
+    const loader = document.getElementById("searchInProgress");
+    loader.classList.remove("isInvisible");
+
+    // ENVOYER LA RECHERCHE AU BACK
     const formData = new FormData(event.target);
 
     try {
