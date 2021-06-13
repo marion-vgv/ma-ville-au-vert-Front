@@ -54,6 +54,13 @@ const formModule = {
   handleSearchForm: async (event) => {
     event.preventDefault();
 
+    const formData = new FormData(event.target);
+
+    // TODO GERER LES ERREURS
+    for (const value of formData.values()) {
+      console.log(value);
+    };
+
     // CACHER LE FORM DE RECHERCHE
     const form = document.getElementById("searchForm");
     form.classList.add("isInvisible");
@@ -63,8 +70,6 @@ const formModule = {
     loader.classList.remove("isInvisible");
 
     // ENVOYER LA RECHERCHE AU BACK
-    const formData = new FormData(event.target);
-
     try {
       const result = await fetch(`${formModule.base_url}/`, {
         method: "POST",

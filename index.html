@@ -19,10 +19,13 @@
     <header class="header">
       <h1 class="headerTitle headerLine1">Ma ville au</h1>
       <h1 class="headerTitle headerLine2">vert</h1>
-      <!-- <h2 class="headerSubtitle">Trouvez la ville ou le village où vous mettre au vert parmi les villes de moins de 200 ooo habitants</h2> -->
     </header>
 
+
     <main class="mainContainer">
+      <h2 class="headerSubtitle">Trouvez la ville ou le village où vous mettre au vert parmi les villes de moins de 200 000 habitants en France métropolitaine</h2>
+
+
       <!-- FORM -->
       <form action="" method="POST" id="searchForm" class="mainContainerForm">
         <h3 class="mainContainerTitle">Votre recherche</h3>
@@ -135,7 +138,7 @@
         <div class="formBlock" id="searchTownType">
             <div class="formBlockHeader">
             <h4 class="formBlockTitle">Type de ville</h4>
-            <p class="formBlockText">Une aire urbaine est un ensemble de villes ou villages géographiquement proches et dont l'activité est liée grâce notamment à la mobilité de ses habitants</p>
+            <p class="formBlockText"></p>
             </div>
           <div class="formBlockRadio">
             <!-- Ville rurale -->
@@ -168,6 +171,8 @@
                 <span class="radioButtonLabel"
                   >Ville appartenant à une aire urbaine
                 </span>
+                <!-- TODO : mettre en place un tool tip
+                  <span class="toolTip">Une aire urbaine est un ensemble de villes ou villages géographiquement proches et dont l'activité est liée grâce notamment à la mobilité de ses habitants</span> -->
 
                 <div id="uuOptions" class="optionsMenu">
                   <label class="formBlockSelectLabel" for="uu"></label>
@@ -441,9 +446,10 @@
     </main>
 
     <footer class="footer">
-      <p class="footerText">Copyright</p>
-      <a class="footerLink" href="#">Point technique</a>
+    <div class="footerContainer">
+      <a class="footerLink" href="https://mail.google.com/mail/u/0/#inbox">Point technique</a>
       <a class="footerLink" href="#">C'est moi qui l'ai fait !</a>
+    </div>
     </footer>
 
     <script src="./assets/js/resultModule.js"></script>
