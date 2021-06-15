@@ -57,9 +57,34 @@ const formModule = {
     const formData = new FormData(event.target);
 
     // TODO GERER LES ERREURS
+    console.log("formData.get(location)");
+    console.log(formData.get('location'));
+    for (const key of formData.keys()) {
+      console.log(key);  
+    };
+
     for (const value of formData.values()) {
       console.log(value);
+      console.log(typeof value);
     };
+
+    // PAR REGION : IL FAUT SELECTIONNER UNE REGION
+    if (formData.get('location') === 'region') {
+      if (isNaN(parseInt(formData.get('locationRegion')))){
+        const fieldRegion = document.getElementById("locationRegion").closest(".radioButtonOption");
+        fieldRegion.classList.add("error");
+        fieldRegion.addEventListener("click", ()=>{fieldRegion.classList.remove("error")});
+      }
+    } else {
+    // PAR DEPARTEMENT : IL FAUT SELECTIONNER UN DEPARTEMENT
+
+    // AIRE URBAINE : IL FAUT FAIRE UNE SELECTION
+
+    // POPULATION : IL FAUT QUE GAUCHE SOIT INFERIEUR A DROITE
+
+    // ECOLE : IL FAUT SELECTIONNER AU MOINS UN TYPE D'ECOLE
+
+    
 
     // CACHER LE FORM DE RECHERCHE
     const form = document.getElementById("searchForm");
@@ -90,6 +115,6 @@ const formModule = {
         `Impossible de charger les résultats de la recherche depuis l'API`,
         error
       );
-    }
+    }}
   },
 };

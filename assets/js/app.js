@@ -9,6 +9,7 @@ const app = {
     app.addListeners();
 
     await formModule.getFormOptionsFromAPI();
+
   },
 
   addListeners: () => {
@@ -20,6 +21,11 @@ const app = {
   handleSearchForm: (event) => {
     formModule.handleSearchForm(event);
   },
+
+  reloadHomepage : () => {
+    document.location.reload();
+  }
+
 };
 
 document.addEventListener("DOMContentLoaded", app.init);

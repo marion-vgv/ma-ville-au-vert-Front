@@ -490,7 +490,7 @@
     .searchResultsMenu {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: center;
       padding : 1rem;
 
       .searchResultsMenuElement {
@@ -589,6 +589,9 @@
           }
         }
       }
+    }
+    .error {
+      background-color:rgb(darkred, 0.15) !important;
     }
   }
   //

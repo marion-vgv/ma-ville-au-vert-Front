@@ -110,14 +110,16 @@ const resultModule = {
     document.getElementById("searchResultsContainer").appendChild(node);
   },
 
-  handleSearchMenuOptions : (data) => {
 
-    // MODIFIER LA RECHERCHE
+  handleSearchMenuOptions : () => {
 
     // NOUVELLE RECHERCHE : RELOAD DE LA PAGE D'ACCUEIL
+    const newSearch = document.getElementById("newSearch");
+    newSearch.addEventListener("click", app.reloadHomepage);
 
-    // ENVOI PAR MAIL : GENERER LE CONTENU DE L'EMAIL
+    // TODO MODIFIER LA RECHERCHE
 
+    // TODO ENVOYER LES RESULTATS DE RECHERCHE PAR MAIL AVEC MAILTO
 
   }
 };

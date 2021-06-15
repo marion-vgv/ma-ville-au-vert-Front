@@ -499,7 +499,7 @@ table {
 .body .mainContainer .searchResultsOptions .searchResultsMenu {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem;
 }
 .body .mainContainer .searchResultsOptions .searchResultsMenu .searchResultsMenuElement {
@@ -579,6 +579,9 @@ table {
 .body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardSchool .schoolList {
   padding-left: 0.5rem;
   list-style-type: none;
+}
+.body .mainContainer .error {
+  background-color: rgba(139, 0, 0, 0.15) !important;
 }
 .body #loader {
   display: block;
