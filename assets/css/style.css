@@ -196,6 +196,7 @@ table {
   width: 100%;
   margin-top: 4px;
   margin-bottom: 4px;
+  position: relative;
 }
 .body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper * {
   cursor: pointer;
@@ -324,6 +325,17 @@ table {
 .body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool #schoolOptions {
   display: block;
 }
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool .toolTip {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+}
 .body .mainContainer .mainContainerForm .formBlock .radioButtonOption,
 .body .mainContainer .mainContainerForm .formBlock .selectOption {
   padding: 1rem;
@@ -346,6 +358,42 @@ table {
 .body .mainContainer .mainContainerForm .formBlock .selectOption .formBlockSelect:focus {
   border-radius: 1rem;
   outline: 2px solid #B8D193;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translate(0, -50%);
+  transition: all 0.3s ease;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip .toolTipIcon,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip .toolTipIcon {
+  color: rgba(67, 92, 35, 0.6);
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip .toolTipBox,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip .toolTipBox {
+  position: absolute;
+  display: none;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip:hover .toolTipBox,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip:hover .toolTipBox {
+  display: block;
+  background-color: white;
+  box-shadow: 0 0 5px #cfd1c9;
+  font-size: 0.8rem;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  margin: 1.5rem;
+  border-radius: 0 1rem 1rem 1rem;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip:hover .toolTipBox span,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip:hover .toolTipBox span {
+  font-weight: bold;
 }
 .body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox {
   padding-left: 1.5rem;
@@ -433,6 +481,104 @@ table {
 .body .mainContainer .mainContainerForm .formBlockSubmitButton:hover {
   box-shadow: inset 0 0 5px #435c23;
   transition: all 0.3s ease;
+}
+.body .mainContainer .searchResultsOptions {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.body .mainContainer .searchResultsOptions .mainContainerText {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(67, 92, 35, 0.6);
+  color: white;
+  border-radius: 0 1rem 1rem 1rem;
+}
+.body .mainContainer .searchResultsOptions .searchResultsMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.body .mainContainer .searchResultsOptions .searchResultsMenu .searchResultsMenuElement {
+  color: rgba(67, 92, 35, 0.6);
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.body .mainContainer #searchResultsContainer {
+  width: 700px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+}
+.body .mainContainer #searchResultsContainer .townCard {
+  width: 40%;
+  box-shadow: 0 0 5px #cfd1c9;
+  border-radius: 0 1rem 1rem 1rem;
+  line-height: 1.6;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardName {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgba(67, 92, 35, 0.6);
+  padding-bottom: 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardIcon {
+  color: rgba(67, 92, 35, 0.6);
+  height: 20px;
+  width: 20px;
+  padding: 0 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardSectionRight {
+  border-left: 1.5px solid rgba(67, 92, 35, 0.6);
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardLocation,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardUU,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardPop,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardSchool {
+  padding-left: 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardRegion,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardDepartment,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardUU,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardPop,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardSchool,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardLocation {
+  font-size: 0.9rem;
+  color: #4d4f4b;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardLocation {
+  font-style: italic;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardLocation .townCardDepartment {
+  padding-right: 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardSchool .schoolList {
+  padding-left: 0.5rem;
+  list-style-type: none;
 }
 .body #loader {
   display: block;

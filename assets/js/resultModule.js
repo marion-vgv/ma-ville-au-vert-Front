@@ -7,6 +7,10 @@ const resultModule = {
 
   showSearchResults: (results) => {
     console.log("Search results !");
+
+    // GENERER LE MENU DES RESULTATS
+    resultModule.handleSearchMenuOptions(results);
+
     // CACHER LE LOADER
     const loader = document.getElementById("searchInProgress");
     loader.classList.add("isInvisible");
@@ -45,7 +49,7 @@ const resultModule = {
 
     // NOM DE REGION
     const townRegion = node.querySelector(".townCardRegion");
-    townRegion.textContent = data.region.name_region;
+    townRegion.textContent = `(${data.region.name_region})`;
 
     // NOM DE DEPARTEMENT
     const townDepartment = node.querySelector(".townCardDepartment");
@@ -54,13 +58,14 @@ const resultModule = {
     // ZONE URBAINE OU ZONE RURALE
     const townUU = node.querySelector(".townCardUU");
     const uuName = data.urban_unit.name_uu;
+    console.log("uuName");
     console.log(uuName);
     if (uuName.includes("hors unité urbaine") == true) {
       const uuNameUpdated = uuName.replace("hors unité urbaine", "rurale");
       console.log(uuName);
       townUU.textContent = uuNameUpdated;
     } else {
-      townUU.textContent = uuName;
+      townUU.textContent = `Commune appartenant à l'aire urbaine de ${uuName}`;
     }
 
     // NB HABITANTS
@@ -69,6 +74,8 @@ const resultModule = {
 
     // ECOLES
     const townSchool = node.querySelector(".townCardSchool");
+    const schoolSection = node.querySelector(".schoolSection");
+    const schoolIcon = node.querySelector(".schoolIcon");
 
     const dataKeys = Object.keys(data);
 
@@ -90,14 +97,27 @@ const resultModule = {
       for (const school of schools) {
         const schoolElement = document.createElement("li");
         schoolElement.setAttribute("class", "schoolElement");
-        schoolElement.textContent = `${school.name_place} (${school.secteur})`;
+        schoolElement.textContent = `- ${school.name_place} (${school.secteur})`;
         schoolList.appendChild(schoolElement);
       }
     } else {
       townSchool.setAttribute("hidden", "");
+      schoolSection.setAttribute("hidden", "");
+      schoolIcon.setAttribute("hidden", "");
     }
 
     // AJOUT DE LA CARTE AU DOM
     document.getElementById("searchResultsContainer").appendChild(node);
   },
+
+  handleSearchMenuOptions : (data) => {
+
+    // MODIFIER LA RECHERCHE
+
+    // NOUVELLE RECHERCHE : RELOAD DE LA PAGE D'ACCUEIL
+
+    // ENVOI PAR MAIL : GENERER LE CONTENU DE L'EMAIL
+
+
+  }
 };

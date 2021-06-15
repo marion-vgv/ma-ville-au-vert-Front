@@ -16,7 +16,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.4;
-    top:0;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
@@ -39,13 +39,10 @@
     z-index: -2;
   }
 
-
-
-
   .header {
     width: 100%;
     height: 500px;
-    position:relative;
+    position: relative;
 
     // IMAGE
     background-image: url("../photos/bannerMaVilleAuVert.jpg");
@@ -89,13 +86,12 @@
     &:after {
       content: "";
       background-image: linear-gradient(vars.$white, transparent);
-      top:0;
+      top: 0;
       bottom: 0;
       left: 0;
       right: 0;
       position: absolute;
       z-index: -4;
-
     }
 
     .headerSubtitle {
@@ -103,10 +99,9 @@
       line-height: 1.6;
       font-size: 1.2rem;
       font-style: italic;
-      color : vars.$blackish;
+      color: vars.$blackish;
       text-align: center;
       margin-bottom: 4rem;
-
     }
 
     .mainContainerTitle {
@@ -146,7 +141,6 @@
             color: vars.$white;
             line-height: 1.2;
             width: 100%;
-
           }
         }
 
@@ -171,13 +165,12 @@
           }
         }
 
-        .formBlockRadio{
+        .formBlockRadio {
           .formBlockSelect {
             background-color: vars.$white;
             box-shadow: inset 0 0 5px rgb(vars.$mediumGrey, 0.5);
           }
         }
-
 
         //
         // RADIO INPUTS
@@ -186,11 +179,10 @@
           width: 100%;
           margin-top: 4px;
           margin-bottom: 4px;
+          position: relative;
           * {
             cursor: pointer;
           }
-
-
 
           .radioButton {
             display: none;
@@ -204,7 +196,7 @@
             align-items: center;
             margin-bottom: 1rem;
 
-            &:last-child{
+            &:last-child {
               margin-bottom: 0;
             }
 
@@ -294,7 +286,13 @@
             #schoolOptions {
               display: block;
             }
+
+            .toolTip {
+              position: absolute;
+              top: 30px;
+              right: 15px;
           }
+        }
         }
 
         .radioButtonOption,
@@ -317,6 +315,47 @@
             &:focus {
               border-radius: 1rem;
               outline: 2px solid vars.$mainColorLight;
+            }
+          }
+
+          .toolTip {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translate(0, -50%);
+            transition: all 0.3s ease;
+
+
+            .toolTipIcon {
+              color: rgb(vars.$mainColor, 0.6);
+              height: 20px;
+              width: 20px;
+              cursor: pointer;
+            }
+
+            .toolTipBox{
+              position : absolute;
+              display : none;
+            }
+
+            &:hover {
+              .toolTipBox{
+              display : block;
+              background-color: vars.$white;
+              box-shadow: 0 0 5px vars.$mediumGrey;
+              font-size: 0.8rem;
+              bottom : 0;
+              left : 0;
+              padding: 1rem;
+              margin : 1.5rem;
+              border-radius: 0 1rem 1rem 1rem;
+
+              span {
+                font-weight: bold;
+              }
+
+            }
+
             }
           }
         }
@@ -419,22 +458,142 @@
         color: vars.$white;
         background-color: rgb(vars.$mainColor, 0.6);
         padding: 1rem;
-        border:0;
+        border: 0;
         border-radius: 0 1rem 1rem 1rem;
         margin: 2rem auto;
 
         &:hover {
           box-shadow: inset 0 0 5px rgb(vars.$mainColor, 1);
           transition: all 0.3s ease;
-
         }
       }
     }
 
+    //
+    // SEARCH RESULTS
+    //
+    .searchResultsOptions {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+
+    .mainContainerText {
+      font-family: vars.$headerFont;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 1rem;
+      background-color: rgb(vars.$mainColor, 0.6);
+      color: vars.$white;
+      border-radius: 0 1rem 1rem 1rem;
+    }
+
+    .searchResultsMenu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding : 1rem;
+
+      .searchResultsMenuElement {
+        color: rgb(vars.$mainColor, 0.6);
+        font-family: vars.$contentFont;
+        font-size: 0.9rem;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+
+    }
+
+    #searchResultsContainer {
+      width: 700px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: flex-start;
+      align-content: flex-start;
+
+      font-family: vars.$contentFont;
+      font-size: 1rem;
+
+      .townCard {
+        width: 40%;
+        box-shadow: 0 0 5px vars.$mediumGrey;
+        border-radius: 0 1rem 1rem 1rem;
+        line-height: 1.6;
+        padding: 1rem;
+        margin: 0.5rem;
+
+        .townCardName {
+          font-family: vars.$headerFont;
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: rgb(vars.$mainColor, 0.6);
+          padding-bottom: 0.5rem;
+        }
+
+        .townCardElements {
+          .townCardSection {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            align-content: stretch;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+
+            .townCardIcon {
+              color: rgb(vars.$mainColor, 0.6);
+              height: 20px;
+              width: 20px;
+              padding: 0 0.5rem;
+            }
+
+            .townCardSectionRight {
+              border-left: 1.5px solid rgb(vars.$mainColor, 0.6);
+            }
+
+            .townCardLocation,
+            .townCardUU,
+            .townCardPop,
+            .townCardSchool {
+              padding-left: 0.5rem;
+            }
+
+            .townCardRegion,
+            .townCardDepartment,
+            .townCardUU,
+            .townCardPop,
+            .townCardSchool,
+            .townCardLocation {
+              font-size: 0.9rem;
+              color: vars.$blackish;
+            }
+
+            .townCardLocation {
+              font-style: italic;
+
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+
+              .townCardDepartment {
+                padding-right: 0.5rem;
+              }
+            }
+            .townCardSchool {
+              .schoolList {
+                padding-left: 0.5rem;
+                list-style-type: none;
+              }
+            }
+          }
+        }
+      }
+    }
   }
-  // 
+  //
   // LOADER
-  // 
+  //
   // Credit : https://codepen.io/mrsahar
   //
   #loader {
@@ -446,7 +605,7 @@
     width: 100px;
     margin: -25px 0 0 -25px;
   }
-  
+
   #loader span {
     position: absolute;
     width: 10px;
@@ -454,82 +613,82 @@
     background: rgba(0, 0, 0, 0.25);
     border-radius: 50%;
     -webkit-animation: loader 1s infinite ease-in-out;
-            animation: loader 1s infinite ease-in-out;
+    animation: loader 1s infinite ease-in-out;
   }
-  
+
   #loader span:nth-child(1) {
     left: 0px;
     -webkit-animation-delay: 0.2s;
-            animation-delay: 0.2s;
+    animation-delay: 0.2s;
   }
-  
+
   #loader span:nth-child(2) {
     left: 15px;
     -webkit-animation-delay: 0.3s;
-            animation-delay: 0.3s;
+    animation-delay: 0.3s;
   }
-  
+
   #loader span:nth-child(3) {
     left: 30px;
     -webkit-animation-delay: 0.4s;
-            animation-delay: 0.4s;
+    animation-delay: 0.4s;
   }
-  
+
   #loader span:nth-child(4) {
     left: 45px;
     -webkit-animation-delay: 0.5s;
-            animation-delay: 0.5s;
+    animation-delay: 0.5s;
   }
-  
+
   @keyframes loader {
     0% {
       -webkit-transform: translateY(0px);
-              transform: translateY(0px);
+      transform: translateY(0px);
       -webkit-transform: translateY(0px);
-              transform: translateY(0px);
+      transform: translateY(0px);
       background: rgb(vars.$mainColorLight, 0.7);
     }
     25% {
       -webkit-transform: translateY(10px);
-              transform: translateY(10px);
+      transform: translateY(10px);
       -webkit-transform: translateY(10px);
-              transform: translateY(10px);
+      transform: translateY(10px);
       background: rgb(vars.$mainColor, 0.4);
     }
     50% {
       -webkit-transform: translateY(10px);
-              transform: translateY(10px);
+      transform: translateY(10px);
       -webkit-transform: translateY(10px);
-              transform: translateY(10px);
+      transform: translateY(10px);
       background: rgb(vars.$mainColorLight, 0.7);
     }
     100% {
       -webkit-transform: translateY(0px);
-              transform: translateY(0px);
+      transform: translateY(0px);
       -webkit-transform: translateY(0px);
-              transform: translateY(0px);
+      transform: translateY(0px);
       background: rgb(vars.$mainColor, 0.4);
     }
   }
   @-webkit-keyframes loader {
     0% {
       -webkit-transform: translateY(0px);
-              transform: translateY(0px);
+      transform: translateY(0px);
       background: rgb(vars.$mainColorLight, 0.7);
     }
     25% {
       -webkit-transform: translateY(10px);
-              transform: translateY(10px);
+      transform: translateY(10px);
       background: rgb(vars.$mainColor, 0.4);
     }
     50% {
       -webkit-transform: translateY(10px);
-              transform: translateY(10px);
+      transform: translateY(10px);
       background: rgb(vars.$mainColorLight, 0.7);
     }
     100% {
       -webkit-transform: translateY(0px);
-              transform: translateY(0px);
+      transform: translateY(0px);
       background: rgb(vars.$mainColor, 0.4);
     }
   }
@@ -539,7 +698,6 @@
     position: relative;
     width: 100%;
 
-
     .searchText {
       font-family: vars.$headerFont;
       font-size: 1rem;
@@ -547,21 +705,19 @@
       margin: auto;
       position: absolute;
       top: 60%;
-      left:50%;
+      left: 50%;
       transform: translate(-50%, -50%);
       letter-spacing: 0.1rem;
       line-height: 1.4;
-
     }
   }
-  
-  .isInvisible {
-    display:none;
 
+  .isInvisible {
+    display: none;
   }
 
   .footer {
-    position : relative;
+    position: relative;
     width: 100%;
     background-image: url("../photos/maVilleAuVert-footerVert.png");
     background-position: bottom;
@@ -570,34 +726,32 @@
     z-index: -3;
 
     .footerContainer {
-    margin : auto;
-    width: 700px;
-    height: 150px;
-    padding-bottom: 2rem;
-    z-index: 10;
+      margin: auto;
+      width: 700px;
+      height: 150px;
+      padding-bottom: 2rem;
+      z-index: 10;
 
+      // TEXT
+      text-align: center;
+      font-family: vars.$headerFont;
 
-    // TEXT
-    text-align: center;
-    font-family: vars.$headerFont;
+      // FLEXBOX
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: flex-end;
+      align-content: center;
 
-    // FLEXBOX
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-end;
-    align-content: center;
+      .footerLink {
+        color: vars.$white;
+        text-decoration: none;
+        cursor: pointer;
 
-    .footerLink {
-      color : vars.$white;
-      text-decoration: none;
-      cursor: pointer;
-
-      &:hover{
-        text-decoration: underline vars.$mainColorLight 3px;
+        &:hover {
+          text-decoration: underline vars.$mainColorLight 3px;
+        }
       }
     }
-
-  }
   }
 }

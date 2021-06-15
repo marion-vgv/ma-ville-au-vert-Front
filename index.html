@@ -171,9 +171,10 @@
                 <span class="radioButtonLabel"
                   >Ville appartenant à une aire urbaine
                 </span>
-                <!-- TODO : mettre en place un tool tip
-                  <span class="toolTip">Une aire urbaine est un ensemble de villes ou villages géographiquement proches et dont l'activité est liée grâce notamment à la mobilité de ses habitants</span> -->
-
+                <div class="toolTip">
+                  <img src="./assets/icons/help-circle.svg" alt="" class="toolTipIcon">
+                  <p class="toolTipBox">Une <span>aire urbaine</span> est un ensemble de villes ou villages géographiquement proches et dont l'activité est liée grâce notamment à la mobilité de ses habitants</p>
+                </div>
                 <div id="uuOptions" class="optionsMenu">
                   <label class="formBlockSelectLabel" for="uu"></label>
                   <select class="formBlockSelect" name="uu" id="uu">
@@ -424,7 +425,14 @@
       <!-- RESULTATS DE RECHERCHE -->
       <div class="isInvisible" id="searchResults">
         <h3 class="mainContainerTitle">Résultats de la recherche</h3>
+        <div id="searchResultsOptions" class="searchResultsOptions">
         <p id="searchResultsNumber" class="mainContainerText"></p>
+        <div class="searchResultsMenu">
+          <p id="editSearch" class="searchResultsMenuElement">Modifier la recherche</p>
+          <p id="newSearch" class="searchResultsMenuElement">Nouvelle recherche</p>
+          <a id="sendSearchResults" href="" class="searchResultsMenuElement">Envoyer par e-mail</a>
+        </div>
+      </div>
         <ul id="searchResultsContainer">
           <!-- CARTES VILLE INSEREES DANS CETTE BALISE -->
         </ul>
@@ -434,11 +442,21 @@
           <li class="townCard">
             <h4 class="townCardName">Nom de ville</h4>
             <ul class="townCardElements">
-              <li class="townCardRegion">Region</li>
-              <li class="townCardDepartment">Departement</li>
-              <li class="townCardUU">Taille de zone urbaine ou zone rurale</li>
-              <li class="townCardPop">Nb d'habitants</li>
-              <li class="townCardSchool">Ecoles disponibles</li>
+              <li class="townCardSection">
+                <img src="./assets/icons/map-pin.svg" alt="" class="townCardIcon">
+                <div class="townCardSectionRight">
+                  <p class="townCardLocation"><span class="townCardDepartment">Departement</span><span class="townCardRegion">Region</span></p>
+                  <p class="townCardUU">Taille de zone urbaine ou zone rurale</p>
+                </div>
+              </li>
+              <li class="townCardSection">
+                <img src="./assets/icons/user.svg" alt="" class="townCardIcon">
+                <p class="townCardPop townCardSectionRight">Nb d'habitants</p>
+              </li>
+              <li class="townCardSection schoolSection">
+                <img src="./assets/icons/book-open.svg" alt="" class="townCardIcon schoolIcon">
+                <p class="townCardSchool townCardSectionRight">Ecoles disponibles</p>
+              </li>
             </ul>
           </li>
         </template>
