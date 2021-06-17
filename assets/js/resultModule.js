@@ -31,7 +31,7 @@ const resultModule = {
       resultSentence.textContent = `Il existe ${results.length} villes correspondant à votre recherche`;
     }
 
-    // GENERER 1 FICHE VILLE / RESULTAT
+    // GENERER 1 FICHE VILLE / RESULTAT 
     for (const result of results) {
       resultModule.makeTownCardInDOM(result);
     }

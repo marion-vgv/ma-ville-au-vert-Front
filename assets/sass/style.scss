@@ -291,8 +291,8 @@
               position: absolute;
               top: 30px;
               right: 15px;
+            }
           }
-        }
         }
 
         .radioButtonOption,
@@ -325,7 +325,6 @@
             transform: translate(0, -50%);
             transition: all 0.3s ease;
 
-
             .toolTipIcon {
               color: rgb(vars.$mainColor, 0.6);
               height: 20px;
@@ -333,29 +332,27 @@
               cursor: pointer;
             }
 
-            .toolTipBox{
-              position : absolute;
-              display : none;
+            .toolTipBox {
+              position: absolute;
+              display: none;
             }
 
             &:hover {
-              .toolTipBox{
-              display : block;
-              background-color: vars.$white;
-              box-shadow: 0 0 5px vars.$mediumGrey;
-              font-size: 0.8rem;
-              bottom : 0;
-              left : 0;
-              padding: 1rem;
-              margin : 1.5rem;
-              border-radius: 0 1rem 1rem 1rem;
+              .toolTipBox {
+                display: block;
+                background-color: vars.$white;
+                box-shadow: 0 0 5px vars.$mediumGrey;
+                font-size: 0.8rem;
+                bottom: 0;
+                left: 0;
+                padding: 1rem;
+                margin: 1.5rem;
+                border-radius: 0 1rem 1rem 1rem;
 
-              span {
-                font-weight: bold;
+                span {
+                  font-weight: bold;
+                }
               }
-
-            }
-
             }
           }
         }
@@ -477,31 +474,30 @@
       flex-direction: column;
       padding: 2rem;
 
-    .mainContainerText {
-      font-family: vars.$headerFont;
-      font-size: 1.2rem;
-      text-align: center;
-      padding: 1rem;
-      background-color: rgb(vars.$mainColor, 0.6);
-      color: vars.$white;
-      border-radius: 0 1rem 1rem 1rem;
-    }
-
-    .searchResultsMenu {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      padding : 1rem;
-
-      .searchResultsMenuElement {
-        color: rgb(vars.$mainColor, 0.6);
-        font-family: vars.$contentFont;
-        font-size: 0.9rem;
-        cursor: pointer;
-        text-decoration: none;
+      .mainContainerText {
+        font-family: vars.$headerFont;
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 1rem;
+        background-color: rgb(vars.$mainColor, 0.6);
+        color: vars.$white;
+        border-radius: 0 1rem 1rem 1rem;
       }
-    }
 
+      .searchResultsMenu {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 1rem;
+
+        .searchResultsMenuElement {
+          color: rgb(vars.$mainColor, 0.6);
+          font-family: vars.$contentFont;
+          font-size: 0.9rem;
+          cursor: pointer;
+          text-decoration: none;
+        }
+      }
     }
 
     #searchResultsContainer {
@@ -591,7 +587,7 @@
       }
     }
     .error {
-      background-color:rgb(darkred, 0.15) !important;
+      background-color: rgb(darkred, 0.15) !important;
     }
   }
   //
@@ -715,46 +711,125 @@
     }
   }
 
-  .isInvisible {
-    display: none;
-  }
-
   .footer {
     position: relative;
     width: 100%;
+    height: 150px;
     background-image: url("../photos/maVilleAuVert-footerVert.png");
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -3;
+  }
 
-    .footerContainer {
-      margin: auto;
+  .footerContainer {
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 700px;
+    height: 150px;
+    padding-bottom: 2rem;
+    z-index: 10;
+
+    // TEXT
+    text-align: center;
+    font-family: vars.$headerFont;
+
+    // FLEXBOX
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    align-content: center;
+
+    .footerLink {
+      color: vars.$white;
+      text-decoration: none;
+      cursor: pointer;
+      z-index: 12;
+
+      &:hover {
+        text-decoration: underline vars.$mainColorLight 3px;
+      }
+    }
+  }
+
+  .modal {
+    position: fixed;
+    background-color: rgb(vars.$white, 0.7);
+    height: 100vh;
+    width: 100%;
+    left: 0;
+    right: 0;
+
+    .modalBox {
       width: 700px;
-      height: 150px;
-      padding-bottom: 2rem;
-      z-index: 10;
+      margin: 10vh auto;
+      position: relative;
 
-      // TEXT
-      text-align: center;
-      font-family: vars.$headerFont;
-
-      // FLEXBOX
       display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: flex-end;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
       align-content: center;
 
-      .footerLink {
-        color: vars.$white;
-        text-decoration: none;
+      background: vars.$white;
+      padding: 2rem;
+      box-shadow: 0 0 5px vars.$mediumGrey;
+      border-radius: 0 1rem 1rem 1rem;
+      line-height: 1.6;
+
+
+      .closeIcon {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        height: 20px;
+        width: 20px;
         cursor: pointer;
 
-        &:hover {
-          text-decoration: underline vars.$mainColorLight 3px;
+      }
+
+      .modalSection {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        .modalTitle {
+          color: rgb(vars.$mainColor, 0.6);
+          font-family: vars.$headerFont;
+          //font-weight: bold;
+          font-size: 1.2rem;
+          letter-spacing: 0.2rem;
+          padding-bottom: 1rem;
+        }
+
+        .modalText {
+          font-size: 0.9rem;
+          color: vars.$blackish;
+          font-family: vars.$contentFont;
+
+          a {
+            color: rgb(vars.$mainColor, 0.8);
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline rgb(vars.$mainColor, 0.6) 3px;
+              transition: all 0.3s ease-in-out;
+            }
+          }
+
+          li {
+            margin-left : 2rem;
+            list-style-type: circle;
+          }
         }
       }
     }
+  }
+
+  .isInvisible {
+    display: none;
   }
 }

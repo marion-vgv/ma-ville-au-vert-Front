@@ -16,6 +16,12 @@ const app = {
     const searchForm = document.getElementById("searchForm");
     searchForm.addEventListener("submit", app.handleSearchForm);
     console.log(`L'event listener is in da place !`);
+
+    const aboutLink = document.getElementById("aboutLink");
+    aboutLink.addEventListener("click", app.showAboutModal);
+
+    const closeModalIcon = document.getElementById("closeIcon");
+    closeModalIcon.addEventListener("click", app.hideAboutModal);
   },
 
   handleSearchForm: (event) => {
@@ -24,6 +30,18 @@ const app = {
 
   reloadHomepage : () => {
     document.location.reload();
+  },
+
+  showAboutModal : () => {
+    const modal = document.getElementById("modal");
+    modal.classList.remove("isInvisible");
+
+
+  },
+
+  hideAboutModal : () => {
+    const modal = document.getElementById("modal");
+    modal.classList.add("isInvisible");
   }
 
 };

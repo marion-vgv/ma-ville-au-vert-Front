@@ -463,12 +463,43 @@
       </div>
     </main>
 
-    <footer class="footer">
-    <div class="footerContainer">
-      <a class="footerLink" href="https://mail.google.com/mail/u/0/#inbox">Point technique</a>
-      <a class="footerLink" href="#">C'est moi qui l'ai fait !</a>
-    </div>
+    <div class="footer"></div>
+
+    <footer class="footerContainer">
+      <p class="footerLink" id="aboutLink">À propos</p>
     </footer>
+
+    <div class="modal isInvisible" id="modal">
+      <div class="modalBox">
+        <img src="./assets/icons/x-circle.svg" alt="Fermer" class="closeIcon" id="closeIcon">
+        <div class="modalSection about">
+          <h3 class="modalTitle">À propos de "Ma Ville au vert"</h3>
+          <p class="modalText">Je suis Marion, une jeune pousse du webdev et j'ai créé "Ma Ville au Vert" en ayant 2 buts en tête. D'abord, aider ceux qui préparent leur exode urbain (comme moi ^^) à trouver une ou des villes qui pourraient leur convenir. Parce qu'on a beau avoir une idée générale, quand il s'agit de chercher un bien à acheter ou à louer, c'est plus pratique d'avoir une idée plus précise. Et puis bien sûr, cette app c'est aussi une excellente opportunité de coder un projet de A à Z avec mes petites mains ! Ce site n'a donc pas vocation à évoluer de manière commerciale ;)</p>
+        </div>
+        <div class="modalSection stack">
+          <h3 class="modalTitle">Côté techno...</h3>
+          <ul class="modalText">
+            <li>PosgreSQL</li>
+            <li>NodeJS / Express</li>
+            <li>Sequelize</li>
+            <li>HTML / SASS / Javascript</li>
+            <li>Déploiement sur Render</li>
+          </ul>
+        </div>
+        <div class="modalSection links">
+          <h3 class="modalTitle">Contactez-moi !</h3>
+          <p class="modalText">Quelques uns de mes projets sur visibles sur <a href="https://github.com/marion-vgv">GitHub</a>. Pour me contacter, rdv sur <a href="https://twitter.com/marionVGV">Twitter</a> ou <a href="https://www.linkedin.com/in/marionvangaeveren">LinkedIn</a>.</p>
+        </div>
+        <div class="modalSection sources">
+          <h3 class="modalTitle">Sources</h3>
+          <p class="modalText">Les datas utilisées pour constituer la base de données proviennent de <a href="https://www.data.gouv.fr/fr/">data.gouv.fr</a>.</p>
+          <p class="modalText">La photo en bannière du site provient d'<a href="https://unsplash.com/">unsplash.com</a>.</p>
+          <p class="modalText">Les autres éléments graphiques proviennent de <a href="https://www.freepik.com/home">freepik.com</a>.</p>
+        </div>
+      </div>
+    </div>
+
+
 
     <script src="./assets/js/resultModule.js"></script>
     <script src="./assets/js/formModule.js"></script>
