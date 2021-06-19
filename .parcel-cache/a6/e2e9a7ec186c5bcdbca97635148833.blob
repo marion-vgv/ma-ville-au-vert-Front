@@ -452,7 +452,6 @@ var _formModuleDefault = _parcelHelpers.interopDefault(_formModule);
 var _resultModule = require('./resultModule');
 var _resultModuleDefault = _parcelHelpers.interopDefault(_resultModule);
 exports.default = app = {
-  // base_url: "http://localhost:3000/api",
   base_url: "https://mavilleauvertback.onrender.com/api",
   init: async () => {
     console.log("app.init !");
@@ -487,7 +486,7 @@ exports.default = app = {
 };
 document.addEventListener("DOMContentLoaded", app.init);
 
-},{"../sass/_reset.css":"2RrnM","../sass/_vars.scss":"6QrPa","../sass/style.scss":"6H7Uv","./formModule":"eiRqM","./resultModule":"7cYwj","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"2RrnM":[function() {},{}],"6QrPa":[function() {},{}],"6H7Uv":[function() {},{}],"eiRqM":[function(require,module,exports) {
+},{"../sass/_reset.css":"2RrnM","../sass/_vars.scss":"TGOUV","../sass/style.scss":"6H7Uv","./formModule":"eiRqM","./resultModule":"7cYwj","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"2RrnM":[function() {},{}],"TGOUV":[function() {},{}],"6H7Uv":[function() {},{}],"eiRqM":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 exports.default = formModule = {
@@ -765,4 +764,4 @@ exports.default = resultModule = {
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./app":"4leWE"}]},["3LxIK","4leWE"], "4leWE", "parcelRequire0b0c")
 
-//# sourceMappingURL=index.f2270d60.js.map
+//# sourceMappingURL=index.HASH_REF_cfbf11013e3564d550893a81f2270d60.js.map

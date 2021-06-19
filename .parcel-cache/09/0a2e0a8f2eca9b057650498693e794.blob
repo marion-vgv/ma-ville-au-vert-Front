@@ -452,8 +452,8 @@ var _formModuleDefault = _parcelHelpers.interopDefault(_formModule);
 var _resultModule = require('./resultModule');
 var _resultModuleDefault = _parcelHelpers.interopDefault(_resultModule);
 exports.default = app = {
-  // base_url: "http://localhost:3000/api",
-  base_url: "https://mavilleauvertback.onrender.com/api",
+  base_url: "http://localhost:3000/api",
+  // base_url: "https://mavilleauvertback.onrender.com/api",
   init: async () => {
     console.log("app.init !");
     _formModuleDefault.default.setBaseUrl(app.base_url);
@@ -765,4 +765,4 @@ exports.default = resultModule = {
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./app":"4leWE"}]},["3LxIK","4leWE"], "4leWE", "parcelRequire0b0c")
 
-//# sourceMappingURL=index.f2270d60.js.map
+//# sourceMappingURL=index.HASH_REF_cfbf11013e3564d550893a81f2270d60.js.map
