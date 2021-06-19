@@ -6,7 +6,7 @@ import resultModule from './resultModule';
 
 export default app = {
   // base_url: "http://localhost:3000/api",
-  base_url: "https://mavilleauvertback.onrender.com:10000/api",
+  base_url: "https://mavilleauvertback.onrender.com/api:10000",
 
   init: async () => {
     console.log("app.init !");
