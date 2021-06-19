@@ -453,7 +453,7 @@ var _resultModule = require('./resultModule');
 var _resultModuleDefault = _parcelHelpers.interopDefault(_resultModule);
 exports.default = app = {
   // base_url: "http://localhost:3000/api",
-  base_url: "https://mavilleauvertback.onrender.com/mavilleauvert:10000/api",
+  base_url: "https://mavilleauvertback.onrender.com:10000/api",
   init: async () => {
     console.log("app.init !");
     _formModuleDefault.default.setBaseUrl(app.base_url);
