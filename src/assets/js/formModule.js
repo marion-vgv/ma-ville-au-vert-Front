@@ -1,4 +1,4 @@
-const formModule = {
+export default formModule = {
   base_url: null,
 
   setBaseUrl: (url) => {

@@ -1,4 +1,6 @@
-const resultModule = {
+import app from './app';
+
+export default resultModule = {
   base_url: null,
 
   setBaseUrl: (url) => {

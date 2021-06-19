@@ -60,18 +60,34 @@
     justify-content: center;
     align-items: center;
 
+    @media screen and (max-width: 700px) {
+      height: 400px;
+    }
+
     .headerTitle {
       color: white;
       letter-spacing: 0.5rem;
       text-shadow: vars.$blackish 0 0 5px;
+
+      @media screen and (max-width: 700px) {
+        width: 90%;
+      }
     }
 
     .headerLine1 {
       font-size: 3rem;
+
+      @media screen and (max-width: 700px) {
+        font-size: 2.5rem;
+      }
     }
 
     .headerLine2 {
       font-size: 6rem;
+
+      @media screen and (max-width: 700px) {
+        font-size: 5rem;
+      }
     }
   }
 
@@ -95,6 +111,7 @@
     }
 
     .headerSubtitle {
+      box-sizing: border-box;
       width: 700px;
       line-height: 1.6;
       font-size: 1.2rem;
@@ -102,6 +119,10 @@
       color: vars.$blackish;
       text-align: center;
       margin-bottom: 4rem;
+
+      @media screen and (max-width: 700px) {
+        width: 90%;
+      }
     }
 
     .mainContainerTitle {
@@ -118,13 +139,27 @@
     .mainContainerForm {
       width: 700px;
 
+      @media screen and (max-width: 700px) {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
       // FORM SECTION
       .formBlock {
         padding-top: 1rem;
         padding-bottom: 1rem;
         display: flex;
         flex-direction: row;
+        align-items: stretch;
         justify-content: space-between;
+
+        @media screen and (max-width: 700px) {
+          flex-direction: column;
+          margin-bottom: 0.5rem;
+          margin-left: auto;
+          margin-right: auto;
+        }
 
         .formBlockHeader {
           font-family: vars.$headerFont;
@@ -134,6 +169,13 @@
           color: vars.$white;
           border-radius: 0 1rem 1rem 1rem;
           width: 27%;
+
+          @media screen and (max-width: 700px) {
+            width: 100%;
+            margin-bottom: 0.5rem;
+            margin: auto;
+            box-sizing: border-box;
+          }
 
           .formBlockText {
             font-size: 0.8rem;
@@ -295,6 +337,12 @@
           }
         }
 
+        .selectOption {
+          @media screen and (max-width: 700px) {
+            margin-top: 0.5rem;
+          }
+        }
+
         .radioButtonOption,
         .selectOption {
           padding: 1rem;
@@ -348,6 +396,10 @@
                 padding: 1rem;
                 margin: 1.5rem;
                 border-radius: 0 1rem 1rem 1rem;
+
+                @media screen and (max-width: 700px) {
+                  transform: translate(-120%, 0);
+                }
 
                 span {
                   font-weight: bold;
@@ -442,6 +494,10 @@
           font-family: vars.$contentFont;
           width: 67%;
 
+          @media screen and (max-width: 700px) {
+            width: 100%;
+          }
+
           * {
             box-sizing: border-box;
           }
@@ -469,9 +525,23 @@
     //
     // SEARCH RESULTS
     //
+
+    #searchResults {
+      .mainContainerTitle {
+        @media screen and (max-width: 700px) {
+          width: 90%;
+          box-sizing: border-box;
+          margin:auto;
+        }
+      }
+    }
     .searchResultsOptions {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+
+
       padding: 2rem;
 
       .mainContainerText {
@@ -482,6 +552,12 @@
         background-color: rgb(vars.$mainColor, 0.6);
         color: vars.$white;
         border-radius: 0 1rem 1rem 1rem;
+        margin: auto;
+
+        @media screen and (max-width: 700px) {
+          width: 100%;
+          box-sizing: border-box;
+        }
       }
 
       .searchResultsMenu {
@@ -507,9 +583,15 @@
       justify-content: center;
       align-items: flex-start;
       align-content: flex-start;
+      margin: auto;
 
       font-family: vars.$contentFont;
       font-size: 1rem;
+
+      @media screen and (max-width: 700px) {
+        width: 90%;
+        align-items: center;
+      }
 
       .townCard {
         width: 40%;
@@ -518,6 +600,10 @@
         line-height: 1.6;
         padding: 1rem;
         margin: 0.5rem;
+
+        @media screen and (max-width: 700px) {
+          width: 100%;
+        }
 
         .townCardName {
           font-family: vars.$headerFont;
@@ -720,6 +806,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -3;
+
+    @media screen and (max-width: 700px) {
+      height: 50px;
+    }
   }
 
   .footerContainer {
@@ -744,6 +834,12 @@
     align-items: flex-end;
     align-content: center;
 
+    @media screen and (max-width: 700px) {
+      width: 90%;
+      height: 50px;
+      padding-bottom: 0.5rem;
+    }
+
     .footerLink {
       color: vars.$white;
       text-decoration: none;
@@ -765,6 +861,13 @@
     right: 0;
     z-index: 50;
 
+    @media screen and (max-width: 700px) {
+      margin: 0;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      margin: auto;
+    }
+
     .modalBox {
       width: 700px;
       margin: 10vh auto;
@@ -782,6 +885,11 @@
       border-radius: 0 1rem 1rem 1rem;
       line-height: 1.6;
 
+      @media screen and (max-width: 700px) {
+        width: 90%;
+        margin: auto;
+        padding: 2rem 1rem;
+      }
 
       .closeIcon {
         position: absolute;
@@ -791,6 +899,12 @@
         width: 20px;
         cursor: pointer;
 
+        @media screen and (max-width: 700px) {
+          right: 20px;
+          top: 20px;
+          height: 25px;
+          width: 25px;
+        }
       }
 
       .modalSection {
@@ -822,7 +936,7 @@
           }
 
           li {
-            margin-left : 2rem;
+            margin-left: 2rem;
             list-style-type: circle;
           }
         }

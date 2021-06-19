@@ -1,3 +1,9 @@
+import '../sass/_reset.css';
+import '../sass/_vars.scss';
+import '../sass/style.scss';
+import formModule from './formModule';
+import resultModule from './resultModule';
+
 const app = {
   base_url: "http://localhost:3000",
 
