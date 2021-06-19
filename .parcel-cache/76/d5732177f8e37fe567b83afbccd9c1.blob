@@ -1,0 +1,915 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #070c06;
+  position: relative;
+  background-color: transparent;
+}
+.body:before {
+  content: "";
+  background-image: url("f8abbc9a3c3bba4c3b49df65c38aea14");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: -5;
+}
+.body:after {
+  content: "";
+  background-image: url("5218edb4a9945051c401cb2e7d3cb0e0");
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.5;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 200px;
+  position: absolute;
+  z-index: -2;
+}
+.body .header {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  background-image: url("afc0e1620fcf63a018cf5aa901345053");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  font-family: "Libre Baskerville", serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 700px) {
+  .body .header {
+    height: 400px;
+  }
+}
+.body .header .headerTitle {
+  color: white;
+  letter-spacing: 0.5rem;
+  text-shadow: #4d4f4b 0 0 5px;
+}
+@media screen and (max-width: 700px) {
+  .body .header .headerTitle {
+    width: 90%;
+  }
+}
+.body .header .headerLine1 {
+  font-size: 3rem;
+}
+@media screen and (max-width: 700px) {
+  .body .header .headerLine1 {
+    font-size: 2.5rem;
+  }
+}
+.body .header .headerLine2 {
+  font-size: 6rem;
+}
+@media screen and (max-width: 700px) {
+  .body .header .headerLine2 {
+    font-size: 5rem;
+  }
+}
+.body .mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+.body .mainContainer:after {
+  content: "";
+  background-image: linear-gradient(white, transparent);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: -4;
+}
+.body .mainContainer .headerSubtitle {
+  box-sizing: border-box;
+  width: 700px;
+  line-height: 1.6;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #4d4f4b;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer .headerSubtitle {
+    width: 90%;
+  }
+}
+.body .mainContainer .mainContainerTitle {
+  text-align: center;
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  padding-bottom: 2rem;
+}
+.body .mainContainer .mainContainerForm {
+  width: 700px;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer .mainContainerForm {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.body .mainContainer .mainContainerForm .formBlock {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer .mainContainerForm .formBlock {
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockHeader {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.2rem;
+  padding: 1rem;
+  background-color: rgba(67, 92, 35, 0.6);
+  color: white;
+  border-radius: 0 1rem 1rem 1rem;
+  width: 27%;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer .mainContainerForm .formBlock .formBlockHeader {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    margin: auto;
+    box-sizing: border-box;
+  }
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockHeader .formBlockText {
+  font-size: 0.8rem;
+  padding-top: 1rem;
+  color: white;
+  line-height: 1.2;
+  width: 100%;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockSelect {
+  cursor: pointer;
+  border: 1px solid transparent;
+  margin: 0.5rem;
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockText .formBlockSelect {
+  background-color: rgba(184, 209, 147, 0.3);
+  box-shadow: inset 0 0 5px rgba(184, 209, 147, 0.8);
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio .formBlockSelect {
+  background-color: white;
+  box-shadow: inset 0 0 5px rgba(207, 209, 201, 0.5);
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper {
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  position: relative;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper * {
+  cursor: pointer;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButton {
+  display: none;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption:last-child {
+  margin-bottom: 0;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption:hover {
+  box-shadow: inset 0 0 5px #cfd1c9;
+  border: 0;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption:focus {
+  border: 1px solid #b8d193;
+  outline: 2px solid #B8D193;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption .radioButtonLabel {
+  padding-left: 0.5rem;
+  font-size: 1rem;
+  width: 80%;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption .radioDot {
+  height: 20px;
+  width: 20px;
+  background: rgba(67, 92, 35, 0.6);
+  border-radius: 50%;
+  position: relative;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption .radioDot::before {
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: rgba(67, 92, 35, 0.6);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption .optionsMenu {
+  margin-top: 1rem;
+  width: 100%;
+  align-self: stretch;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper .radioButtonOption .optionsMenu .formBlockSelect {
+  width: 100%;
+  margin: auto;
+  box-shadow: 0 0 5px rgba(184, 209, 147, 0.8);
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #schoolOptions {
+  display: none;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool {
+  background-color: rgba(184, 209, 147, 0.3);
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 5px rgba(184, 209, 147, 0.6);
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool .radioDot,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool .radioDot {
+  background: white;
+  box-shadow: 0 0 10px #b8d193;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool .radioDot::before,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool .radioDot::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool #schoolOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool #regionOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool #departmentOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool #uuOptions,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool #schoolOptions {
+  display: block;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationTouteFrance:checked ~ .locationTouteFrance .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByRegion:checked ~ .locationByRegion .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #locationByDepartment:checked ~ .locationByDepartment .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeRurale:checked ~ .typeRurale .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #typeUrbaine:checked ~ .typeUrbaine .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #withSchool:checked ~ .withSchool .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .radioButtonWrapper #noSchool:checked ~ .noSchool .toolTip {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer .mainContainerForm .formBlock .selectOption {
+    margin-top: 0.5rem;
+  }
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption,
+.body .mainContainer .mainContainerForm .formBlock .selectOption {
+  padding: 1rem;
+  box-shadow: 0 0 5px #cfd1c9;
+  border-radius: 0 1rem 1rem 1rem;
+  line-height: 1.6;
+  transition: box-shadow 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .formBlockSelect,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .formBlockSelect {
+  font-size: 0.9rem;
+  color: #4d4f4b;
+  font-family: "Open Sans", sans-serif;
+  border: transparent;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .formBlockSelect:focus,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .formBlockSelect:focus {
+  border-radius: 1rem;
+  outline: 2px solid #B8D193;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translate(0, -50%);
+  transition: all 0.3s ease;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip .toolTipIcon,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip .toolTipIcon {
+  color: rgba(67, 92, 35, 0.6);
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip .toolTipBox,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip .toolTipBox {
+  position: absolute;
+  display: none;
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip:hover .toolTipBox,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip:hover .toolTipBox {
+  display: block;
+  background-color: white;
+  box-shadow: 0 0 5px #cfd1c9;
+  font-size: 0.8rem;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  margin: 1.5rem;
+  border-radius: 0 1rem 1rem 1rem;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip:hover .toolTipBox,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip:hover .toolTipBox {
+    transform: translate(-120%, 0);
+  }
+}
+.body .mainContainer .mainContainerForm .formBlock .radioButtonOption .toolTip:hover .toolTipBox span,
+.body .mainContainer .mainContainerForm .formBlock .selectOption .toolTip:hover .toolTipBox span {
+  font-weight: bold;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox {
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper {
+  padding-bottom: 0.3rem;
+  cursor: pointer;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxInput {
+  display: none;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption:hover .checkboxLabel {
+  text-decoration: underline #B8D193 3px;
+  transition: all 0.3s ease-in-out;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption:focus {
+  border: 1px solid #b8d193;
+  outline: 2px solid #B8D193;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption .checkBox {
+  height: 20px;
+  width: 20px;
+  background: white;
+  border-radius: 0.3rem;
+  position: relative;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption .checkBox::before {
+  position: absolute;
+  content: "✓";
+  height: 22px;
+  width: 22px;
+  bottom: 2px;
+  left: 2px;
+  color: #4d4f4b;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper .checkboxOption .checkboxLabel {
+  padding-left: 0.5rem;
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #materSchool:checked ~ .materSchool .checkBox,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #primSchool:checked ~ .primSchool .checkBox,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #collSchool:checked ~ .collSchool .checkBox,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #lyceeSchool:checked ~ .lyceeSchool .checkBox,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #segpaSchool:checked ~ .segpaSchool .checkBox {
+  background: white;
+  box-shadow: 0 0 5px rgba(184, 209, 147, 0.8);
+}
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #materSchool:checked ~ .materSchool .checkBox::before,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #primSchool:checked ~ .primSchool .checkBox::before,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #collSchool:checked ~ .collSchool .checkBox::before,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #lyceeSchool:checked ~ .lyceeSchool .checkBox::before,
+.body .mainContainer .mainContainerForm .formBlock .optionsMenuCheckbox .checkboxWrapper #segpaSchool:checked ~ .segpaSchool .checkBox::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio,
+.body .mainContainer .mainContainerForm .formBlock .formBlockText {
+  font-family: "Open Sans", sans-serif;
+  width: 67%;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer .mainContainerForm .formBlock .formBlockRadio,
+.body .mainContainer .mainContainerForm .formBlock .formBlockText {
+    width: 100%;
+  }
+}
+.body .mainContainer .mainContainerForm .formBlock .formBlockRadio *,
+.body .mainContainer .mainContainerForm .formBlock .formBlockText * {
+  box-sizing: border-box;
+}
+.body .mainContainer .mainContainerForm .formBlockSubmitButton {
+  width: 100%;
+  font-size: 1.2rem;
+  font-family: "Libre Baskerville", serif;
+  color: white;
+  background-color: rgba(67, 92, 35, 0.6);
+  padding: 1rem;
+  border: 0;
+  border-radius: 0 1rem 1rem 1rem;
+  margin: 2rem auto;
+}
+.body .mainContainer .mainContainerForm .formBlockSubmitButton:hover {
+  box-shadow: inset 0 0 5px #435c23;
+  transition: all 0.3s ease;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer #searchResults .mainContainerTitle {
+    width: 90%;
+    box-sizing: border-box;
+    margin: auto;
+  }
+}
+.body .mainContainer .searchResultsOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding: 2rem;
+}
+.body .mainContainer .searchResultsOptions .mainContainerText {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(67, 92, 35, 0.6);
+  color: white;
+  border-radius: 0 1rem 1rem 1rem;
+  margin: auto;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer .searchResultsOptions .mainContainerText {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+.body .mainContainer .searchResultsOptions .searchResultsMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1rem;
+}
+.body .mainContainer .searchResultsOptions .searchResultsMenu .searchResultsMenuElement {
+  color: rgba(67, 92, 35, 0.6);
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.body .mainContainer #searchResultsContainer {
+  width: 700px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin: auto;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer #searchResultsContainer {
+    width: 90%;
+    align-items: center;
+  }
+}
+.body .mainContainer #searchResultsContainer .townCard {
+  width: 40%;
+  box-shadow: 0 0 5px #cfd1c9;
+  border-radius: 0 1rem 1rem 1rem;
+  line-height: 1.6;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+@media screen and (max-width: 700px) {
+  .body .mainContainer #searchResultsContainer .townCard {
+    width: 100%;
+  }
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardName {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgba(67, 92, 35, 0.6);
+  padding-bottom: 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardIcon {
+  color: rgba(67, 92, 35, 0.6);
+  height: 20px;
+  width: 20px;
+  padding: 0 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardSectionRight {
+  border-left: 1.5px solid rgba(67, 92, 35, 0.6);
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardLocation,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardUU,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardPop,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardSchool {
+  padding-left: 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardRegion,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardDepartment,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardUU,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardPop,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardSchool,
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardLocation {
+  font-size: 0.9rem;
+  color: #4d4f4b;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardLocation {
+  font-style: italic;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardLocation .townCardDepartment {
+  padding-right: 0.5rem;
+}
+.body .mainContainer #searchResultsContainer .townCard .townCardElements .townCardSection .townCardSchool .schoolList {
+  padding-left: 0.5rem;
+  list-style-type: none;
+}
+.body .mainContainer .error {
+  background-color: rgba(139, 0, 0, 0.15) !important;
+}
+.body #loader {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  width: 100px;
+  margin: -25px 0 0 -25px;
+}
+.body #loader span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  -webkit-animation: loader 1s infinite ease-in-out;
+  animation: loader 1s infinite ease-in-out;
+}
+.body #loader span:nth-child(1) {
+  left: 0px;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.body #loader span:nth-child(2) {
+  left: 15px;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.body #loader span:nth-child(3) {
+  left: 30px;
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.body #loader span:nth-child(4) {
+  left: 45px;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+@keyframes loader {
+  0% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    background: rgba(184, 209, 147, 0.7);
+  }
+  25% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    background: rgba(67, 92, 35, 0.4);
+  }
+  50% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    background: rgba(184, 209, 147, 0.7);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    background: rgba(67, 92, 35, 0.4);
+  }
+}
+@-webkit-keyframes loader {
+  0% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    background: rgba(184, 209, 147, 0.7);
+  }
+  25% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    background: rgba(67, 92, 35, 0.4);
+  }
+  50% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    background: rgba(184, 209, 147, 0.7);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    background: rgba(67, 92, 35, 0.4);
+  }
+}
+.body .searchInProgress {
+  height: 50vh;
+  position: relative;
+  width: 100%;
+}
+.body .searchInProgress .searchText {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1rem;
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0.1rem;
+  line-height: 1.4;
+}
+.body .footer {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background-image: url("14b2f3e72bcd17554bb1350530de4763");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -3;
+}
+@media screen and (max-width: 700px) {
+  .body .footer {
+    height: 50px;
+  }
+}
+.body .footerContainer {
+  position: absolute;
+  margin: auto;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 700px;
+  height: 150px;
+  padding-bottom: 2rem;
+  z-index: 10;
+  text-align: center;
+  font-family: "Libre Baskerville", serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  align-content: center;
+}
+@media screen and (max-width: 700px) {
+  .body .footerContainer {
+    width: 90%;
+    height: 50px;
+    padding-bottom: 0.5rem;
+  }
+}
+.body .footerContainer .footerLink {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 12;
+}
+.body .footerContainer .footerLink:hover {
+  text-decoration: underline #B8D193 3px;
+}
+.body .modal {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+@media screen and (max-width: 700px) {
+  .body .modal {
+    margin: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: auto;
+  }
+}
+.body .modal .modalBox {
+  width: 700px;
+  margin: 10vh auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  background: white;
+  padding: 2rem;
+  box-shadow: 0 0 5px #cfd1c9;
+  border-radius: 0 1rem 1rem 1rem;
+  line-height: 1.6;
+}
+@media screen and (max-width: 700px) {
+  .body .modal .modalBox {
+    width: 90%;
+    margin: auto;
+    padding: 2rem 1rem;
+  }
+}
+.body .modal .modalBox .closeIcon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+@media screen and (max-width: 700px) {
+  .body .modal .modalBox .closeIcon {
+    right: 20px;
+    top: 20px;
+    height: 25px;
+    width: 25px;
+  }
+}
+.body .modal .modalBox .modalSection {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.body .modal .modalBox .modalSection .modalTitle {
+  color: rgba(67, 92, 35, 0.6);
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.2rem;
+  padding-bottom: 1rem;
+}
+.body .modal .modalBox .modalSection .modalText {
+  font-size: 0.9rem;
+  color: #4d4f4b;
+  font-family: "Open Sans", sans-serif;
+}
+.body .modal .modalBox .modalSection .modalText a {
+  color: rgba(67, 92, 35, 0.8);
+  text-decoration: none;
+}
+.body .modal .modalBox .modalSection .modalText a:hover {
+  text-decoration: underline rgba(67, 92, 35, 0.6) 3px;
+  transition: all 0.3s ease-in-out;
+}
+.body .modal .modalBox .modalSection .modalText li {
+  margin-left: 2rem;
+  list-style-type: circle;
+}
+.body .isInvisible {
+  display: none;
+}

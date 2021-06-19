@@ -5,7 +5,7 @@ import formModule from './formModule';
 import resultModule from './resultModule';
 
 const app = {
-  base_url: "http://localhost:3000",
+  base_url: "http://mavilleauvertback:10000",
 
   init: async () => {
     console.log("app.init !");
