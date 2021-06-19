@@ -4,7 +4,7 @@ import '../sass/style.scss';
 import formModule from './formModule';
 import resultModule from './resultModule';
 
-const app = {
+export default app = {
   base_url: "http://mavilleauvertback:10000",
 
   init: async () => {
