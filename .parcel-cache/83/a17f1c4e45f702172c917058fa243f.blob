@@ -1,55 +1,43 @@
-import '../sass/_reset.css';
-import '../sass/_vars.scss';
-import '../sass/style.scss';
-import formModule from './formModule';
-import resultModule from './resultModule';
-
-export default app = {
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+require('../sass/_reset.css');
+require('../sass/_vars.scss');
+require('../sass/style.scss');
+var _formModule = require('./formModule');
+var _formModuleDefault = _parcelHelpers.interopDefault(_formModule);
+var _resultModule = require('./resultModule');
+var _resultModuleDefault = _parcelHelpers.interopDefault(_resultModule);
+exports.default = app = {
   base_url: "https://mavilleauvertback.onrender.com/mavilleauvertback:10000",
-
   init: async () => {
     console.log("app.init !");
-
-    formModule.setBaseUrl(app.base_url);
-    resultModule.setBaseUrl(app.base_url);
+    _formModuleDefault.default.setBaseUrl(app.base_url);
+    _resultModuleDefault.default.setBaseUrl(app.base_url);
     app.addListeners();
-
-    await formModule.getFormOptionsFromAPI();
-
+    await _formModuleDefault.default.getFormOptionsFromAPI();
   },
-
   addListeners: () => {
     const searchForm = document.getElementById("searchForm");
     searchForm.addEventListener("submit", app.handleSearchForm);
     console.log(`L'event listener is in da place !`);
-
     const aboutLink = document.getElementById("aboutLink");
     aboutLink.addEventListener("click", app.showAboutModal);
-
     const closeModalIcon = document.getElementById("closeIcon");
     closeModalIcon.addEventListener("click", app.hideAboutModal);
   },
-
-  handleSearchForm: (event) => {
-    formModule.handleSearchForm(event);
+  handleSearchForm: event => {
+    _formModuleDefault.default.handleSearchForm(event);
   },
-
-  reloadHomepage : () => {
+  reloadHomepage: () => {
     document.location.reload();
   },
-
-  showAboutModal : () => {
+  showAboutModal: () => {
     const modal = document.getElementById("modal");
     modal.classList.remove("isInvisible");
-
-
   },
-
-  hideAboutModal : () => {
+  hideAboutModal: () => {
     const modal = document.getElementById("modal");
     modal.classList.add("isInvisible");
   }
-
 };
-
 document.addEventListener("DOMContentLoaded", app.init);
