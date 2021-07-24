@@ -1,52 +1,3 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
 @charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -103,39 +54,11 @@ table {
   position: relative;
   background-color: transparent;
 }
-.body:before {
-  content: "";
-  background-image: url("background-paper.cd152ae5.jpg");
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.4;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-  z-index: -5;
-}
-.body:after {
-  content: "";
-  background-image: url("shadowBle.839132b2.png");
-  background-position: left bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.5;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 200px;
-  position: absolute;
-  z-index: -2;
-}
 .body .header {
   width: 100%;
   height: 500px;
   position: relative;
-  background-image: url("bannerMaVilleAuVert.5472624b.jpg");
+  background-image: url("64e8ed9ea89e3f3dfa09f2458849c695");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -183,16 +106,6 @@ table {
   align-items: center;
   width: 100%;
   position: relative;
-}
-.body .mainContainer:after {
-  content: "";
-  background-image: linear-gradient(white, transparent);
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-  z-index: -4;
 }
 .body .mainContainer .headerSubtitle {
   box-sizing: border-box;
@@ -830,8 +743,8 @@ table {
 .body .footer {
   position: relative;
   width: 100%;
-  height: 150px;
-  background-image: url("maVilleAuVert-footerVert.71b020c6.png");
+  height: 200px;
+  background-image: url("3d3f88b355766667278fb16336b559ed");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -962,4 +875,4 @@ table {
 .body .isInvisible {
   display: none;
 }
-/*# sourceMappingURL=index.4ff22a20.css.map */
+
