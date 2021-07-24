@@ -15,6 +15,7 @@ Update sur script dans `package.json` :
   ```
 
 **Attention à CORS** : dans le back : 
+Pour le moment, toutes les origines autorisée grâce à *
 ```
 app.use(
   cors({
@@ -27,6 +28,5 @@ app.use(
 - Lancer `npm run dev`
 
 ## Build de prod : 
-- Supprimer le dossier `dist`
 - Lancer `npm run build`
 
