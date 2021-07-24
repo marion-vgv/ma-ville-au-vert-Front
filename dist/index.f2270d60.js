@@ -449,7 +449,7 @@ var _formModuleDefault = _parcelHelpers.interopDefault(_formModule);
 var _resultModule = require('./resultModule');
 var _resultModuleDefault = _parcelHelpers.interopDefault(_resultModule);
 exports.default = app = {
-  base_url: "https://mavilleauvertapi:10000",
+  base_url: "http://mavilleauvertapi:10000",
   init: async () => {
     console.log("app.init !");
     _formModuleDefault.default.setBaseUrl(app.base_url);

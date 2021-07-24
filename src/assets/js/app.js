@@ -4,7 +4,7 @@ import resultModule from './resultModule';
 
 export default app = {
 
-  base_url:"https://mavilleauvertapi:10000",
+  base_url:"http://mavilleauvertapi:10000",
 
   init: async () => {
     console.log("app.init !");
