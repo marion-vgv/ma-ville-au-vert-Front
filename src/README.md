@@ -1,5 +1,5 @@
 # Lancer sans bundle
-- `sass --watch assets/sass:assets/css`
+- `sass --watch src/assets/sass:src/assets/css`
 - `open index.html`
 
 # Ajout bundle

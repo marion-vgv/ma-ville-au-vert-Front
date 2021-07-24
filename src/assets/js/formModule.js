@@ -1,3 +1,4 @@
+
 export default formModule = {
   base_url: null,
 
@@ -7,20 +8,24 @@ export default formModule = {
 
   // Récupération des options pour générer le formulaire
   getFormOptionsFromAPI: async () => {
+
     try {
-      const result = await fetch(`${formModule.base_url}/`);
+      const result = await fetch(`${formModule.base_url}/`, {
+        method: "GET",
+      });
 
       const json = await result.json();
-
+      
       formModule.setFormOptions(json);
+
     } catch (error) {
-      console.error(`Impossible de charger les options depuis l'API`, error);
+      console.error(`Impossible de charger les options depuis l'API `, error);
     }
   },
 
   // Injection des options dans le HTML
   setFormOptions: (options) => {
-    console.log("setFormOptions");
+    // console.log("setFormOptions");
 
     // -- OPTIONS DE REGIONS
     const locationRegion = document.getElementById("locationRegion");
@@ -158,8 +163,7 @@ export default formModule = {
         if (result.ok) {
           const json = await result.json();
           console.log(`On a reçu un résultat !`);
-          console.log(json);
-          console.log(json.length);
+
           resultModule.showSearchResults(json);
         } else {
           console.error("On a eu un pépin sur le serveur");

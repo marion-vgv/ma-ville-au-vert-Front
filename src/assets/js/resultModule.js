@@ -40,7 +40,7 @@ export default resultModule = {
   },
 
   makeTownCardInDOM: (data) => {
-    console.log(data);
+    // console.log(data);
 
     const template = document.getElementById("townCardTemplate");
     const node = document.importNode(template.content, true);
@@ -60,8 +60,10 @@ export default resultModule = {
     // ZONE URBAINE OU ZONE RURALE
     const townUU = node.querySelector(".townCardUU");
     const uuName = data.urban_unit.name_uu;
-    console.log("uuName");
-    console.log(uuName);
+
+    //console.log("uuName");
+    //console.log(uuName);
+
     if (uuName.includes("hors unité urbaine") == true) {
       const uuNameUpdated = uuName.replace("hors unité urbaine", "rurale");
       console.log(uuName);
