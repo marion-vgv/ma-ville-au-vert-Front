@@ -442,18 +442,13 @@ id) /*: string*/
 }
 
 },{}],"4leWE":[function(require,module,exports) {
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-require('../sass/_reset.css');
-require('../sass/_vars.scss');
-require('../sass/style.scss');
 var _formModule = require('./formModule');
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 var _formModuleDefault = _parcelHelpers.interopDefault(_formModule);
 var _resultModule = require('./resultModule');
 var _resultModuleDefault = _parcelHelpers.interopDefault(_resultModule);
-exports.default = app = {
-  // base_url: "http://localhost:3000/api",
-  base_url: "https://mavilleauvertback.onrender.com/api:10000",
+const app = {
+  base_url: "http://localhost:3000",
   init: async () => {
     console.log("app.init !");
     _formModuleDefault.default.setBaseUrl(app.base_url);
@@ -487,7 +482,7 @@ exports.default = app = {
 };
 document.addEventListener("DOMContentLoaded", app.init);
 
-},{"../sass/_reset.css":"2RrnM","../sass/_vars.scss":"6QrPa","../sass/style.scss":"6H7Uv","./formModule":"eiRqM","./resultModule":"7cYwj","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"2RrnM":[function() {},{}],"6QrPa":[function() {},{}],"6H7Uv":[function() {},{}],"eiRqM":[function(require,module,exports) {
+},{"./formModule":"eiRqM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./resultModule":"7cYwj"}],"eiRqM":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 exports.default = formModule = {
@@ -498,16 +493,18 @@ exports.default = formModule = {
   // Récupération des options pour générer le formulaire
   getFormOptionsFromAPI: async () => {
     try {
-      const result = await fetch(`${formModule.base_url}/`);
+      const result = await fetch(`${formModule.base_url}/`, {
+        method: "GET"
+      });
       const json = await result.json();
       formModule.setFormOptions(json);
     } catch (error) {
-      console.error(`Impossible de charger les options depuis l'API`, error);
+      console.error(`Impossible de charger les options depuis l'API `, error);
     }
   },
   // Injection des options dans le HTML
   setFormOptions: options => {
-    console.log("setFormOptions");
+    // console.log("setFormOptions");
     // -- OPTIONS DE REGIONS
     const locationRegion = document.getElementById("locationRegion");
     for (const region of options.regions) {
@@ -607,8 +604,6 @@ exports.default = formModule = {
         if (result.ok) {
           const json = await result.json();
           console.log(`On a reçu un résultat !`);
-          console.log(json);
-          console.log(json.length);
           resultModule.showSearchResults(json);
         } else {
           console.error("On a eu un pépin sur le serveur");
@@ -699,7 +694,7 @@ exports.default = resultModule = {
     }
   },
   makeTownCardInDOM: data => {
-    console.log(data);
+    // console.log(data);
     const template = document.getElementById("townCardTemplate");
     const node = document.importNode(template.content, true);
     // NOM DE VILLE
@@ -714,8 +709,8 @@ exports.default = resultModule = {
     // ZONE URBAINE OU ZONE RURALE
     const townUU = node.querySelector(".townCardUU");
     const uuName = data.urban_unit.name_uu;
-    console.log("uuName");
-    console.log(uuName);
+    // console.log("uuName");
+    // console.log(uuName);
     if (uuName.includes("hors unité urbaine") == true) {
       const uuNameUpdated = uuName.replace("hors unité urbaine", "rurale");
       console.log(uuName);

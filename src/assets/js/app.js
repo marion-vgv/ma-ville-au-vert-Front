@@ -1,12 +1,9 @@
-import '../sass/_reset.css';
-import '../sass/_vars.scss';
-import '../sass/style.scss';
 import formModule from './formModule';
 import resultModule from './resultModule';
 
-export default app = {
-  // base_url: "http://localhost:3000/api",
-  base_url: "https://mavilleauvertback.onrender.com/api:10000",
+
+const app = {
+  base_url: "http://localhost:3000",
 
   init: async () => {
     console.log("app.init !");
