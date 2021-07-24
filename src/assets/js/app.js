@@ -3,7 +3,9 @@ import resultModule from './resultModule';
 
 
 const app = {
-  base_url: "http://localhost:3000",
+
+  base_url:"mavilleauvertapi:10000",
+  //base_url: "http://localhost:3000",
 
   init: async () => {
     console.log("app.init !");
