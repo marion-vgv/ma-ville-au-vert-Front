@@ -479,6 +479,15 @@
           transition: all 0.3s ease;
         }
       }
+
+      .formErrorAlert {
+        color : darkred;
+        text-align: center;
+        padding : 1rem 0;
+        background-color: rgb(darkred, 0.15);
+        border-radius: 0 1rem 1rem 1rem;
+      }
+
     }
 
     //

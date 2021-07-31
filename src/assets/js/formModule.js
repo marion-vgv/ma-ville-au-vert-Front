@@ -61,6 +61,15 @@ export default formModule = {
 
     const formData = new FormData(event.target);
 
+    console.log('handleSearchForm');
+
+    let error = {
+      location : false,
+      type: false,
+      population : false,
+      school : false,
+    };
+
     //
     // VERIFICATION QUE LE FORM EST CORRECTEMENT REMPLI
     //
@@ -68,23 +77,30 @@ export default formModule = {
     // PAR REGION : IL FAUT SELECTIONNER UNE REGION
     if (
       formData.get("location") === "region" &&
-      isNaN(parseInt(formData.get("locationRegion")))
-    ) {
+      (isNaN(parseInt(formData.get("locationRegion"))) || formData.get("locationRegion") === null)
+    ) 
+    {
       const fieldRegion = document
         .getElementById("locationRegion")
         .closest(".radioButtonOption");
+
       fieldRegion.classList.add("error");
       const formBlock = fieldRegion.closest(".formBlockRadio");
       formBlock.addEventListener("click", () => {
         fieldRegion.classList.remove("error");
+        error.location = false;
+        formModule.removeWrongSearchAlert(error);
       });
+
+      error.location = true;
     }
 
     // PAR DEPARTEMENT : IL FAUT SELECTIONNER UN DEPARTEMENT
     if (
       formData.get("location") === "department" &&
       isNaN(parseInt(formData.get("locationDepartment")))
-    ) {
+    ) 
+    {
       const fieldDepartment = document
         .getElementById("locationDepartment")
         .closest(".radioButtonOption");
@@ -92,14 +108,19 @@ export default formModule = {
       const formBlock = fieldDepartment.closest(".formBlockRadio");
       formBlock.addEventListener("click", () => {
         fieldDepartment.classList.remove("error");
+        error.location = false;
+        formModule.removeWrongSearchAlert(error);
       });
+
+      error.location = true;
     }
 
     // AIRE URBAINE : IL FAUT FAIRE UNE SELECTION
     if (
       formData.get("type") === "urbaine" &&
       isNaN(parseInt(formData.get("uu")))
-    ) {
+    )
+    {
       const fieldUU = document
         .getElementById("uu")
         .closest(".radioButtonOption");
@@ -107,11 +128,16 @@ export default formModule = {
       const formBlock = fieldUU.closest(".formBlockRadio");
       formBlock.addEventListener("click", () => {
         fieldUU.classList.remove("error");
+        error.type = false;
+        formModule.removeWrongSearchAlert(error);
       });
+
+      error.type = true;
     }
 
     // POPULATION : IL FAUT QUE GAUCHE SOIT INFERIEUR A DROITE
-    if (parseInt(formData.get("townMin")) > parseInt(formData.get("townMax"))) {
+    if (parseInt(formData.get("townMin")) > parseInt(formData.get("townMax"))) 
+    {
       const fieldMin = document
         .getElementById("townMin")
         .closest(".formBlockSelect");
@@ -124,14 +150,18 @@ export default formModule = {
       formBlock.addEventListener("click", () => {
         fieldMin.classList.remove("error");
         fieldMax.classList.remove("error");
+        error.population = false;
+        formModule.removeWrongSearchAlert(error);
       });
+      error.population = true;
     }
 
     // ECOLE : IL FAUT SELECTIONNER AU MOINS UN TYPE D'ECOLE
     if (
       formData.get("school") === "true" &&
       formData.get("schoolOptions") === null
-    ) {
+    ) 
+    {
       const fieldSchool = document
         .getElementById("schoolOptions")
         .closest(".radioButtonOption");
@@ -139,12 +169,28 @@ export default formModule = {
       const formBlock = fieldSchool.closest(".formBlockRadio");
       formBlock.addEventListener("click", () => {
         fieldSchool.classList.remove("error");
+        error.school = false;
+        formModule.removeWrongSearchAlert(error);
       });
+      error.school = true;
     }
+
+    //
+    // SI LE FORM N'EST PAS REMPLI CORRECTEMENT :
+    //
+    if(error.location == true || error.population == true || error.school == true || error.type == true ){
+      const errorAlert = document.getElementById('formErrorAlert');
+      errorAlert.classList.remove('isInvisible');
+      errorAlert.classList.add('formErrorAlert');
+    }
+
     //
     // SI LE FORM EST REMPLI CORRECTEMENT :
     //
-    else {
+    if (error.location == false && error.population == false && error.school == false && error.type == false) {
+
+      console.log('else');
+
       // CACHER LE FORM DE RECHERCHE
       const form = document.getElementById("searchForm");
       form.classList.add("isInvisible");
@@ -176,4 +222,13 @@ export default formModule = {
       }
     }
   },
+
+  removeWrongSearchAlert : (error) => {
+  
+    if (error.location == false && error.population == false && error.school == false && error.type == false ){
+      const errorAlert = document.getElementById('formErrorAlert');
+      errorAlert.classList.add('isInvisible');
+      errorAlert.classList.remove('formErrorAlert');
+    }
+  }
 };

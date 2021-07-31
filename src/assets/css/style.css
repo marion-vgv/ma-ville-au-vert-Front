@@ -511,6 +511,13 @@ table {
   box-shadow: inset 0 0 5px #435c23;
   transition: all 0.3s ease;
 }
+.body .mainContainer .mainContainerForm .formErrorAlert {
+  color: darkred;
+  text-align: center;
+  padding: 1rem 0;
+  background-color: rgba(139, 0, 0, 0.15);
+  border-radius: 0 1rem 1rem 1rem;
+}
 @media screen and (max-width: 700px) {
   .body .mainContainer #searchResults .mainContainerTitle {
     width: 90%;

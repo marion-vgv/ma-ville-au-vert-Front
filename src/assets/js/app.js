@@ -13,14 +13,16 @@ export default app = {
     resultModule.setBaseUrl(app.base_url);
     app.addListeners();
 
+    
     await formModule.getFormOptionsFromAPI();
 
   },
 
   addListeners: () => {
     const searchForm = document.getElementById("searchForm");
-    searchForm.addEventListener("submit", app.handleSearchForm);
+    searchForm.addEventListener("submit", (event)=> {formModule.handleSearchForm(event)});
     console.log(`L'event listener is in da place !`);
+    console.log(`Coucou toi fellow dev qui jette un oeil dans la console ! Pour voir le code, ça se passe ici : https://github.com/marion-vgv`);
 
     const aboutLink = document.getElementById("aboutLink");
     aboutLink.addEventListener("click", app.showAboutModal);
@@ -29,9 +31,9 @@ export default app = {
     closeModalIcon.addEventListener("click", app.hideAboutModal);
   },
 
-  handleSearchForm: (event) => {
-    formModule.handleSearchForm(event);
-  },
+  // handleSearchForm: (event) => {
+  //   formModule.handleSearchForm(event);
+  // },
 
   reloadHomepage : () => {
     document.location.reload();
