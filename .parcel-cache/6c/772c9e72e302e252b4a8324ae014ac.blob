@@ -23,36 +23,29 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
-
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
-
 body {
   line-height: 1;
 }
-
 ol, ul {
   list-style: none;
 }
-
 blockquote, q {
   quotes: none;
 }
-
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: "";
   content: none;
 }
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 .body {
   display: flex;
   flex-direction: column;
@@ -65,7 +58,7 @@ table {
   width: 100%;
   height: 500px;
   position: relative;
-  background-image: url("../photos/bannerMaVilleAuVert.jpg");
+  background-image: url("bannerMaVilleAuVert.HASH_REF_6177c20714b4e213e7864ee95472624b.jpg");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -760,7 +753,7 @@ table {
   position: relative;
   width: 100%;
   height: 200px;
-  background-image: url("../photos/maVilleAuVert-footerVert.png");
+  background-image: url("maVilleAuVert-footerVert.HASH_REF_07d6548a9dec68680d81877b71b020c6.png");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -892,4 +885,5 @@ table {
   display: none;
 }
 
-/*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=index.HASH_REF_a866436ab9463102785292d70f72f59b.css.map */
