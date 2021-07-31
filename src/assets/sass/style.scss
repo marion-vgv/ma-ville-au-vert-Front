@@ -481,7 +481,9 @@
       }
 
       .formErrorAlert {
-        color : darkred;
+        font-family: vars.$headerFont;
+        font-size: 0.9rem;
+        color: darkred;
         text-align: center;
         padding : 1rem 0;
         background-color: rgb(darkred, 0.15);
@@ -493,7 +495,6 @@
     //
     // SEARCH RESULTS
     //
-
     #searchResults {
       .mainContainerTitle {
         @media screen and (max-width: 700px) {
