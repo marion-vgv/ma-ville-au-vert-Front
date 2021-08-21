@@ -1,4 +1,4 @@
-# ma-ville-au-vert-v2
+# ma-ville-au-vert-front-v2
 
 ## Project setup
 ```
