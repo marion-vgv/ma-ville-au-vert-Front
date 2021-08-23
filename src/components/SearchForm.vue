@@ -66,8 +66,16 @@
                   >
                     Sélectionnez la région
                   </option>
-                  <option v-for="region of options.regions" v-bind:key="region">
-                    {{ region }}
+
+                  <option v-if="loading">Loading...</option>
+
+                  <option
+                    v-else
+                    v-bind:key="index"
+                    v-for="(region, index) in options.regions"
+                    value="{{region.id}}"
+                  >
+                    {{ region.name_region }}
                   </option>
                 </select>
               </div>
@@ -401,17 +409,25 @@
 import axios from "axios";
 
 export default {
-  el: "#searchFormContainer",
   name: "SearchForm",
-  data() {
+  data: function () {
     return {
+      loading: true,
+      errored: false,
       options: null,
     };
   },
-  beforeMount() {
+  mounted() {
     axios
       .get("https://mavilleauvertpublicapi.onrender.com")
-      .then((response) => (this.options = response));
+      .then((response) => {
+        this.options = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+        this.errored = true;
+      })
+      .finally(() => (this.loading = false));
   },
 };
 </script>
