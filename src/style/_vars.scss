@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+
+
+// Main Color
+$mainColorLight: #B8D193;
+$mainColor: #435c23;
+$mainColorDark: #233622;
+
+// Highlight Color
+$highlightColor: #bf9004;
+$highlightLight: #f2bd1d;
+
+// Negative Color
+$negativeColor: #f15057;
+$negativeColorDark: #cc424c;
+$negativeColorDarker: #a02b3a;
+
+// Neutral color
+$white: white;
+$whitish: #f8f9f4;
+$lighterGrey: #ebede6;
+$mediumGrey: #cfd1c9;
+$darkerGrey: #96958a;
+$blackish: #4d4f4b;
+$black: #070c06;
+$yellow: yellow;
+
+// Fonts
+$headerFont: "Libre Baskerville", serif;
+$contentFont: "Open Sans", sans-serif;
+
+// Shadows
+$dropShadow: 0 0 10px $whitish;
+
+// Radius
+$radius: 50%;

@@ -104,10 +104,11 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style lang="scss">
 h3 {
-  font-family: 'open sans';
+  font-family: "open sans";
   margin: 40px 0 0;
+  color: $yellow;
 }
 ul {
   list-style-type: none;
