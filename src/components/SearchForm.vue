@@ -45,7 +45,8 @@
         >
           <!-- Dans toute la France -->
           <label
-            class="button winner locationTouteFrance"
+            class="button locationTouteFrance"
+            :class="[searchLocation === 'france' ? 'winner' : 'neutral']"
             for="locationTouteFrance"
           >
             <div class="flex-row flex-align-center">
@@ -54,34 +55,39 @@
                 name="location"
                 id="locationTouteFrance"
                 value="france"
-                checked
+                v-model="searchLocation"
               />
               <p>Toute la France</p>
             </div>
           </label>
 
           <!-- Par région -->
-          <label class="button neutral locationByRegion" for="locationByRegion">
+          <label 
+          class="button locationByRegion"
+          :class="[searchLocation === 'region' ? 'winner' : 'neutral']"
+          for="locationByRegion">
             <div class="flex-row flex-align-center">
               <input
                 type="radio"
                 name="location"
                 id="locationByRegion"
                 value="region"
+                v-model="searchLocation"
+
               />
               <p>Par région</p>
             </div>
 
-            <div id="regionOptions" class="">
-              <select name="locationRegion" id="locationRegion">
-                <option value="" disabled selected hidden>
+            <div id="regionOptions" :class="[searchLocation === 'region' ? '' : 'hide']">
+              <select name="locationRegion" id="locationRegion" v-model="locationRegion">
+                <option :value="null" disabled>
                   Sélectionnez la région
                 </option>
 
                 <option
-                  v-bind:key="index"
-                  v-for="(region, index) in options.regions"
-                  value="{{region.id}}"
+                  v-for="region in options.regions"
+                  :value="region.id"
+                  v-bind:key="region.id"
                 >
                   {{ region.name_region }}
                 </option>
@@ -90,9 +96,9 @@
           </label>
 
           <!-- Par département -->
-
           <label
             class="button neutral locationByDepartment"
+            :class="[searchLocation === 'department' ? 'winner' : 'neutral']"
             for="locationByDepartment"
           >
             <div class="flex-row flex-align-center">
@@ -101,20 +107,21 @@
                 name="location"
                 id="locationByDepartment"
                 value="department"
+                v-model="searchLocation"
               />
               <p>Par département</p>
             </div>
 
-            <div id="departmentOptions" class="">
-              <select name="locationDepartment" id="locationDepartment">
-                <option value="" disabled selected hidden>
+            <div id="departmentOptions" :class="[searchLocation === 'department' ? '' : 'hide']">
+              <select name="locationDepartment" id="locationDepartment" v-model="locationDepartment">
+                <option :value="null" disabled>
                   Sélectionnez le département
                 </option>
 
                 <option
-                  v-bind:key="index"
-                  v-for="(department, index) in options.departments"
-                  value="{{department.id}}"
+                  v-bind:key="department.id"
+                  v-for="department in options.departments"
+                  :value="department.id"
                 >
                   {{ department.name_dpt }}
                 </option>
@@ -144,28 +151,38 @@
           "
         >
           <!-- Ville rurale -->
-          <label class="button winner typeRurale" for="typeRurale">
-            <div class="flex-row flex-align-center">
+          <label 
+          class="button typeRurale" 
+          :class="[searchType === 'rurale' ? 'winner' : 'neutral']"
+          for="typeRurale">
+            <div class="flex-row flex-align-center"
+            >
               <input
                 type="radio"
                 name="type"
                 id="typeRurale"
                 value="rurale"
-                checked
+                v-model="searchType"
               />
               <p>Ville rurale</p>
             </div>
           </label>
 
           <!-- Ville urbaine -->
-          <label class="button neutral relative typeUrbaine" for="typeUrbaine">
+          <label 
+          class="button relative typeUrbaine" 
+          :class="[searchType === 'urbaine' ? 'winner' : 'neutral']"
+          for="typeUrbaine">
             <div class="flex-row flex-justify-between flex-align-center">
-              <div class="flex-row flex-align-center">
+              <div class="flex-row flex-align-center"
+              >
                 <input
                   type="radio"
                   name="type"
                   id="typeUrbaine"
                   value="urbaine"
+                  v-model="searchType"
+
                 />
                 <p>Ville appartenant à une aire urbaine</p>
               </div>
@@ -182,34 +199,30 @@
                 </p>
               </div>
             </div>
-            <div id="uuOptions" class="optionsMenu">
-              <label class="formBlockSelectLabel" for="uu"></label>
-              <select class="formBlockSelect" name="uu" id="uu">
+            <div id="uuOptions" :class="[searchType === 'urbaine' ? '' : 'hide']">
+              <select name="uu" id="uu" v-model="typeUrbaine">
                 <option
-                  class="formBlockSelectOption"
                   value=""
                   disabled
-                  selected
-                  hidden
                 >
                   Je veux une ville située dans une zone urbaine de...
                 </option>
-                <option class="formBlockSelectOption" value="1">
+                <option value="1">
                   moins de 5 000 habitants
                 </option>
-                <option class="formBlockSelectOption" value="2">
+                <option value="2">
                   de 5 000 à 10 000 habitants
                 </option>
-                <option class="formBlockSelectOption" value="3">
+                <option value="3">
                   de 10 000 à 20 000 habitants
                 </option>
-                <option class="formBlockSelectOption" value="4">
+                <option value="4">
                   de 20 000 à 50 000 habitants
                 </option>
-                <option class="formBlockSelectOption" value="5">
+                <option value="5">
                   de 50 000 à 100 000 habitants
                 </option>
-                <option class="formBlockSelectOption" value="6">
+                <option value="6">
                   de 100 000 à 200 000 habitants
                 </option>
               </select>
@@ -423,6 +436,11 @@ export default {
       loading: true,
       errored: false,
       options: null,
+      searchLocation: 'france',
+      locationRegion: null,
+      locationDepartment: null,
+      searchType : 'rurale',
+      typeUrbaine :null,
     };
   },
   mounted() {
@@ -598,6 +616,12 @@ export default {
         &:hover {
           background-color: $mainColor;
           color: $white;
+
+          .tool-tip-icon {
+            border-radius: 50%;
+            border: 2px solid $white;
+            background-color: $white;
+          }
         }
       }
 
@@ -639,11 +663,13 @@ export default {
       }
 
       select {
+        color: $black;
         margin-top: 1rem;
         border-radius: $radius;
         height: 2.5rem;
         padding: 0.5rem;
         max-width: 100%;
+        margin-left: 33px;
       }
 
       .checkbox-group {
