@@ -1,6 +1,6 @@
 <template>
-  <main class="mainContainer" id="searchFormContainer">
-    <h2 class="headerSubtitle">
+  <main class="main-container" id="searchFormContainer">
+    <h2 class="header-subtitle">
       Trouvez la ville ou le village où vous mettre au vert parmi les villes de
       moins de 200 000 habitants en France métropolitaine
     </h2>
@@ -18,224 +18,224 @@
       id="searchForm"
       class="mainContainerForm"
     >
-      <h3 class="mainContainerTitle">Votre recherche</h3>
+      <div class="form-header flex-row flex-align-center">
+        <h3 class="header-title">
+          <span class="underline">Votre recherche</span>
+        </h3>
+        <img src="" alt="" class="header-image" />
+      </div>
       <!-- -- LIEU DE RECHERCHE -->
-      <div class="formBlock" id="searchLocation">
-        <div class="formBlockHeader">
-          <h4 class="formBlockTitle">Lieu de recherche</h4>
-        </div>
-        <div class="formBlockRadio">
-          <!-- Dans toute la France -->
-          <div class="radioButtonWrapper">
-            <input
-              class="radioButton"
-              type="radio"
-              name="location"
-              id="locationTouteFrance"
-              value="france"
-              checked
-            />
-            <label
-              class="radioButtonOption locationTouteFrance"
-              for="locationTouteFrance"
+      <div
+        class="form-section flex-row flex-justify-between separation-border"
+        id="searchLocation"
+      >
+        <div class="form-section-header">
+          <h4>
+            <span class="header-highlight">Lieu</span><br /><span
+              class="header-baseline"
+              >de recherche</span
             >
-              <div class="radioDot"></div>
-              <span class="radioButtonLabel">Toute la France</span>
-            </label>
-          </div>
+          </h4>
+        </div>
+        <div
+          class="
+            form-section-main form-section-main-width
+            flex-column flex-justify-between
+          "
+        >
+          <!-- Dans toute la France -->
+          <label
+            class="button winner locationTouteFrance"
+            for="locationTouteFrance"
+          >
+            <div class="flex-row flex-align-center">
+              <input
+                type="radio"
+                name="location"
+                id="locationTouteFrance"
+                value="france"
+                checked
+              />
+              <p>Toute la France</p>
+            </div>
+          </label>
 
           <!-- Par région -->
-          <div class="radioButtonWrapper">
-            <input
-              class="radioButton"
-              type="radio"
-              name="location"
-              id="locationByRegion"
-              value="region"
-            />
-            <label
-              class="radioButtonOption locationByRegion"
-              for="locationByRegion"
-            >
-              <div class="radioDot"></div>
-              <span class="radioButtonLabel">Par région</span>
+          <label class="button neutral locationByRegion" for="locationByRegion">
+            <div class="flex-row flex-align-center">
+              <input
+                type="radio"
+                name="location"
+                id="locationByRegion"
+                value="region"
+              />
+              <p>Par région</p>
+            </div>
 
-              <div id="regionOptions" class="optionsMenu">
-                <label class="formBlockSelectLabel" for="locationRegion">
-                </label>
-                <select
-                  class="formBlockSelect"
-                  name="locationRegion"
-                  id="locationRegion"
+            <div id="regionOptions" class="">
+              <select name="locationRegion" id="locationRegion">
+                <option value="" disabled selected hidden>
+                  Sélectionnez la région
+                </option>
+
+                <option
+                  v-bind:key="index"
+                  v-for="(region, index) in options.regions"
+                  value="{{region.id}}"
                 >
-                  <option
-                    class="formBlockSelectOption"
-                    value=""
-                    disabled
-                    selected
-                    hidden
-                  >
-                    Sélectionnez la région
-                  </option>
-
-                  <option
-                    v-bind:key="index"
-                    v-for="(region, index) in options.regions"
-                    value="{{region.id}}"
-                  >
-                    {{ region.name_region }}
-                  </option>
-                </select>
-              </div>
-            </label>
-          </div>
+                  {{ region.name_region }}
+                </option>
+              </select>
+            </div>
+          </label>
 
           <!-- Par département -->
-          <div class="radioButtonWrapper">
-            <input
-              class="radioButton"
-              type="radio"
-              name="location"
-              id="locationByDepartment"
-              value="department"
-            />
-            <label
-              class="radioButtonOption locationByDepartment"
-              for="locationByDepartment"
-            >
-              <div class="radioDot"></div>
-              <span class="radioButtonLabel">Par département</span>
 
-              <div id="departmentOptions" class="optionsMenu">
-                <label
-                  class="formBlockSelectLabel"
-                  for="locationDepartment"
-                ></label>
-                <select
-                  class="formBlockSelect"
-                  name="locationDepartment"
-                  id="locationDepartment"
+          <label
+            class="button neutral locationByDepartment"
+            for="locationByDepartment"
+          >
+            <div class="flex-row flex-align-center">
+              <input
+                type="radio"
+                name="location"
+                id="locationByDepartment"
+                value="department"
+              />
+              <p>Par département</p>
+            </div>
+
+            <div id="departmentOptions" class="">
+              <select name="locationDepartment" id="locationDepartment">
+                <option value="" disabled selected hidden>
+                  Sélectionnez le département
+                </option>
+
+                <option
+                  v-bind:key="index"
+                  v-for="(department, index) in options.departments"
+                  value="{{department.id}}"
                 >
-                  <option
-                    class="formBlockSelectOption"
-                    value=""
-                    disabled
-                    selected
-                    hidden
-                  >
-                    Sélectionnez le département
-                  </option>
-
-                  <option
-                    v-bind:key="index"
-                    v-for="(department, index) in options.departments"
-                    value="{{department.id}}"
-                  >
-                    {{ department.name_dpt }}
-                  </option>
-                </select>
-              </div>
-            </label>
-          </div>
+                  {{ department.name_dpt }}
+                </option>
+              </select>
+            </div>
+          </label>
         </div>
       </div>
 
       <!-- TYPE DE VILLE -->
-      <div class="formBlock" id="searchTownType">
-        <div class="formBlockHeader">
-          <h4 class="formBlockTitle">Type de ville</h4>
-          <!-- <p class="formBlockText"></p> -->
+      <div
+        class="form-section flex-row flex-justify-between separation-border"
+        id="searchTownType"
+      >
+        <div class="form-section-header">
+          <h4>
+            <span class="header-highlight">Type</span><br /><span
+              class="header-baseline"
+              >de&nbsp;ville</span
+            >
+          </h4>
         </div>
-        <div class="formBlockRadio">
+        <div
+          class="
+            form-section-main form-section-main-width
+            flex-column flex-justify-between
+          "
+        >
           <!-- Ville rurale -->
-          <div class="radioButtonWrapper">
-            <input
-              class="radioButton"
-              type="radio"
-              name="type"
-              id="typeRurale"
-              value="rurale"
-              checked
-            />
-            <label class="radioButtonOption typeRurale" for="typeRurale">
-              <div class="radioDot"></div>
-              <span class="radioButtonLabel">Ville rurale</span>
-            </label>
-          </div>
+          <label class="button winner typeRurale" for="typeRurale">
+            <div class="flex-row flex-align-center">
+              <input
+                type="radio"
+                name="type"
+                id="typeRurale"
+                value="rurale"
+                checked
+              />
+              <p>Ville rurale</p>
+            </div>
+          </label>
 
           <!-- Ville urbaine -->
-          <div class="radioButtonWrapper">
-            <input
-              class="radioButton"
-              type="radio"
-              name="type"
-              id="typeUrbaine"
-              value="urbaine"
-            />
-            <label class="radioButtonOption typeUrbaine" for="typeUrbaine">
-              <div class="radioDot"></div>
-              <span class="radioButtonLabel"
-                >Ville appartenant à une aire urbaine
-              </span>
-              <div class="toolTip">
+          <label class="button neutral relative typeUrbaine" for="typeUrbaine">
+            <div class="flex-row flex-justify-between flex-align-center">
+              <div class="flex-row flex-align-center">
+                <input
+                  type="radio"
+                  name="type"
+                  id="typeUrbaine"
+                  value="urbaine"
+                />
+                <p>Ville appartenant à une aire urbaine</p>
+              </div>
+              <div class="tool-tip">
                 <img
                   src="~@/assets/icons/help-circle.svg"
                   alt=""
-                  class="toolTipIcon"
+                  class="tool-tip-icon"
                 />
-                <p class="toolTipBox">
+                <p class="tool-tip-box">
                   Une <span>aire urbaine</span> est un ensemble de villes ou
                   villages géographiquement proches et dont l'activité est liée
                   grâce notamment à la mobilité de ses habitants
                 </p>
               </div>
-              <div id="uuOptions" class="optionsMenu">
-                <label class="formBlockSelectLabel" for="uu"></label>
-                <select class="formBlockSelect" name="uu" id="uu">
-                  <option
-                    class="formBlockSelectOption"
-                    value=""
-                    disabled
-                    selected
-                    hidden
-                  >
-                    Je veux une ville située dans une zone urbaine de...
-                  </option>
-                  <option class="formBlockSelectOption" value="1">
-                    moins de 5 000 habitants
-                  </option>
-                  <option class="formBlockSelectOption" value="2">
-                    de 5 000 à 10 000 habitants
-                  </option>
-                  <option class="formBlockSelectOption" value="3">
-                    de 10 000 à 20 000 habitants
-                  </option>
-                  <option class="formBlockSelectOption" value="4">
-                    de 20 000 à 50 000 habitants
-                  </option>
-                  <option class="formBlockSelectOption" value="5">
-                    de 50 000 à 100 000 habitants
-                  </option>
-                  <option class="formBlockSelectOption" value="6">
-                    de 100 000 à 200 000 habitants
-                  </option>
-                </select>
-              </div>
-            </label>
-          </div>
+            </div>
+            <div id="uuOptions" class="optionsMenu">
+              <label class="formBlockSelectLabel" for="uu"></label>
+              <select class="formBlockSelect" name="uu" id="uu">
+                <option
+                  class="formBlockSelectOption"
+                  value=""
+                  disabled
+                  selected
+                  hidden
+                >
+                  Je veux une ville située dans une zone urbaine de...
+                </option>
+                <option class="formBlockSelectOption" value="1">
+                  moins de 5 000 habitants
+                </option>
+                <option class="formBlockSelectOption" value="2">
+                  de 5 000 à 10 000 habitants
+                </option>
+                <option class="formBlockSelectOption" value="3">
+                  de 10 000 à 20 000 habitants
+                </option>
+                <option class="formBlockSelectOption" value="4">
+                  de 20 000 à 50 000 habitants
+                </option>
+                <option class="formBlockSelectOption" value="5">
+                  de 50 000 à 100 000 habitants
+                </option>
+                <option class="formBlockSelectOption" value="6">
+                  de 100 000 à 200 000 habitants
+                </option>
+              </select>
+            </div>
+          </label>
         </div>
       </div>
 
       <!-- TAILLE DE VILLE -->
-      <div class="formBlock" id="searchTownSize">
-        <div class="formBlockHeader">
-          <h4 class="formBlockTitle">Population</h4>
-          <!-- <p class="formBlockText"></p> -->
+      <div
+        class="form-section flex-row flex-justify-between separation-border"
+        id="searchTownSize"
+      >
+        <div class="form-section-header">
+          <h4>
+            <span class="header-highlight">Pop</span><br /><span
+              class="header-baseline"
+              >ulation</span
+            >
+          </h4>
         </div>
-        <div class="formBlockText">
-          <p class="selectOption">
+
+        <div class="form-section-main form-section-main-width searchTownSize">
+          <p>
             Je veux une ville dont la population est comprise entre
-            <select class="formBlockSelect" name="townMin" id="townMin">
+            <select class="" name="townMin" id="townMin">
               <option class="formBlockSelectOption" value="0">0</option>
               <option class="formBlockSelectOption" value="500">500</option>
               <option class="formBlockSelectOption" value="1000">1 000</option>
@@ -291,130 +291,120 @@
       </div>
 
       <!-- EDUCATION -->
-      <div class="formBlock" id="searchEducation">
-        <div class="formBlockHeader">
-          <h4 class="formBlockTitle">Éducation</h4>
+      <div
+        class="form-section flex-row flex-justify-between separation-border"
+        id="searchEducation"
+      >
+        <div class="form-section-header">
+          <h4>
+            <span class="header-highlight">Édu</span><br /><span
+              class="header-baseline"
+              >cation</span
+            >
+          </h4>
           <p class="formBlockText">
             Recherchez-vous une ville ayant une ou des écoles ?
           </p>
         </div>
 
         <!-- noSchool -->
-        <div class="formBlockRadio">
-          <div class="radioButtonWrapper">
-            <input
-              class="radioButton"
-              type="radio"
-              name="school"
-              id="noSchool"
-              value="false"
-              checked
-            />
-            <label class="radioButtonOption noSchool" for="noSchool">
-              <div class="radioDot"></div>
-              <span class="radioButtonLabel">Pas d'école nécessaire</span>
-            </label>
-          </div>
+        <div
+          class="
+            form-section-main form-section-main-width
+            flex-column flex-justify-between
+          "
+        >
+          <label class="button winner noSchool" for="noSchool">
+            <div class="flex-row flex-align-center">
+              <input
+                type="radio"
+                name="school"
+                id="noSchool"
+                value="false"
+                checked
+              />
+              <p>Pas d'école nécessaire</p>
+            </div>
+          </label>
 
           <!-- withSchool -->
-          <div class="radioButtonWrapper">
-            <input
-              class="radioButton"
-              type="radio"
-              name="school"
-              id="withSchool"
-              value="true"
-            />
-            <label class="radioButtonOption withSchool" for="withSchool">
-              <div class="radioDot"></div>
-              <span class="radioButtonLabel"
-                >Au moins une école est nécessaire</span
-              >
+          <label class="button neutral withSchool" for="withSchool">
+            <div class="flex-row flex-align-center">
+              <input type="radio" name="school" id="withSchool" value="true" />
+              <p>Au moins une école est nécessaire</p>
+            </div>
 
-              <div id="schoolOptions" class="optionsMenu">
-                <div class="optionsMenuCheckbox">
-                  <div class="checkboxWrapper">
-                    <input
-                      class="checkboxInput"
-                      type="checkbox"
-                      name="schoolOptions"
-                      id="materSchool"
-                      value="mater"
-                    />
-                    <label class="checkboxOption materSchool" for="materSchool">
-                      <div class="checkBox"></div>
-                      <span class="checkboxLabel">École maternelle</span>
-                    </label>
-                  </div>
-
-                  <div class="checkboxWrapper">
-                    <input
-                      class="checkboxInput"
-                      type="checkbox"
-                      name="schoolOptions"
-                      id="primSchool"
-                      value="prim"
-                    />
-                    <label class="checkboxOption primSchool" for="primSchool">
-                      <div class="checkBox"></div>
-                      <span class="checkboxLabel">École primaire</span>
-                    </label>
-                  </div>
-
-                  <div class="checkboxWrapper">
-                    <input
-                      class="checkboxInput"
-                      type="checkbox"
-                      name="schoolOptions"
-                      id="collSchool"
-                      value="coll"
-                    />
-                    <label class="checkboxOption collSchool" for="collSchool">
-                      <div class="checkBox"></div>
-                      <span class="checkboxLabel">Collège</span>
-                    </label>
-                  </div>
-
-                  <div class="checkboxWrapper">
-                    <input
-                      class="checkboxInput"
-                      type="checkbox"
-                      name="schoolOptions"
-                      id="lyceeSchool"
-                      value="lycee"
-                    />
-                    <label class="checkboxOption lyceeSchool" for="lyceeSchool">
-                      <div class="checkBox"></div>
-                      <span class="checkboxLabel">Lycée</span>
-                    </label>
-                  </div>
-
-                  <div class="checkboxWrapper">
-                    <input
-                      class="checkboxInput"
-                      type="checkbox"
-                      name="schoolOptions"
-                      id="segpaSchool"
-                      value="segpa"
-                    />
-                    <label class="checkboxOption segpaSchool" for="segpaSchool">
-                      <div class="checkBox"></div>
-                      <span class="checkboxLabel">SEGPA</span>
-                    </label>
-                  </div>
-
-                  <input value="" name="schoolOptions" disabled hidden />
+            <div id="schoolOptions" class="checkbox-group">
+              <label class="checkbox-label materSchool" for="materSchool">
+                <div class="flex-row flex-align-center">
+                  <input
+                    type="checkbox"
+                    name="schoolOptions"
+                    id="materSchool"
+                    value="mater"
+                  />
+                  <p>École maternelle</p>
                 </div>
+              </label>
+
+                <label class="checkbox-label primSchool" for="primSchool">
+                <div class="flex-row flex-align-center">
+                <input
+                  type="checkbox"
+                  name="schoolOptions"
+                  id="primSchool"
+                  value="prim"
+                />
+                  <p>École primaire</p>
               </div>
-            </label>
-          </div>
+                </label>
+
+                <label class="checkbox-label collSchool" for="collSchool">
+              <div class="flex-row flex-align-center">
+                <input
+                  type="checkbox"
+                  name="schoolOptions"
+                  id="collSchool"
+                  value="coll"
+                />
+                  <p>Collège</p>
+              </div>
+                </label>
+
+                <label class="checkbox-label lyceeSchool" for="lyceeSchool">
+              <div class="flex-row flex-align-center">
+                <input
+                  type="checkbox"
+                  name="schoolOptions"
+                  id="lyceeSchool"
+                  value="lycee"
+                />
+                  <p>Lycée</p>
+              </div>
+                </label>
+
+                <label class="checkbox-label segpaSchool" for="segpaSchool">
+              <div class="flex-row flex-align-center">
+                <input
+                  type="checkbox"
+                  name="schoolOptions"
+                  id="segpaSchool"
+                  value="segpa"
+                />
+                  <p>SEGPA</p>
+              </div>
+                </label>
+
+              <input value="" name="schoolOptions" disabled hidden />
+            </div>
+          </label>
         </div>
       </div>
 
       <div class="hide" id="formErrorAlert">
         Vos critères de recherche sont incomplets, veuillez corriger :)
       </div>
-      <button class="formBlockSubmitButton" type="submit" value="Ok !">
+      <button class="search-button" type="submit" value="Ok !">
         Lancer la recherche
       </button>
     </form>
@@ -452,445 +442,287 @@ export default {
 </script>
 
 <style lang="scss">
-.mainContainer {
-  // FLEXBOX
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  position: relative;
-
-  .headerSubtitle {
-    box-sizing: border-box;
-    width: 700px;
-    line-height: 1.6;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: $blackish;
-    text-align: center;
-    margin-bottom: 4rem;
-
-    @media screen and (max-width: 700px) {
-      width: 90%;
-    }
-  }
-
-  .mainContainerTitle {
-    text-align: center;
-    font-family: $headerFont;
-    font-size: 1.5rem;
-    letter-spacing: 0.5rem;
-    padding-bottom: 2rem;
-  }
-}
-
-.mainContainerForm {
+.main-container {
   width: 700px;
-  text-align: left;
+  margin: auto;
 
-  @media screen and (max-width: 700px) {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+  .header-subtitle {
+    font-style: italic;
+    line-height: 1.5;
+    padding: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
   }
 
-  // FORM SECTION
-  .formBlock {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0px 0px 0px 3px $highlightLight;
+  }
+
+  .flex-row {
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: space-between;
-
-    @media screen and (max-width: 700px) {
-      flex-direction: column;
-      margin-bottom: 0.5rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .formBlockHeader {
-      font-family: $headerFont;
-      font-size: 1.2rem;
-      padding: 1rem;
-      background-color: rgb($mainColor, 0.6);
-      color: $white;
-      border-radius: 0 1rem 1rem 1rem;
-      width: 27%;
-
-      @media screen and (max-width: 700px) {
-        width: 100%;
-        margin-bottom: 0.5rem;
-        margin: auto;
-        box-sizing: border-box;
-      }
-
-      .formBlockText {
-        font-size: 0.8rem;
-        padding-top: 1rem;
-        color: $white;
-        line-height: 1.2;
-        width: 100%;
-      }
-    }
-
-    // FORM SECTION WITH RADIO BUTTONS
-    .formBlockRadio {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
-    // FORM SECTION WITH SELECT INPUT
-    .formBlockSelect {
-      cursor: pointer;
-      border: 1px solid transparent;
-      margin: 0.5rem;
-    }
-
-    .formBlockText {
-      .formBlockSelect {
-        background-color: rgb($mainColorLight, 0.3);
-        box-shadow: inset 0 0 5px rgb($mainColorLight, 0.8);
-      }
-    }
-
-    .formBlockRadio {
-      .formBlockSelect {
-        background-color: $white;
-        box-shadow: inset 0 0 5px rgb($mediumGrey, 0.5);
-      }
-    }
-
-    //
-    // RADIO INPUTS
-    //
-    .radioButtonWrapper {
-      width: 100%;
-      margin-top: 4px;
-      margin-bottom: 4px;
-      position: relative;
-      * {
-        cursor: pointer;
-      }
-
-      .radioButton {
-        display: none;
-      }
-
-      .radioButtonOption {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        align-items: center;
-        margin-bottom: 1rem;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-
-        &:hover {
-          box-shadow: inset 0 0 5px $mediumGrey;
-          border: 0;
-        }
-
-        &:focus {
-          border: 1px solid rgb($mainColorLight, 1);
-          outline: 2px solid $mainColorLight;
-        }
-
-        .radioButtonLabel {
-          padding-left: 0.5rem;
-          font-size: 1rem;
-          width: 80%;
-        }
-
-        .radioDot {
-          height: 20px;
-          width: 20px;
-          background: rgb($mainColor, 0.6);
-          border-radius: 50%;
-          position: relative;
-
-          &::before {
-            position: absolute;
-            content: "";
-            top: 4px;
-            left: 4px;
-            width: 12px;
-            height: 12px;
-            background: rgb($mainColor, 0.6);
-            border-radius: 50%;
-            opacity: 0;
-            transform: scale(1.5);
-            transition: all 0.3s ease;
-          }
-        }
-
-        .optionsMenu {
-          margin-top: 1rem;
-          width: 100%;
-          align-self: stretch;
-
-          .formBlockSelect {
-            width: 100%;
-            margin: auto;
-            box-shadow: 0 0 5px rgb($mainColorLight, 0.8);
-          }
-        }
-      }
-
-      // HANDLING DISPLAY DEPENDING ON CHECK STATUS
-      #regionOptions,
-      #departmentOptions,
-      #uuOptions,
-      #schoolOptions {
-        display: none;
-      }
-
-      #locationTouteFrance:checked ~ .locationTouteFrance,
-      #locationByRegion:checked ~ .locationByRegion,
-      #locationByDepartment:checked ~ .locationByDepartment,
-      #typeRurale:checked ~ .typeRurale,
-      #typeUrbaine:checked ~ .typeUrbaine,
-      #withSchool:checked ~ .withSchool,
-      #noSchool:checked ~ .noSchool {
-        background-color: rgb($mainColorLight, 0.3);
-        border: 1px solid transparent;
-        box-shadow: inset 0 0 5px rgb($mainColorLight, 0.6);
-
-        .radioDot {
-          background: $white;
-          box-shadow: 0 0 10px rgb($mainColorLight, 1);
-
-          &::before {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        #regionOptions,
-        #departmentOptions,
-        #uuOptions,
-        #schoolOptions {
-          display: block;
-        }
-
-        .toolTip {
-          position: absolute;
-          top: 30px;
-          right: 15px;
-        }
-      }
-    }
-
-    .selectOption {
-      @media screen and (max-width: 700px) {
-        margin-top: 0.5rem;
-      }
-    }
-
-    .radioButtonOption,
-    .selectOption {
-      padding: 1rem;
-      box-shadow: 0 0 5px $mediumGrey;
-      border-radius: 0 1rem 1rem 1rem;
-      line-height: 1.6;
-      transition: box-shadow 0.3s ease;
-      transition: background-color 0.3s ease;
-
-      .formBlockSelect {
-        font-size: 0.9rem;
-        color: $blackish;
-        font-family: $contentFont;
-        border: transparent;
-        border-radius: 1rem;
-        padding: 0.5rem;
-
-        &:focus {
-          border-radius: 1rem;
-          outline: 2px solid $mainColorLight;
-        }
-      }
-
-      .toolTip {
-        position: absolute;
-        top: 50%;
-        right: 15px;
-        transform: translate(0, -50%);
-        transition: all 0.3s ease;
-
-        .toolTipIcon {
-          color: rgb($mainColor, 0.6);
-          height: 20px;
-          width: 20px;
-          cursor: pointer;
-        }
-
-        .toolTipBox {
-          position: absolute;
-          display: none;
-        }
-
-        &:hover {
-          .toolTipBox {
-            display: block;
-            background-color: $white;
-            box-shadow: 0 0 5px $mediumGrey;
-            font-size: 0.8rem;
-            bottom: 0;
-            left: 0;
-            padding: 1rem;
-            margin: 1.5rem;
-            border-radius: 0 1rem 1rem 1rem;
-
-            @media screen and (max-width: 700px) {
-              transform: translate(-120%, 0);
-            }
-
-            span {
-              font-weight: bold;
-            }
-          }
-        }
-      }
-    }
-
-    //
-    // CHECKBOX INPUTS
-    //
-    .optionsMenuCheckbox {
-      padding-left: 1.5rem;
-      display: flex;
-      flex-direction: column;
-
-      .checkboxWrapper {
-        padding-bottom: 0.3rem;
-        cursor: pointer;
-
-        .checkboxInput {
-          display: none;
-        }
-
-        .checkboxOption {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-
-          &:hover {
-            .checkboxLabel {
-              text-decoration: underline $mainColorLight 3px;
-              transition: all 0.3s ease-in-out;
-            }
-          }
-
-          &:focus {
-            border: 1px solid rgb($mainColorLight, 1);
-            outline: 2px solid $mainColorLight;
-          }
-
-          .checkBox {
-            height: 20px;
-            width: 20px;
-            background: $white;
-            border-radius: 0.3rem;
-            position: relative;
-
-            &::before {
-              position: absolute;
-              content: "✓";
-              height: 22px;
-              width: 22px;
-              bottom: 2px;
-              left: 2px;
-              color: $blackish;
-              opacity: 0;
-              transform: scale(1.5);
-              transition: all 0.3s ease;
-            }
-          }
-
-          .checkboxLabel {
-            padding-left: 0.5rem;
-          }
-        }
-
-        #materSchool:checked ~ .materSchool,
-        #primSchool:checked ~ .primSchool,
-        #collSchool:checked ~ .collSchool,
-        #lyceeSchool:checked ~ .lyceeSchool,
-        #segpaSchool:checked ~ .segpaSchool {
-          .checkBox {
-            background: $white;
-            box-shadow: 0 0 5px rgb($mainColorLight, 0.8);
-
-            &::before {
-              opacity: 1;
-              transform: scale(1);
-            }
-          }
-        }
-      }
-    }
-
-    //
-    // ALL INPUTS
-    //
-    .formBlockRadio,
-    .formBlockText {
-      font-family: $contentFont;
-      width: 67%;
-
-      @media screen and (max-width: 700px) {
-        width: 100%;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-    }
   }
 
-  .formBlockSubmitButton {
-    width: 100%;
-    font-size: 1.2rem;
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flex-justify-between {
+    justify-content: space-between;
+  }
+
+  .flex-align-center {
+    align-items: center;
+  }
+
+  .form-header {
+    margin-bottom: 3rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: $headerFont;
-    color: $white;
-    background-color: rgb($mainColor, 0.6);
-    padding: 1rem;
-    border: 0;
-    border-radius: 0 1rem 1rem 1rem;
-    margin: 2rem auto;
+  }
+
+  .header-title {
+    font-size: 2.8rem;
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .tool-tip {
+    transition: all 0.3s ease;
+
+    .tool-tip-icon {
+      color: $mainColorLight;
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+    }
+
+    .tool-tip-box {
+      position: absolute;
+      display: none;
+    }
 
     &:hover {
-      box-shadow: inset 0 0 5px rgb($mainColor, 1);
-      transition: all 0.3s ease;
+      .tool-tip-icon {
+        border-radius: 50%;
+        border: 2px solid $white;
+        background-color: $white;
+      }
+
+      .tool-tip-box {
+        display: block;
+        height: 100px;
+        width: 200px;
+        color: $black;
+        background-color: $white;
+        box-shadow: $shadow-out;
+        font-size: 0.8rem;
+        line-height: 1.2;
+        top: 0;
+        right: 0;
+        transform: translate(-10px, -100%);
+        padding: 1rem;
+        margin: 1.5rem;
+        border-radius: $radius $radius 0 $radius;
+
+        span {
+          font-weight: bold;
+        }
+      }
     }
   }
 
-  .formErrorAlert {
-    font-family: $headerFont;
-    font-size: 0.9rem;
-    color: darkred;
-    text-align: center;
-    padding: 1rem 0;
-    background-color: rgb(darkred, 0.15);
-    border-radius: 0 1rem 1rem 1rem;
-    margin: auto;
+  .separation-border {
+    border-bottom: solid 2px $mainColorLight;
+  }
+
+  .underline {
+    border-bottom: solid 2px $mainColor;
   }
 
   .hide {
     display: none;
   }
 
-  .showFlex {
-    display: flex;
+  .form-section {
+    margin-top: 4rem;
+    padding-bottom: 0.2rem;
+
+    .form-section-header {
+      .header-highlight {
+        font-size: 2.8rem;
+        color: $mainColor;
+      }
+
+      .header-baseline {
+        font-size: 2rem;
+        margin-top: -1rem;
+        margin-left: 1rem;
+      }
+
+      p {
+        padding: 1rem 0;
+        line-height: 1.5;
+      }
+    }
+
+    .form-section-main-width {
+      max-width: 400px;
+    }
+
+    .form-section-main {
+      .button {
+        padding: 0.8rem 1rem;
+        margin-bottom: 0.8rem;
+        border-radius: $radius;
+        border: 1px solid $mainColor;
+        width: 350px;
+      }
+
+      .neutral {
+        color: $black;
+        background-color: $white;
+        box-shadow: $shadow-out;
+
+        &:hover {
+          background-color: $mainColor;
+          color: $white;
+        }
+      }
+
+      .winner {
+        color: $white;
+        background-color: $mainColor;
+        box-shadow: $shadow-in;
+        font-weight: bold;
+      }
+
+      label {
+        p {
+          padding-left: 0.5rem;
+        }
+      }
+
+      input[type="radio"] {
+        /* create custom radiobutton appearance */
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        padding: 4px;
+
+        /* background-color only for content */
+        background-clip: content-box;
+        border: 1px solid $mainColor;
+        background-color: $mainColorLight;
+        border-radius: 50%;
+
+        &:hover {
+          border: 1px solid $white;
+        }
+      }
+
+      /* appearance for checked radiobutton */
+      input[type="radio"]:checked {
+        background-color: $white;
+        border: 1px solid $white;
+      }
+
+      select {
+        margin-top: 1rem;
+        border-radius: $radius;
+        height: 2.5rem;
+        padding: 0.5rem;
+        max-width: 100%;
+      }
+
+      .checkbox-group {
+        margin-left : 35px;
+        margin-top : 1rem;
+
+        label {
+          padding : 0.3rem 0;
+
+          &:hover {
+            text-decoration: underline $white 4px;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
+          }
+
+          input {
+        /* create custom checkbox appearance */
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+
+        /* background-color only for content */
+        background-clip: content-box;
+        border: 1px solid $mainColor;
+        background-color: $mainColorLight;
+        border-radius: 25%;
+
+        &:hover {
+          border: 1px solid $white;
+        }
+
+        &:checked {
+        background-color: $white;
+        border: 1px solid $white;
+        padding : 3px;
+        position:relative;
+        }
+
+
+          }
+        }
+      }
+    }
+
+    .searchTownSize {
+      p {
+        margin: 0 1rem 1rem 1rem;
+      }
+
+      select {
+        border-color: $mainColor;
+        cursor: pointer;
+        box-shadow: $shadow-out;
+        margin: 1rem 0.5rem 0 0.5rem;
+      }
+    }
   }
 
-  .showBlock {
-    display: block;
+  .search-button { 
+    width: 100%;
+    margin-top : 1rem;
+    padding: 1rem 0;
+    border-radius: $radius;
+    border: 1px solid $mainColor;
+    color: $black;
+    background-color: $white;
+    box-shadow: $shadow-out;
+    font-size: 1rem;
+    font-family: $headerFont;
+
+    &:hover {
+      background-color: $mainColor;
+      color: $white;
+      font-weight: bold;
+    }
+
   }
-}
+
+    }
+  
+
 </style>
