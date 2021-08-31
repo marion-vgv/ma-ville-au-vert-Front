@@ -13,10 +13,9 @@
     <!-- FORM -->
     <form
       v-else
-      action=""
-      method="POST"
       id="searchForm"
       class="mainContainerForm"
+      @submit.prevent="onSubmit"
     >
       <div class="form-header flex-row flex-align-center">
         <h3 class="header-title">
@@ -42,6 +41,7 @@
             form-section-main form-section-main-width
             flex-column flex-justify-between
           "
+          v-on:click="checkStep(1)"
         >
           <!-- Dans toute la France -->
           <label
@@ -62,10 +62,11 @@
           </label>
 
           <!-- Par région -->
-          <label 
-          class="button locationByRegion"
-          :class="[searchLocation === 'region' ? 'winner' : 'neutral']"
-          for="locationByRegion">
+          <label
+            class="button locationByRegion"
+            :class="[searchLocation === 'region' ? 'winner' : 'neutral']"
+            for="locationByRegion"
+          >
             <div class="flex-row flex-align-center">
               <input
                 type="radio"
@@ -73,16 +74,36 @@
                 id="locationByRegion"
                 value="region"
                 v-model="searchLocation"
-
               />
               <p>Par région</p>
             </div>
 
-            <div id="regionOptions" :class="[searchLocation === 'region' ? '' : 'hide']">
-              <select name="locationRegion" id="locationRegion" v-model="locationRegion">
-                <option :value="null" disabled>
-                  Sélectionnez la région
-                </option>
+            <div
+              id="regionOptions"
+              :class="[searchLocation === 'region' ? '' : 'hide']"
+            >
+              <div
+                v-if="
+                  step > 1 &&
+                  searchLocation === 'region' &&
+                  locationRegion === null
+                "
+                class="flex-row flex-align-center alert"
+              >
+                <img
+                  src="~@/assets/icons/alert-circle.svg"
+                  alt=""
+                  class="alert-icon"
+                />
+                <span>Veuillez préciser votre recherche</span>
+              </div>
+              <select
+                name="locationRegion"
+                id="locationRegion"
+                v-model.number="locationRegion"
+                class="select-region"
+              >
+                <option :value="null" disabled>Sélectionnez la région</option>
 
                 <option
                   v-for="region in options.regions"
@@ -112,8 +133,32 @@
               <p>Par département</p>
             </div>
 
-            <div id="departmentOptions" :class="[searchLocation === 'department' ? '' : 'hide']">
-              <select name="locationDepartment" id="locationDepartment" v-model="locationDepartment">
+            <div
+              id="departmentOptions"
+              :class="[searchLocation === 'department' ? '' : 'hide']"
+            >
+              <div
+                v-if="
+                  step > 1 &&
+                  searchLocation === 'department' &&
+                  locationDepartment === null
+                "
+                class="flex-row flex-align-center alert"
+              >
+                <img
+                  src="~@/assets/icons/alert-circle.svg"
+                  alt=""
+                  class="alert-icon"
+                />
+                <span>Veuillez préciser votre recherche</span>
+              </div>
+
+              <select
+                name="locationDepartment"
+                id="locationDepartment"
+                v-model.number="locationDepartment"
+                class="select-dpt"
+              >
                 <option :value="null" disabled>
                   Sélectionnez le département
                 </option>
@@ -149,14 +194,15 @@
             form-section-main form-section-main-width
             flex-column flex-justify-between
           "
+          v-on:click="checkStep(2)"
         >
           <!-- Ville rurale -->
-          <label 
-          class="button typeRurale" 
-          :class="[searchType === 'rurale' ? 'winner' : 'neutral']"
-          for="typeRurale">
-            <div class="flex-row flex-align-center"
-            >
+          <label
+            class="button typeRurale"
+            :class="[searchType === 'rurale' ? 'winner' : 'neutral']"
+            for="typeRurale"
+          >
+            <div class="flex-row flex-align-center">
               <input
                 type="radio"
                 name="type"
@@ -169,20 +215,19 @@
           </label>
 
           <!-- Ville urbaine -->
-          <label 
-          class="button relative typeUrbaine" 
-          :class="[searchType === 'urbaine' ? 'winner' : 'neutral']"
-          for="typeUrbaine">
+          <label
+            class="button relative typeUrbaine"
+            :class="[searchType === 'urbaine' ? 'winner' : 'neutral']"
+            for="typeUrbaine"
+          >
             <div class="flex-row flex-justify-between flex-align-center">
-              <div class="flex-row flex-align-center"
-              >
+              <div class="flex-row flex-align-center">
                 <input
                   type="radio"
                   name="type"
                   id="typeUrbaine"
                   value="urbaine"
                   v-model="searchType"
-
                 />
                 <p>Ville appartenant à une aire urbaine</p>
               </div>
@@ -199,32 +244,39 @@
                 </p>
               </div>
             </div>
-            <div id="uuOptions" :class="[searchType === 'urbaine' ? '' : 'hide']">
-              <select name="uu" id="uu" v-model="typeUrbaine">
-                <option
-                  value=""
-                  disabled
-                >
+            <div
+              id="uuOptions"
+              :class="[searchType === 'urbaine' ? '' : 'hide']"
+            >
+              <div
+                v-if="
+                  step > 2 && searchType === 'urbaine' && typeUrbaine === null
+                "
+                class="flex-row flex-align-center alert"
+              >
+                <img
+                  src="~@/assets/icons/alert-circle.svg"
+                  alt=""
+                  class="alert-icon"
+                />
+                <span>Veuillez préciser votre recherche</span>
+              </div>
+
+              <select
+                name="uu"
+                id="uu"
+                v-model.number="typeUrbaine"
+                class="select-uu"
+              >
+                <option :value="null" disabled>
                   Je veux une ville située dans une zone urbaine de...
                 </option>
-                <option value="1">
-                  moins de 5 000 habitants
-                </option>
-                <option value="2">
-                  de 5 000 à 10 000 habitants
-                </option>
-                <option value="3">
-                  de 10 000 à 20 000 habitants
-                </option>
-                <option value="4">
-                  de 20 000 à 50 000 habitants
-                </option>
-                <option value="5">
-                  de 50 000 à 100 000 habitants
-                </option>
-                <option value="6">
-                  de 100 000 à 200 000 habitants
-                </option>
+                <option value="1">moins de 5 000 habitants</option>
+                <option value="2">de 5 000 à 10 000 habitants</option>
+                <option value="3">de 10 000 à 20 000 habitants</option>
+                <option value="4">de 20 000 à 50 000 habitants</option>
+                <option value="5">de 50 000 à 100 000 habitants</option>
+                <option value="6">de 100 000 à 200 000 habitants</option>
               </select>
             </div>
           </label>
@@ -245,57 +297,29 @@
           </h4>
         </div>
 
-        <div class="form-section-main form-section-main-width searchTownSize">
+        <div
+          class="form-section-main form-section-main-width searchTownSize"
+          v-on:click="checkStep(3)"
+        >
           <p>
             Je veux une ville dont la population est comprise entre
-            <select class="" name="townMin" id="townMin">
-              <option class="formBlockSelectOption" value="0">0</option>
-              <option class="formBlockSelectOption" value="500">500</option>
-              <option class="formBlockSelectOption" value="1000">1 000</option>
-              <option class="formBlockSelectOption" value="2500">2 500</option>
-              <option class="formBlockSelectOption" value="5000">5 000</option>
-              <option class="formBlockSelectOption" value="10000">
-                10 000
-              </option>
-              <option class="formBlockSelectOption" value="20000">
-                20 000
-              </option>
-              <option class="formBlockSelectOption" value="50000">
-                50 000
-              </option>
-              <option class="formBlockSelectOption" value="100000">
-                100 000
-              </option>
-              <option class="formBlockSelectOption" value="150000">
-                150 000
-              </option>
-              <option class="formBlockSelectOption" value="200000">
-                200 000
+            <select name="townMin" id="townMin" v-model.number="townMin">
+              <option
+                v-for="(townMinValue, index) of townMinValues"
+                :key="index"
+                :value="townMinValue"
+              >
+                {{ new Intl.NumberFormat("fr-FR").format(townMinValue) }}
               </option>
             </select>
             et
-            <select class="formBlockSelect" name="townMax" id="townMax">
-              <option class="formBlockSelectOption" value="500">500</option>
-              <option class="formBlockSelectOption" value="1000">1 000</option>
-              <option class="formBlockSelectOption" value="2500">2 500</option>
-              <option class="formBlockSelectOption" value="5000">5 000</option>
-              <option class="formBlockSelectOption" value="10000">
-                10 000
-              </option>
-              <option class="formBlockSelectOption" value="20000">
-                20 000
-              </option>
-              <option class="formBlockSelectOption" value="50000">
-                50 000
-              </option>
-              <option class="formBlockSelectOption" value="100000">
-                100 000
-              </option>
-              <option class="formBlockSelectOption" value="150000">
-                150 000
-              </option>
-              <option class="formBlockSelectOption" value="200000">
-                200 000
+            <select name="townMax" id="townMax" v-model.number="townMax">
+              <option
+                v-for="(townMaxValue, index) of townMaxValues"
+                :key="index"
+                :value="townMaxValue"
+              >
+                {{ new Intl.NumberFormat("fr-FR").format(townMaxValue) }}
               </option>
             </select>
             habitants
@@ -322,32 +346,50 @@
 
         <!-- noSchool -->
         <div
-          class="
-            form-section-main form-section-main-width
-            flex-column flex-justify-between
-          "
+          class="form-section-main form-section-main-width flex-column"
+          v-on:click="checkStep(4)"
         >
-          <label class="button winner noSchool" for="noSchool">
+          <label
+            class="button noSchool"
+            :class="[searchSchool === 'noSchool' ? 'winner' : 'neutral']"
+            for="noSchool"
+          >
             <div class="flex-row flex-align-center">
               <input
                 type="radio"
                 name="school"
                 id="noSchool"
-                value="false"
-                checked
+                value="noSchool"
+                v-model="searchSchool"
               />
               <p>Pas d'école nécessaire</p>
             </div>
           </label>
 
           <!-- withSchool -->
-          <label class="button neutral withSchool" for="withSchool">
+          <label
+            class="button withSchool"
+            :class="[searchSchool === 'withSchool' ? 'winner' : 'neutral']"
+            for="withSchool"
+          >
             <div class="flex-row flex-align-center">
-              <input type="radio" name="school" id="withSchool" value="true" />
+              <input
+                type="radio"
+                name="school"
+                id="withSchool"
+                value="withSchool"
+                v-model="searchSchool"
+              />
               <p>Au moins une école est nécessaire</p>
             </div>
 
-            <div id="schoolOptions" class="checkbox-group">
+            <div
+              id="schoolOptions"
+              :class="[
+                searchSchool === 'withSchool' ? 'checkbox-group' : 'hide',
+              ]"
+            >
+              <p>Veuillez sélectionner au moins un type d'école</p>
               <label class="checkbox-label materSchool" for="materSchool">
                 <div class="flex-row flex-align-center">
                   <input
@@ -355,58 +397,63 @@
                     name="schoolOptions"
                     id="materSchool"
                     value="mater"
+                    v-model="withSchool"
                   />
                   <p>École maternelle</p>
                 </div>
               </label>
 
-                <label class="checkbox-label primSchool" for="primSchool">
+              <label class="checkbox-label primSchool" for="primSchool">
                 <div class="flex-row flex-align-center">
-                <input
-                  type="checkbox"
-                  name="schoolOptions"
-                  id="primSchool"
-                  value="prim"
-                />
+                  <input
+                    type="checkbox"
+                    name="schoolOptions"
+                    id="primSchool"
+                    value="prim"
+                    v-model="withSchool"
+                  />
                   <p>École primaire</p>
-              </div>
-                </label>
+                </div>
+              </label>
 
-                <label class="checkbox-label collSchool" for="collSchool">
-              <div class="flex-row flex-align-center">
-                <input
-                  type="checkbox"
-                  name="schoolOptions"
-                  id="collSchool"
-                  value="coll"
-                />
+              <label class="checkbox-label collSchool" for="collSchool">
+                <div class="flex-row flex-align-center">
+                  <input
+                    type="checkbox"
+                    name="schoolOptions"
+                    id="collSchool"
+                    value="coll"
+                    v-model="withSchool"
+                  />
                   <p>Collège</p>
-              </div>
-                </label>
+                </div>
+              </label>
 
-                <label class="checkbox-label lyceeSchool" for="lyceeSchool">
-              <div class="flex-row flex-align-center">
-                <input
-                  type="checkbox"
-                  name="schoolOptions"
-                  id="lyceeSchool"
-                  value="lycee"
-                />
+              <label class="checkbox-label lyceeSchool" for="lyceeSchool">
+                <div class="flex-row flex-align-center">
+                  <input
+                    type="checkbox"
+                    name="schoolOptions"
+                    id="lyceeSchool"
+                    value="lycee"
+                    v-model="withSchool"
+                  />
                   <p>Lycée</p>
-              </div>
-                </label>
+                </div>
+              </label>
 
-                <label class="checkbox-label segpaSchool" for="segpaSchool">
-              <div class="flex-row flex-align-center">
-                <input
-                  type="checkbox"
-                  name="schoolOptions"
-                  id="segpaSchool"
-                  value="segpa"
-                />
+              <label class="checkbox-label segpaSchool" for="segpaSchool">
+                <div class="flex-row flex-align-center">
+                  <input
+                    type="checkbox"
+                    name="schoolOptions"
+                    id="segpaSchool"
+                    value="segpa"
+                    v-model="withSchool"
+                  />
                   <p>SEGPA</p>
-              </div>
-                </label>
+                </div>
+              </label>
 
               <input value="" name="schoolOptions" disabled hidden />
             </div>
@@ -417,7 +464,7 @@
       <div class="hide" id="formErrorAlert">
         Vos critères de recherche sont incomplets, veuillez corriger :)
       </div>
-      <button class="search-button" type="submit" value="Ok !">
+      <button class="search-button" type="submit" value="submit">
         Lancer la recherche
       </button>
     </form>
@@ -436,13 +483,63 @@ export default {
       loading: true,
       errored: false,
       options: null,
-      searchLocation: 'france',
+      step: null,
+      searchLocation: "france",
       locationRegion: null,
       locationDepartment: null,
-      searchType : 'rurale',
-      typeUrbaine :null,
+      searchType: "rurale",
+      typeUrbaine: null,
+      townMin: 0,
+      townMinValues: [
+        0, 500, 1000, 2500, 5000, 10000, 20000, 50000, 100000, 150000,
+      ],
+      townMax: 500,
+      townMaxValues: [
+        500, 1000, 2500, 5000, 10000, 20000, 50000, 100000, 150000, 200000,
+      ],
+      searchSchool: "noSchool",
+      withSchool: [],
     };
   },
+
+  watch: {
+    townMin: function (newValue) {
+      let valuesArray = [
+        0, 500, 1000, 2500, 5000, 10000, 20000, 50000, 100000, 150000,
+      ];
+      this.townMaxValues = valuesArray.filter((int) => int > newValue);
+    },
+
+    townMax: function (newValue) {
+      let valuesArray = [
+        500, 1000, 2500, 5000, 10000, 20000, 50000, 100000, 150000, 200000,
+      ];
+      this.townMinValues = valuesArray.filter((int) => int < newValue);
+    },
+  },
+
+  methods: {
+    onSubmit() {
+      let search = {
+        searchLocation: this.searchLocation,
+        locationRegion: this.locationRegion,
+        locationDepartment: this.locationDepartment,
+        searchType: this.searchType,
+        typeUrbaine: this.typeUrbaine,
+        townMin: this.townMin,
+        townMax: this.townMax,
+        searchSchool: this.searchSchool,
+        withSchool: this.withSchool,
+      };
+
+      console.log(search);
+    },
+
+    checkStep(currentStep) {
+      this.step = currentStep;
+    },
+  },
+
   mounted() {
     axios
       .get("https://mavilleauvertpublicapi.onrender.com")
@@ -475,6 +572,24 @@ export default {
   *:focus-visible {
     outline: none;
     box-shadow: 0px 0px 0px 3px $highlightLight;
+  }
+
+  .alert {
+    color: $negativeColor;
+    font-weight: normal;
+    font-style: italic;
+    background-color: $white;
+    border-radius: $radius;
+    font-size: 0.8rem;
+    padding: 0.2rem;
+    margin-top: 1rem;
+
+    img {
+      color: $negativeColor;
+    }
+    span {
+      margin-left: 1rem;
+    }
   }
 
   .flex-row {
@@ -668,16 +783,31 @@ export default {
         border-radius: $radius;
         height: 2.5rem;
         padding: 0.5rem;
-        max-width: 100%;
-        margin-left: 33px;
+      }
+
+      .locationByRegion,
+      .locationByDepartment {
+        .select-dpt,
+        .select-region {
+          max-width: 100%;
+          margin-left: 33px;
+        }
+
+        .alert {
+          margin-left: 33px;
+        }
+      }
+
+      .select-uu {
+        width: 100%;
       }
 
       .checkbox-group {
-        margin-left : 35px;
-        margin-top : 1rem;
+        margin-left: 35px;
+        margin-top: 1rem;
 
         label {
-          padding : 0.3rem 0;
+          padding: 0.3rem 0;
 
           &:hover {
             text-decoration: underline $white 4px;
@@ -686,29 +816,27 @@ export default {
           }
 
           input {
-        /* create custom checkbox appearance */
-        display: inline-block;
-        width: 22px;
-        height: 22px;
+            /* create custom checkbox appearance */
+            display: inline-block;
+            width: 22px;
+            height: 22px;
 
-        /* background-color only for content */
-        background-clip: content-box;
-        border: 1px solid $mainColor;
-        background-color: $mainColorLight;
-        border-radius: 25%;
+            /* background-color only for content */
+            background-clip: content-box;
+            border: 1px solid $mainColor;
+            background-color: $mainColorLight;
+            border-radius: 25%;
 
-        &:hover {
-          border: 1px solid $white;
-        }
+            &:hover {
+              border: 1px solid $white;
+            }
 
-        &:checked {
-        background-color: $white;
-        border: 1px solid $white;
-        padding : 3px;
-        position:relative;
-        }
-
-
+            &:checked {
+              background-color: $white;
+              border: 1px solid $white;
+              padding: 3px;
+              position: relative;
+            }
           }
         }
       }
@@ -728,9 +856,9 @@ export default {
     }
   }
 
-  .search-button { 
+  .search-button {
     width: 100%;
-    margin-top : 1rem;
+    margin-top: 1rem;
     padding: 1rem 0;
     border-radius: $radius;
     border: 1px solid $mainColor;
@@ -745,10 +873,6 @@ export default {
       color: $white;
       font-weight: bold;
     }
-
   }
-
-    }
-  
-
+}
 </style>
