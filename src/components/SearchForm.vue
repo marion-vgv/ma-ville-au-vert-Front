@@ -106,7 +106,7 @@
                 <option :value="null" disabled>Sélectionnez la région</option>
 
                 <option
-                  v-for="region in options.regions"
+                  v-for="region in optionsRegions"
                   :value="region.id"
                   v-bind:key="region.id"
                 >
@@ -165,7 +165,7 @@
 
                 <option
                   v-bind:key="department.id"
-                  v-for="department in options.departments"
+                  v-for="department in optionsDepartments"
                   :value="department.id"
                 >
                   {{ department.name_dpt }}
@@ -482,7 +482,8 @@ export default {
     return {
       loading: true,
       errored: false,
-      options: null,
+      optionsRegions: null,
+      optionsDepartments: null,
       step: null,
       searchLocation: "france",
       locationRegion: null,
@@ -533,6 +534,16 @@ export default {
       };
 
       console.log(search);
+      
+      axios
+        .post("http://localhost:3000/search", search)
+        .then((response) => {
+          console.log(`Réponse reçue :${response}`);
+        })
+        .catch((error) => {
+          console.log('Erreur malheureuse !')
+          console.log(error);
+        })
     },
 
     checkStep(currentStep) {
@@ -542,10 +553,11 @@ export default {
 
   mounted() {
     axios
-      .get("https://mavilleauvertpublicapi.onrender.com")
+      .get("http://localhost:3000/")
+      //.get("https://mavilleauvertpublicapi.onrender.com")
       .then((response) => {
-        this.options = response.data;
-        console.log(response.data);
+        this.optionsRegions = response.data.regions.filter(object => object.id >5);
+        this.optionsDepartments = response.data.departments.filter(object => object.id < 500);
       })
       .catch((error) => {
         console.log(error);
