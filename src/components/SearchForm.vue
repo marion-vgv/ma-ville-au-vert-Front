@@ -464,7 +464,7 @@
       <div class="hide" id="formErrorAlert">
         Vos critères de recherche sont incomplets, veuillez corriger :)
       </div>
-      <button class="search-button" type="submit" value="submit">
+      <button class="search-button" type="submit" value="Submit">
         Lancer la recherche
       </button>
     </form>
@@ -500,6 +500,7 @@ export default {
       ],
       searchSchool: "noSchool",
       withSchool: [],
+      search: null,
     };
   },
 
@@ -521,7 +522,7 @@ export default {
 
   methods: {
     onSubmit() {
-      let search = {
+      this.search = {
         searchLocation: this.searchLocation,
         locationRegion: this.locationRegion,
         locationDepartment: this.locationDepartment,
@@ -530,22 +531,28 @@ export default {
         townMin: this.townMin,
         townMax: this.townMax,
         searchSchool: this.searchSchool,
-        withSchool: this.withSchool,
-      };
+        withSchool: this.withSchoolthis,
+      }
+      console.log(this.search);
+      console.log(typeof this.search);
 
-      console.log(search);
-      
-      axios
+      this.sendToBack(this.search);
+    },
+
+    async sendToBack(search) {
+      console.log('send to back');
+
+      await axios
         .post("http://localhost:3000/search", search)
         .then((response) => {
           console.log(`Réponse reçue :${response}`);
         })
         .catch((error) => {
-          console.log('Erreur malheureuse !')
+          console.log("Erreur malheureuse !");
           console.log(error);
-        })
+        });
     },
-
+    
     checkStep(currentStep) {
       this.step = currentStep;
     },
